@@ -62,8 +62,8 @@
 		FF9D9FD01646AE2D002A9272 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = FF9D9FCF1646AE2D002A9272 /* test.json */; };
 		FF9D9FD11646AE4E002A9272 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9FBE1646AD4F002A9272 /* main.m */; };
 		FF9D9FD21646AEEE002A9272 /* libIQSerialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E571639D803002A9272 /* libIQSerialization.a */; };
-		FFD77E7F164703EE00597D70 /* IQSerialization+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E7E164703EE00597D70 /* IQSerialization+Base64.m */; };
-		FFD77E80164703EE00597D70 /* IQSerialization+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E7E164703EE00597D70 /* IQSerialization+Base64.m */; };
+		FFD77E7F164703EE00597D70 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E7E164703EE00597D70 /* NSData+Base64.m */; };
+		FFD77E80164703EE00597D70 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E7E164703EE00597D70 /* NSData+Base64.m */; };
 		FFD77E8416471CC400597D70 /* Base64Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E8316471CC400597D70 /* Base64Tests.m */; };
 		FFD77E8516471CC400597D70 /* Base64Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E8316471CC400597D70 /* Base64Tests.m */; };
 /* End PBXBuildFile section */
@@ -176,8 +176,8 @@
 		FF9D9FC61646AD4F002A9272 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		FF9D9FC81646AD4F002A9272 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		FF9D9FCF1646AE2D002A9272 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = test.json; path = PerformanceTest/test.json; sourceTree = SOURCE_ROOT; };
-		FFD77E7D164703EE00597D70 /* IQSerialization+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQSerialization+Base64.h"; sourceTree = "<group>"; };
-		FFD77E7E164703EE00597D70 /* IQSerialization+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQSerialization+Base64.m"; sourceTree = "<group>"; };
+		FFD77E7D164703EE00597D70 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		FFD77E7E164703EE00597D70 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		FFD77E8316471CC400597D70 /* Base64Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Tests.m; sourceTree = "<group>"; };
 		FFD77E86164753CD00597D70 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		FFD77E87164753D200597D70 /* NOTICE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NOTICE; sourceTree = "<group>"; };
@@ -290,8 +290,8 @@
 			children = (
 				FF9D9E5F1639D803002A9272 /* IQSerialization.h */,
 				FF9D9E611639D803002A9272 /* IQSerialization.m */,
-				FFD77E7D164703EE00597D70 /* IQSerialization+Base64.h */,
-				FFD77E7E164703EE00597D70 /* IQSerialization+Base64.m */,
+				FFD77E7D164703EE00597D70 /* NSData+Base64.h */,
+				FFD77E7E164703EE00597D70 /* NSData+Base64.m */,
 				FF9D9EE51639DD3D002A9272 /* IQSerialization+JSON.h */,
 				FF9D9EE61639DD3D002A9272 /* IQSerialization+JSON.m */,
 				FF9D9EF3163A0E02002A9272 /* IQSerialization+XMLRPC.h */,
@@ -616,7 +616,7 @@
 				FF9D9EF5163A0E02002A9272 /* IQSerialization+XMLRPC.m in Sources */,
 				FF9D9EFF163A0EDF002A9272 /* IQObjectFactory.m in Sources */,
 				FF9D9F3B163F2605002A9272 /* IQSerialization+SimpleXML.m in Sources */,
-				FFD77E7F164703EE00597D70 /* IQSerialization+Base64.m in Sources */,
+				FFD77E7F164703EE00597D70 /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,7 +647,7 @@
 				FF9D9F19163F174B002A9272 /* IQSerialization+JSON.m in Sources */,
 				FF9D9F1A163F174B002A9272 /* IQSerialization+XMLRPC.m in Sources */,
 				FF9D9F1B163F174B002A9272 /* IQObjectFactory.m in Sources */,
-				FFD77E80164703EE00597D70 /* IQSerialization+Base64.m in Sources */,
+				FFD77E80164703EE00597D70 /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

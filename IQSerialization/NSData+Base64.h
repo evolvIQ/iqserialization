@@ -1,5 +1,5 @@
 //
-//  IQSerialization+Base64.h
+//  NSData+Base64.h
 //  IQSerialization for iOS and Mac OS X
 //
 //  Copyright 2012 Rickard Petzäll, EvolvIQ

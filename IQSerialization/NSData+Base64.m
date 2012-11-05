@@ -1,5 +1,5 @@
 //
-//  IQSerialization+Base64.m
+//  NSData+Base64.m
 //  IQSerialization for iOS and Mac OS X
 //
 //  Copyright 2012 Rickard Petzäll, EvolvIQ
@@ -16,7 +16,7 @@
 //  limitations under the License.
 //
 
-#import "IQSerialization+Base64.h"
+#import "NSData+Base64.h"
 
 
 
