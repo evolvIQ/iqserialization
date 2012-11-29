@@ -18,12 +18,12 @@
 
 #import "IQSerialization.h"
 
-NSString *const IQSerializationErrorDomain = @"IQSerializationErrorDomain";
-
-extern BOOL _IQDeserializeJSONData(id object, NSData* jsonData, IQSerialization* serialization, NSError** outError);
-extern BOOL _IQDeserializeXMLRPCData(id object, NSData* jsonData, IQSerialization* serialization, NSError** outError);
-extern NSData* _IQJSONSerializeObject(id object, IQSerialization* serialization, NSError** outError);
-extern NSData* _IQXMLRPCSerializeObject(id object, IQSerialization* serialization, NSError** outError);
+extern BOOL _IQDeserializeJSONData(id object, NSData* jsonData, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError);
+extern BOOL _IQDeserializeXMLRPCData(id object, NSData* jsonData, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError);
+extern NSData* _IQJSONSerializeObject(id object, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError);
+extern NSData* _IQXMLRPCSerializeObject(id object, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError);
+extern NSString* _IQXMLRPCSerializeObjectToString(id object, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError);
+extern BOOL _IQXMLRPCSerializeObjectToStream(NSOutputStream* stream, id object, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError);
 
 @implementation IQSerialization
 @synthesize error, textEncoding, pretty, ignoreUnknownProperties, ignoreNilValues, timeZone;
@@ -63,18 +63,40 @@ extern NSData* _IQXMLRPCSerializeObject(id object, IQSerialization* serializatio
     }
     return nil;
 }
+
 - (BOOL)deserializeObject:(id)object fromString:(NSString*)string format:(IQSerializationFormat)fmt
 {
-    return [self deserializeObject:object fromData:[string dataUsingEncoding:NSUTF8StringEncoding] format:fmt];
+    return [self deserializeObject:object fromString:string format:fmt flags:IQSerializationFlagsDefault];
 }
+
 - (BOOL)deserializeObject:(id)object fromData:(NSData*)data format:(IQSerializationFormat)fmt
+{
+    return [self deserializeObject:object fromData:data format:fmt flags:IQSerializationFlagsDefault];
+}
+
+- (NSString*)stringFromObject:(id)object format:(IQSerializationFormat)fmt
+{
+    return [self stringFromObject:object format:fmt flags:IQSerializationFlagsDefault];
+}
+
+- (NSData*)serializeObject:(id)object format:(IQSerializationFormat)fmt
+{
+    return [self serializeObject:object format:fmt flags:IQSerializationFlagsDefault];
+}
+
+- (BOOL)deserializeObject:(id)object fromString:(NSString*)string format:(IQSerializationFormat)fmt flags:(IQSerializationFlags)flags
+{
+    return [self deserializeObject:object fromData:[string dataUsingEncoding:NSUTF8StringEncoding] format:fmt flags:flags];
+}
+
+- (BOOL)deserializeObject:(id)object fromData:(NSData*)data format:(IQSerializationFormat)fmt flags:(IQSerializationFlags)flags
 {
     NSError* err = nil;
     BOOL result;
     if(fmt == IQSerializationFormatJSON) {
-        result = _IQDeserializeJSONData(object, data, self, &err);
+        result = _IQDeserializeJSONData(object, data, self, flags, &err);
     } else if(fmt == IQSerializationFormatXMLRPC) {
-        result = _IQDeserializeXMLRPCData(object, data, self, &err);
+        result = _IQDeserializeXMLRPCData(object, data, self, flags, &err);
     } else {
         [NSException raise:@"BadSerializationFormat" format:@"Illegal serialization format specifier"];
         return NO;
@@ -86,18 +108,18 @@ extern NSData* _IQXMLRPCSerializeObject(id object, IQSerialization* serializatio
     return YES;
 }
 
-- (NSString*)stringFromObject:(id)object format:(IQSerializationFormat)fmt
+- (NSString*)stringFromObject:(id)object format:(IQSerializationFormat)fmt flags:(IQSerializationFlags)flags
 {
-    return [[NSString alloc] initWithData:[self serializeObject:object format:fmt] encoding:self.textEncoding];
+    return [[NSString alloc] initWithData:[self serializeObject:object format:fmt flags:flags] encoding:self.textEncoding];
 }
-- (NSData*)serializeObject:(id)object format:(IQSerializationFormat)fmt
+- (NSData*)serializeObject:(id)object format:(IQSerializationFormat)fmt flags:(IQSerializationFlags)flags
 {
     NSData* result = nil;
     NSError* err = nil;
     if(fmt == IQSerializationFormatJSON) {
-        result = _IQJSONSerializeObject(object, self, &err);
+        result = _IQJSONSerializeObject(object, self, flags, &err);
     } else if(fmt == IQSerializationFormatXMLRPC) {
-        result = _IQXMLRPCSerializeObject(object, self, &err);
+        result = _IQXMLRPCSerializeObject(object, self, flags, &err);
     }
     if(!result) {
         self->error = err;

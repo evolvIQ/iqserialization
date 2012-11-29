@@ -93,7 +93,7 @@ static int _yajlevent_end_array(void * ctx)
 }
 
 
-BOOL _IQDeserializeJSONData(id object, NSData* jsonData, IQSerialization* serialization, NSError** outError)
+BOOL _IQDeserializeJSONData(id object, NSData* jsonData, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError)
 {
     NSError* error = nil;
     @autoreleasepool {
@@ -179,8 +179,7 @@ static void _do_yajl_gen(id object, yajl_gen gen, IQSerialization* serialization
             handled = YES;
         }
         if(!handled) {
-            NSString* stringValue = [object stringValue];
-            yajl_gen_number(gen, [stringValue UTF8String], [stringValue lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
+            yajl_gen_integer(gen, [object longLongValue]);
         }
     } else if([object isKindOfClass:[NSString class]]) {
         yajl_gen_string(gen, (unsigned char*)[object UTF8String], [object lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
@@ -215,7 +214,7 @@ static void _do_yajl_gen(id object, yajl_gen gen, IQSerialization* serialization
     }
 }
 
-NSData* _IQJSONSerializeObject(id object, IQSerialization* serialization, NSError** outError)
+NSData* _IQJSONSerializeObject(id object, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError)
 {
     yajl_gen gen = yajl_gen_alloc(NULL);
     if(serialization.textEncoding == NSUTF8StringEncoding) {

@@ -18,6 +18,7 @@
 
 #import "IQSerialization.h"
 #import "IQObjectFactory.h"
+#import "IQXMLWriter.h"
 
 typedef enum IQXMLRPCSerializerState {
     IQXMLRPCSerializerStateRoot = 0,
@@ -63,7 +64,6 @@ typedef enum IQXMLRPCSerializerState {
 }
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
-    NSLog(@"Found %@ in state %d", elementName, state);
     switch(state) {
         case IQXMLRPCSerializerStateRoot:
             if([elementName isEqualToString:@"methodResponse"]) {
@@ -193,7 +193,6 @@ typedef enum IQXMLRPCSerializerState {
             }
             break;
         case IQXMLRPCSerializerStateMemberName:
-            NSLog(@"member name : %@", stringBuffer);
             key = stringBuffer;
             stringBuffer = nil;
             break;
@@ -216,6 +215,7 @@ typedef enum IQXMLRPCSerializerState {
     if(state == IQXMLRPCSerializerStateValueContent || state == IQXMLRPCSerializerStateMemberName) {
         if(stringBuffer == nil) {
             stringBuffer = string;
+            ownBuffer = NO;
         } else {
             if(!ownBuffer) {
                 ownBuffer = YES;
@@ -236,7 +236,7 @@ typedef enum IQXMLRPCSerializerState {
 @end
 
 
-BOOL _IQDeserializeXMLRPCData(id object, NSData* xmlData, IQSerialization* serialization, NSError** outError)
+BOOL _IQDeserializeXMLRPCData(id object, NSData* xmlData, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError)
 {
     NSError* error = nil;
     @autoreleasepool {
@@ -271,9 +271,49 @@ BOOL _IQDeserializeXMLRPCData(id object, NSData* xmlData, IQSerialization* seria
     }
     return YES;
 }
-NSData* _IQXMLRPCSerializeObject(id object, IQSerialization* serialization, NSError** outError)
+BOOL _IQXMLRPCSerializeRoot(IQXMLWriter* writer, id object, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError)
 {
-    return nil;
+    writer.encoding = serialization.textEncoding;
+    if(flags & IQSerializationFlagsRPCResponse) {
+        [writer writeStartElement:@"methodResponse"];
+    }
+    if(flags & (IQSerializationFlagsRPCRequest|IQSerializationFlagsRPCResponse)) {
+        [writer writeStartElement:@"params"];
+        if([object isKindOfClass:[NSArray class]] || [object isKindOfClass:[NSSet class]] || [object isKindOfClass:[NSOrderedSet class]]) {
+            for(id child in object) {
+                [writer writeStartElement:@"param"];
+                [writer writeEndElement];
+            }
+        } else {
+            [writer writeStartElement:@"param"];
+            // Write the value
+            [writer writeEndElement];
+        }
+        [writer writeEndElement];
+    }
+    if(flags & IQSerializationFlagsRPCResponse) {
+        [writer writeEndElement];
+    }
+    return YES;
+}
+NSData* _IQXMLRPCSerializeObject(id object, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError)
+{
+    NSMutableData* data = [NSMutableData data];
+    IQXMLWriter* writer = [[IQXMLWriter alloc] initWithBuffer:data];
+    if(!_IQXMLRPCSerializeRoot(writer, object, serialization, flags, outError)) return nil;
+    return data;
+}
+NSString* _IQXMLRPCSerializeObjectToString(id object, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError)
+{
+    NSMutableString* string = [NSMutableString string];
+    IQXMLWriter* writer = [[IQXMLWriter alloc] initWithStringBuffer:string];
+    if(!_IQXMLRPCSerializeRoot(writer, object, serialization, flags, outError)) return nil;
+    return string;
+}
+BOOL _IQXMLRPCSerializeObjectToStream(NSOutputStream* stream, id object, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError)
+{
+    IQXMLWriter* writer = [[IQXMLWriter alloc] initWithStream:stream];
+    return _IQXMLRPCSerializeRoot(writer, object, serialization, flags, outError);
 }
 
 @implementation NSDictionary (XMLRPCSerialization)

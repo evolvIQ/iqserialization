@@ -13,11 +13,9 @@ The aims of this project is to provide:
 
 The following formats are implemented:
 
-* JSON
-  Uses the yajl parser.
+* JSON - Uses the yajl parser.
 
-* XML-RPC
-  Written in pure Objective-C using `NSXMLParser`
+* XML-RPC - Written in pure Objective-C using `NSXMLParser`
   
 In addition, a convienient Base64 encoding/decoding API is provided as a category on the `NSData` class.
 
