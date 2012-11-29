@@ -18,12 +18,12 @@
 
 #import <Foundation/Foundation.h>
 #import "IQSerialization.h"
-#import "IQSerialization+Base64.h"
+#import "NSData+Base64.h"
 #include <mach/mach_time.h>
 
 int main(int argc, const char * argv[])
 {
-#if 1
+#if 0
     NSData* data = [NSData dataWithContentsOfFile:@"/Users/rickard/Documents/iliad/customization/Prevex/Resources/Videos/prevex_roadies_at_your_service.mp4"];
     double len = data.length, dt;
     NSData* outData;
@@ -69,21 +69,33 @@ int main(int argc, const char * argv[])
             fprintf(stderr, "JSON file '%s' does not exist\n", [fileName UTF8String]);
             return -1;
         }
+        unsigned long long len = [[[NSFileManager defaultManager] attributesOfItemAtPath:fileName error:nil] fileSize];
         static mach_timebase_info_data_t tb;
         mach_timebase_info(&tb);
-        NSMutableArray* arr = [NSMutableArray array];
         NSData* data = [NSData dataWithContentsOfFile:fileName];
-        [NSDictionary dictionaryWithJSONData:data];
-        printf("Will start to parse now\n");
+        NSDictionary* rot = [NSDictionary dictionaryWithXMLRPCData:data];
+        printf("Will start to parse %p now\n", rot);
         uint64_t start = mach_absolute_time();
         int i = 0;
         for(i=0; i<10; i++) {
-            NSDictionary* dic = [NSDictionary dictionaryWithJSONData:data];
-            //printf("it %d\n", i);
-            [arr addObject:dic];
+            @autoreleasepool {
+                [NSDictionary dictionaryWithXMLRPCData:data];
+            }
         }
         uint64_t end = mach_absolute_time();
-        printf("Time to parse: %f ms\n", (end-start)*tb.numer/(1e6*i*tb.denom));
+        double dt = (end-start)*tb.numer/(1e9*i*tb.denom);
+        printf("Time to parse: %f ms (~ %f MB/s)\n", dt*1000, len / (1024*1024*dt));
+        start = mach_absolute_time();
+        int slen = (int)[rot JSONRepresentation].length;
+        printf("String length is %d\n", slen);
+        for(i=0; i<10; i++) {
+            @autoreleasepool {
+                [rot JSONRepresentation];
+            }
+        }
+        end = mach_absolute_time();
+        dt = (end-start)*tb.numer/(1e9*i*tb.denom);
+        printf("Time to write: %f ms (~ %f MB/s)\n", dt*1000, len / (1024*1024*dt));
     }
     return 0;
 #endif

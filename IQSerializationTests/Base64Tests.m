@@ -17,7 +17,7 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "IQSerialization+Base64.h"
+#import "NSData+Base64.h"
 
 @interface Base64Tests : SenTestCase
 

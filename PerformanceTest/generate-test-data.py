@@ -1,4 +1,4 @@
-import json
+import json,xmlrpclib
 import random
 import sys
 
@@ -28,12 +28,16 @@ def gen_random_string(prefer_ascii):
     return ''.join(s).decode('latin1')
     
 strings = None
+string_pool = False
 def random_string(prefer_ascii=False):
-    global strings, astrings
-    if strings is None:
-        strings = [[gen_random_string(False) for _ in range(200)],
-                   [gen_random_string(True) for _ in range(200)]]
-    return random.choice(strings[prefer_ascii])
+    if string_pool:
+        global strings, astrings
+        if strings is None:
+            strings = [[gen_random_string(False) for _ in range(200)],
+                       [gen_random_string(True) for _ in range(200)]]
+        return random.choice(strings[prefer_ascii])
+    else:
+        return gen_random_string(prefer_ascii)
     
 if __name__ == '__main__':
     minlen = 10*1024*1024
@@ -42,14 +46,20 @@ if __name__ == '__main__':
     ct = 0
     
     jsonf = file("test.json","w")
+    xmlrpcf = file("test.xmlrpc","w")
     print >>jsonf, '{',
+    print >>xmlrpcf, '<params><param><value><struct>',
     while ct < minlen:
         if ct > 0:
             print >>jsonf, ','
         else:
-            print
-        s = '%s : %s' % (json.dumps(random_string(True)), json.dumps(random_object(10)))
+            print >>jsonf
+        k,v = (json.dumps(random_string(True)), json.dumps(random_object(10)))
+        s = '%s : %s' % (k,v)
         ct += len(s)
         print >>jsonf, s,
+        xk = xmlrpclib.dumps(({k:v},)).split('<struct>',1)[1].rsplit('</struct>',1)[0].strip()
+        print >>xmlrpcf, xk
     print >>jsonf, '}'
+    print >>xmlrpcf, '</struct></value></param></params>',
         
