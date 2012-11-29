@@ -6,9 +6,22 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		FFB028EA1666E00C00CED715 /* IQSerialization - Universal */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = FFB028ED1666E00C00CED715 /* Build configuration list for PBXAggregateTarget "IQSerialization - Universal" */;
+			buildPhases = (
+				FFB029081666E2DD00CED715 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "IQSerialization - Universal";
+			productName = "IQSerialization - Universal";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		FF9D9E5B1639D803002A9272 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E5A1639D803002A9272 /* Foundation.framework */; };
-		FF9D9E601639D803002A9272 /* IQSerialization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF9D9E5F1639D803002A9272 /* IQSerialization.h */; };
 		FF9D9E621639D803002A9272 /* IQSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9E611639D803002A9272 /* IQSerialization.m */; };
 		FF9D9E6A1639D803002A9272 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E691639D803002A9272 /* SenTestingKit.framework */; };
 		FF9D9E6D1639D803002A9272 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E5A1639D803002A9272 /* Foundation.framework */; };
@@ -25,33 +38,16 @@
 		FF9D9EFC163A0E4B002A9272 /* IQJSONSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9E781639D803002A9272 /* IQJSONSerializationTests.m */; };
 		FF9D9EFF163A0EDF002A9272 /* IQObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EFE163A0EDF002A9272 /* IQObjectFactory.m */; };
 		FF9D9F02163A1349002A9272 /* IQXMLRPCSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F01163A1349002A9272 /* IQXMLRPCSerializationTests.m */; };
-		FF9D9F10163F174B002A9272 /* IQSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9E611639D803002A9272 /* IQSerialization.m */; };
-		FF9D9F11163F174B002A9272 /* yajl_alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ECC1639DC4B002A9272 /* yajl_alloc.c */; };
-		FF9D9F12163F174B002A9272 /* yajl_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ECE1639DC4B002A9272 /* yajl_buf.c */; };
-		FF9D9F13163F174B002A9272 /* yajl_encode.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ED21639DC4B002A9272 /* yajl_encode.c */; };
-		FF9D9F14163F174B002A9272 /* yajl_gen.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ED41639DC4B002A9272 /* yajl_gen.c */; };
-		FF9D9F15163F174B002A9272 /* yajl_lex.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ED51639DC4B002A9272 /* yajl_lex.c */; };
-		FF9D9F16163F174B002A9272 /* yajl_parser.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ED71639DC4B002A9272 /* yajl_parser.c */; };
-		FF9D9F17163F174B002A9272 /* yajl_tree.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ED91639DC4B002A9272 /* yajl_tree.c */; };
-		FF9D9F18163F174B002A9272 /* yajl.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EDB1639DC4B002A9272 /* yajl.c */; };
-		FF9D9F19163F174B002A9272 /* IQSerialization+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EE61639DD3D002A9272 /* IQSerialization+JSON.m */; };
-		FF9D9F1A163F174B002A9272 /* IQSerialization+XMLRPC.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EF4163A0E02002A9272 /* IQSerialization+XMLRPC.m */; };
-		FF9D9F1B163F174B002A9272 /* IQObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EFE163A0EDF002A9272 /* IQObjectFactory.m */; };
-		FF9D9F1D163F174B002A9272 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E5A1639D803002A9272 /* Foundation.framework */; };
-		FF9D9F1F163F174B002A9272 /* IQSerialization.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF9D9E5F1639D803002A9272 /* IQSerialization.h */; };
 		FF9D9F28163F1A3D002A9272 /* IQJSONSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9E781639D803002A9272 /* IQJSONSerializationTests.m */; };
 		FF9D9F29163F1A3D002A9272 /* IQXMLRPCSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F01163A1349002A9272 /* IQXMLRPCSerializationTests.m */; };
 		FF9D9F2B163F1A3D002A9272 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E691639D803002A9272 /* SenTestingKit.framework */; };
 		FF9D9F2D163F1A3D002A9272 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E5A1639D803002A9272 /* Foundation.framework */; };
-		FF9D9F37163F1A90002A9272 /* libIQSerialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E571639D803002A9272 /* libIQSerialization.a */; };
-		FF9D9F38163F1A98002A9272 /* libIQSerialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9F23163F174B002A9272 /* libIQSerialization.a */; };
 		FF9D9F3B163F2605002A9272 /* IQSerialization+SimpleXML.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F3A163F2605002A9272 /* IQSerialization+SimpleXML.m */; };
 		FF9D9F3E1640926D002A9272 /* MyTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F3D1640926D002A9272 /* MyTestClass.m */; };
 		FF9D9F3F1640926D002A9272 /* MyTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F3D1640926D002A9272 /* MyTestClass.m */; };
 		FF9D9F7A1641BFA1002A9272 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9F791641BFA1002A9272 /* UIKit.framework */; };
 		FF9D9F821641D7F1002A9272 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9F811641D7F1002A9272 /* CoreFoundation.framework */; };
 		FF9D9F851641D7F1002A9272 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F841641D7F1002A9272 /* main.m */; };
-		FF9D9F9C1641DECA002A9272 /* libIQSerialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9F23163F174B002A9272 /* libIQSerialization.a */; };
 		FF9D9FB41646AD4E002A9272 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E6B1639D803002A9272 /* UIKit.framework */; };
 		FF9D9FB51646AD4E002A9272 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E5A1639D803002A9272 /* Foundation.framework */; };
 		FF9D9FB71646AD4E002A9272 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9FB61646AD4E002A9272 /* CoreGraphics.framework */; };
@@ -62,10 +58,43 @@
 		FF9D9FD01646AE2D002A9272 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = FF9D9FCF1646AE2D002A9272 /* test.json */; };
 		FF9D9FD11646AE4E002A9272 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9FBE1646AD4F002A9272 /* main.m */; };
 		FF9D9FD21646AEEE002A9272 /* libIQSerialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E571639D803002A9272 /* libIQSerialization.a */; };
+		FFB028941666DA5300CED715 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB028931666DA5300CED715 /* Cocoa.framework */; };
+		FFB028A61666DBC200CED715 /* IQObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EFE163A0EDF002A9272 /* IQObjectFactory.m */; };
+		FFB028A71666DBC500CED715 /* IQXMLWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E941648713900597D70 /* IQXMLWriter.m */; };
+		FFB028A81666DBCA00CED715 /* IQSerialization+SimpleXML.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F3A163F2605002A9272 /* IQSerialization+SimpleXML.m */; };
+		FFB028A91666DBCF00CED715 /* IQSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9E611639D803002A9272 /* IQSerialization.m */; };
+		FFB028AA1666DBCF00CED715 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E7E164703EE00597D70 /* NSData+Base64.m */; };
+		FFB028AB1666DBCF00CED715 /* IQSerialization+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EE61639DD3D002A9272 /* IQSerialization+JSON.m */; };
+		FFB028AC1666DBCF00CED715 /* IQSerialization+XMLRPC.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EF4163A0E02002A9272 /* IQSerialization+XMLRPC.m */; };
+		FFB028AD1666DCAA00CED715 /* yajl_alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ECC1639DC4B002A9272 /* yajl_alloc.c */; };
+		FFB028AE1666DCAA00CED715 /* yajl_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ECE1639DC4B002A9272 /* yajl_buf.c */; };
+		FFB028AF1666DCB000CED715 /* yajl_encode.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ED21639DC4B002A9272 /* yajl_encode.c */; };
+		FFB028B01666DCB000CED715 /* yajl_gen.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ED41639DC4B002A9272 /* yajl_gen.c */; };
+		FFB028B11666DCB000CED715 /* yajl_lex.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ED51639DC4B002A9272 /* yajl_lex.c */; };
+		FFB028B21666DCB000CED715 /* yajl_parser.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ED71639DC4B002A9272 /* yajl_parser.c */; };
+		FFB028B31666DCB000CED715 /* yajl_tree.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ED91639DC4B002A9272 /* yajl_tree.c */; };
+		FFB028B41666DCB000CED715 /* yajl.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EDB1639DC4B002A9272 /* yajl.c */; };
+		FFB028BF1666DCEF00CED715 /* IQSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB028921666DA5300CED715 /* IQSerialization.framework */; };
+		FFB028C01666DDCC00CED715 /* IQSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB028921666DA5300CED715 /* IQSerialization.framework */; };
+		FFB029091666E39600CED715 /* IQSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9E5F1639D803002A9272 /* IQSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB0290A1666E39C00CED715 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = FFD77E7D164703EE00597D70 /* NSData+Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB0290B1666E39F00CED715 /* IQSerialization+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9EE51639DD3D002A9272 /* IQSerialization+JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB0290C1666E3B900CED715 /* IQSerialization+XMLRPC.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9EF3163A0E02002A9272 /* IQSerialization+XMLRPC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB0290D1666E3C500CED715 /* IQSerialization+SimpleXML.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9F39163F2605002A9272 /* IQSerialization+SimpleXML.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB0290E1666E3CA00CED715 /* IQXMLWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = FFD77E931648713800597D70 /* IQXMLWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB0290F1666E3CC00CED715 /* IQObjectFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9EFD163A0EDF002A9272 /* IQObjectFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB029401666E72E00CED715 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = FFD77E7D164703EE00597D70 /* NSData+Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB029411666E72E00CED715 /* IQSerialization+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9EE51639DD3D002A9272 /* IQSerialization+JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB029421666E72E00CED715 /* IQSerialization+XMLRPC.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9EF3163A0E02002A9272 /* IQSerialization+XMLRPC.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB029431666E72E00CED715 /* IQSerialization+SimpleXML.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9F39163F2605002A9272 /* IQSerialization+SimpleXML.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB029441666E72E00CED715 /* IQXMLWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = FFD77E931648713800597D70 /* IQXMLWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB029451666E72E00CED715 /* IQObjectFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9EFD163A0EDF002A9272 /* IQObjectFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB029461666E75A00CED715 /* IQSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9E5F1639D803002A9272 /* IQSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB0296616674DF200CED715 /* libIQSerialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E571639D803002A9272 /* libIQSerialization.a */; };
 		FFD77E7F164703EE00597D70 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E7E164703EE00597D70 /* NSData+Base64.m */; };
-		FFD77E80164703EE00597D70 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E7E164703EE00597D70 /* NSData+Base64.m */; };
 		FFD77E8416471CC400597D70 /* Base64Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E8316471CC400597D70 /* Base64Tests.m */; };
 		FFD77E8516471CC400597D70 /* Base64Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E8316471CC400597D70 /* Base64Tests.m */; };
+		FFD77E951648713900597D70 /* IQXMLWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E941648713900597D70 /* IQXMLWriter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,36 +105,16 @@
 			remoteGlobalIDString = FF9D9E561639D803002A9272;
 			remoteInfo = IQSerialization;
 		};
-		FF9D9F26163F1A3D002A9272 /* PBXContainerItemProxy */ = {
+		FFB0294D1666EA0400CED715 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FF9D9E4E1639D803002A9272 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = FF9D9E561639D803002A9272;
-			remoteInfo = IQSerialization;
+			remoteGlobalIDString = FFB028911666DA5300CED715;
+			remoteInfo = "IQSerialization - OSX";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		FF9D9E551639D803002A9272 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/${PRODUCT_NAME}";
-			dstSubfolderSpec = 16;
-			files = (
-				FF9D9E601639D803002A9272 /* IQSerialization.h in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FF9D9F1E163F174B002A9272 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/${PRODUCT_NAME}";
-			dstSubfolderSpec = 16;
-			files = (
-				FF9D9F1F163F174B002A9272 /* IQSerialization.h in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FF9D9F7D1641D7F1002A9272 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -120,7 +129,6 @@
 /* Begin PBXFileReference section */
 		FF9D9E571639D803002A9272 /* libIQSerialization.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIQSerialization.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF9D9E5A1639D803002A9272 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		FF9D9E5E1639D803002A9272 /* IQSerialization-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQSerialization-Prefix.pch"; sourceTree = "<group>"; };
 		FF9D9E5F1639D803002A9272 /* IQSerialization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQSerialization.h; sourceTree = "<group>"; };
 		FF9D9E611639D803002A9272 /* IQSerialization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQSerialization.m; sourceTree = "<group>"; };
 		FF9D9E681639D803002A9272 /* Tests_iOS.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests_iOS.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,7 +163,6 @@
 		FF9D9EFD163A0EDF002A9272 /* IQObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQObjectFactory.h; sourceTree = "<group>"; };
 		FF9D9EFE163A0EDF002A9272 /* IQObjectFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQObjectFactory.m; sourceTree = "<group>"; };
 		FF9D9F01163A1349002A9272 /* IQXMLRPCSerializationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQXMLRPCSerializationTests.m; sourceTree = "<group>"; };
-		FF9D9F23163F174B002A9272 /* libIQSerialization.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIQSerialization.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF9D9F35163F1A3D002A9272 /* Tests_OSX.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests_OSX.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF9D9F39163F2605002A9272 /* IQSerialization+SimpleXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQSerialization+SimpleXML.h"; sourceTree = "<group>"; };
 		FF9D9F3A163F2605002A9272 /* IQSerialization+SimpleXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQSerialization+SimpleXML.m"; sourceTree = "<group>"; };
@@ -176,11 +183,19 @@
 		FF9D9FC61646AD4F002A9272 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		FF9D9FC81646AD4F002A9272 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		FF9D9FCF1646AE2D002A9272 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = test.json; path = PerformanceTest/test.json; sourceTree = SOURCE_ROOT; };
+		FFB028921666DA5300CED715 /* IQSerialization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IQSerialization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFB028931666DA5300CED715 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		FFB028961666DA5300CED715 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		FFB028971666DA5300CED715 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FFB028981666DA5300CED715 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FFB0289B1666DA5300CED715 /* IQSerialization-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IQSerialization-Info.plist"; sourceTree = "<group>"; };
 		FFD77E7D164703EE00597D70 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		FFD77E7E164703EE00597D70 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		FFD77E8316471CC400597D70 /* Base64Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Tests.m; sourceTree = "<group>"; };
 		FFD77E86164753CD00597D70 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		FFD77E87164753D200597D70 /* NOTICE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NOTICE; sourceTree = "<group>"; };
+		FFD77E931648713800597D70 /* IQXMLWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQXMLWriter.h; sourceTree = "<group>"; };
+		FFD77E941648713900597D70 /* IQXMLWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQXMLWriter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,18 +211,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFB0296616674DF200CED715 /* libIQSerialization.a in Frameworks */,
 				FF9D9F7A1641BFA1002A9272 /* UIKit.framework in Frameworks */,
-				FF9D9F37163F1A90002A9272 /* libIQSerialization.a in Frameworks */,
 				FF9D9E6A1639D803002A9272 /* SenTestingKit.framework in Frameworks */,
 				FF9D9E6D1639D803002A9272 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FF9D9F1C163F174B002A9272 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FF9D9F1D163F174B002A9272 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +222,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF9D9F38163F1A98002A9272 /* libIQSerialization.a in Frameworks */,
+				FFB028BF1666DCEF00CED715 /* IQSerialization.framework in Frameworks */,
 				FF9D9F2B163F1A3D002A9272 /* SenTestingKit.framework in Frameworks */,
 				FF9D9F2D163F1A3D002A9272 /* Foundation.framework in Frameworks */,
 			);
@@ -225,7 +232,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF9D9F9C1641DECA002A9272 /* libIQSerialization.a in Frameworks */,
+				FFB028C01666DDCC00CED715 /* IQSerialization.framework in Frameworks */,
 				FF9D9F821641D7F1002A9272 /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,6 +245,14 @@
 				FF9D9FB41646AD4E002A9272 /* UIKit.framework in Frameworks */,
 				FF9D9FB51646AD4E002A9272 /* Foundation.framework in Frameworks */,
 				FF9D9FB71646AD4E002A9272 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFB0288E1666DA5300CED715 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFB028941666DA5300CED715 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,10 +280,10 @@
 			children = (
 				FF9D9E571639D803002A9272 /* libIQSerialization.a */,
 				FF9D9E681639D803002A9272 /* Tests_iOS.octest */,
-				FF9D9F23163F174B002A9272 /* libIQSerialization.a */,
 				FF9D9F35163F1A3D002A9272 /* Tests_OSX.octest */,
 				FF9D9F7F1641D7F1002A9272 /* PerformanceTest */,
 				FF9D9FB21646AD4E002A9272 /* PerformanceTest-iOS.app */,
+				FFB028921666DA5300CED715 /* IQSerialization.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -281,6 +296,8 @@
 				FF9D9E6B1639D803002A9272 /* UIKit.framework */,
 				FF9D9F811641D7F1002A9272 /* CoreFoundation.framework */,
 				FF9D9FB61646AD4E002A9272 /* CoreGraphics.framework */,
+				FFB028931666DA5300CED715 /* Cocoa.framework */,
+				FFB028951666DA5300CED715 /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -298,6 +315,8 @@
 				FF9D9EF4163A0E02002A9272 /* IQSerialization+XMLRPC.m */,
 				FF9D9F39163F2605002A9272 /* IQSerialization+SimpleXML.h */,
 				FF9D9F3A163F2605002A9272 /* IQSerialization+SimpleXML.m */,
+				FFD77E931648713800597D70 /* IQXMLWriter.h */,
+				FFD77E941648713900597D70 /* IQXMLWriter.m */,
 				FF9D9EFD163A0EDF002A9272 /* IQObjectFactory.h */,
 				FF9D9EFE163A0EDF002A9272 /* IQObjectFactory.m */,
 				FF9D9E5D1639D803002A9272 /* Supporting Files */,
@@ -309,7 +328,7 @@
 		FF9D9E5D1639D803002A9272 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FF9D9E5E1639D803002A9272 /* IQSerialization-Prefix.pch */,
+				FFB0289B1666DA5300CED715 /* IQSerialization-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -401,7 +420,48 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FFB028951666DA5300CED715 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FFB028961666DA5300CED715 /* AppKit.framework */,
+				FFB028971666DA5300CED715 /* CoreData.framework */,
+				FFB028981666DA5300CED715 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		FFB0288F1666DA5300CED715 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFB029091666E39600CED715 /* IQSerialization.h in Headers */,
+				FFB0290A1666E39C00CED715 /* NSData+Base64.h in Headers */,
+				FFB0290B1666E39F00CED715 /* IQSerialization+JSON.h in Headers */,
+				FFB0290C1666E3B900CED715 /* IQSerialization+XMLRPC.h in Headers */,
+				FFB0290D1666E3C500CED715 /* IQSerialization+SimpleXML.h in Headers */,
+				FFB0290E1666E3CA00CED715 /* IQXMLWriter.h in Headers */,
+				FFB0290F1666E3CC00CED715 /* IQObjectFactory.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFB0293E1666E72000CED715 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFB029401666E72E00CED715 /* NSData+Base64.h in Headers */,
+				FFB029411666E72E00CED715 /* IQSerialization+JSON.h in Headers */,
+				FFB029421666E72E00CED715 /* IQSerialization+XMLRPC.h in Headers */,
+				FFB029431666E72E00CED715 /* IQSerialization+SimpleXML.h in Headers */,
+				FFB029441666E72E00CED715 /* IQXMLWriter.h in Headers */,
+				FFB029451666E72E00CED715 /* IQObjectFactory.h in Headers */,
+				FFB029461666E75A00CED715 /* IQSerialization.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		FF9D9E561639D803002A9272 /* IQSerialization - iOS */ = {
@@ -410,7 +470,7 @@
 			buildPhases = (
 				FF9D9E531639D803002A9272 /* Sources */,
 				FF9D9E541639D803002A9272 /* Frameworks */,
-				FF9D9E551639D803002A9272 /* CopyFiles */,
+				FFB0293E1666E72000CED715 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -440,23 +500,6 @@
 			productReference = FF9D9E681639D803002A9272 /* Tests_iOS.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
-		FF9D9F0E163F174B002A9272 /* IQSerialization - OSX */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FF9D9F20163F174B002A9272 /* Build configuration list for PBXNativeTarget "IQSerialization - OSX" */;
-			buildPhases = (
-				FF9D9F0F163F174B002A9272 /* Sources */,
-				FF9D9F1C163F174B002A9272 /* Frameworks */,
-				FF9D9F1E163F174B002A9272 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "IQSerialization - OSX";
-			productName = IQSerialization;
-			productReference = FF9D9F23163F174B002A9272 /* libIQSerialization.a */;
-			productType = "com.apple.product-type.library.static";
-		};
 		FF9D9F24163F1A3D002A9272 /* Tests - OSX */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF9D9F32163F1A3D002A9272 /* Build configuration list for PBXNativeTarget "Tests - OSX" */;
@@ -469,7 +512,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				FF9D9F25163F1A3D002A9272 /* PBXTargetDependency */,
+				FFB0294E1666EA0400CED715 /* PBXTargetDependency */,
 			);
 			name = "Tests - OSX";
 			productName = IQSerializationTests;
@@ -510,6 +553,24 @@
 			productReference = FF9D9FB21646AD4E002A9272 /* PerformanceTest-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FFB028911666DA5300CED715 /* IQSerialization - OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFB028A31666DA5300CED715 /* Build configuration list for PBXNativeTarget "IQSerialization - OSX" */;
+			buildPhases = (
+				FFB0288D1666DA5300CED715 /* Sources */,
+				FFB0288E1666DA5300CED715 /* Frameworks */,
+				FFB0288F1666DA5300CED715 /* Headers */,
+				FFB028901666DA5300CED715 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "IQSerialization - OSX";
+			productName = IQSerialization;
+			productReference = FFB028921666DA5300CED715 /* IQSerialization.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -532,8 +593,9 @@
 			projectRoot = "";
 			targets = (
 				FF9D9E561639D803002A9272 /* IQSerialization - iOS */,
+				FFB028EA1666E00C00CED715 /* IQSerialization - Universal */,
 				FF9D9E671639D803002A9272 /* Tests - iOS */,
-				FF9D9F0E163F174B002A9272 /* IQSerialization - OSX */,
+				FFB028911666DA5300CED715 /* IQSerialization - OSX */,
 				FF9D9F24163F1A3D002A9272 /* Tests - OSX */,
 				FF9D9F7E1641D7F1002A9272 /* PerformanceTest */,
 				FF9D9FB11646AD4E002A9272 /* PerformanceTest-iOS */,
@@ -567,6 +629,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FFB028901666DA5300CED715 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -596,6 +665,20 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		FFB029081666E2DD00CED715 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+				"$(BUILD_ROOT)/$(CONFIGURATION)-universal/IQSerialization.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Sets the target folders and the final framework product.\nFMK_NAME=IQSerialization\nTARGET_NAME=\"IQSerialization - iOS\"\n\n# Install dir will be the final output to the framework.\n# The following line create it in the root folder of the current project.\nINSTALL_DIR=${BUILD_ROOT}/${CONFIGURATION}-universal/${FMK_NAME}.framework\n\n# Working dir will be deleted after the framework creation.\nDEVICE_DIR=${CONFIGURATION_BUILD_DIR}/iphoneos\nSIMULATOR_DIR=${CONFIGURATION_BUILD_DIR}/iphonesimulator\nLIBRARY_NAME=lib${FMK_NAME}.a\n\n# Building both architectures.\nxcodebuild -configuration \"${CONFIGURATION}\" -target \"${TARGET_NAME}\" -sdk iphoneos CONFIGURATION_BUILD_DIR=${DEVICE_DIR}\nxcodebuild -configuration \"${CONFIGURATION}\" -target \"${TARGET_NAME}\" -sdk iphonesimulator CONFIGURATION_BUILD_DIR=${SIMULATOR_DIR}\n\n# Cleaning the oldest.\nif [ -d \"${INSTALL_DIR}\" ]; then\n  rm -rf \"${INSTALL_DIR}\"\nfi\n\n# Creates and renews the final product folder.\nmkdir -p \"${INSTALL_DIR}\"\nmkdir -p \"${INSTALL_DIR}/Versions\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FRAMEWORK_VERSION}\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FRAMEWORK_VERSION}/Resources\"\nmkdir -p \"${INSTALL_DIR}/Versions/${FRAMEWORK_VERSION}/Headers\"\n\n# Creates the internal links.\n# It MUST uses relative path, otherwise will not work when the folder is copied/moved.\nln -s \"${FRAMEWORK_VERSION}\" \"${INSTALL_DIR}/Versions/Current\"\nln -s \"Versions/Current/Headers\" \"${INSTALL_DIR}/Headers\"\nln -s \"Versions/Current/Resources\" \"${INSTALL_DIR}/Resources\"\nln -s \"Versions/Current/${FMK_NAME}\" \"${INSTALL_DIR}/${FMK_NAME}\"\n\n# Copies the headers and resources files to the final product folder.\ncp -R \"${DEVICE_DIR}/usr/local/include/\" \"${INSTALL_DIR}/Versions/${FRAMEWORK_VERSION}/Headers\"\n#cp -R \"${DEVICE_DIR}/\" \"${INSTALL_DIR}/Versions/${FRAMEWORK_VERSION}/Resources/\"\n\n# Removes the binary and header from the resources folder.\n#rm -r \"${INSTALL_DIR}/Versions/${FRAMEWORK_VERSION}/Resources/Headers\" \"${INSTALL_DIR}/Versions/${FRAMEWORK_VERSION}/Resources/${FMK_NAME}\"\n\n# Uses the Lipo Tool to merge both binary files (i386 + armv6/armv7) into one Universal final product.\nlipo -create \"${DEVICE_DIR}/${LIBRARY_NAME}\" \"${SIMULATOR_DIR}/${LIBRARY_NAME}\" -output \"${INSTALL_DIR}/Versions/${FRAMEWORK_VERSION}/${FMK_NAME}\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -617,6 +700,7 @@
 				FF9D9EFF163A0EDF002A9272 /* IQObjectFactory.m in Sources */,
 				FF9D9F3B163F2605002A9272 /* IQSerialization+SimpleXML.m in Sources */,
 				FFD77E7F164703EE00597D70 /* NSData+Base64.m in Sources */,
+				FFD77E951648713900597D70 /* IQXMLWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,26 +712,6 @@
 				FF9D9F02163A1349002A9272 /* IQXMLRPCSerializationTests.m in Sources */,
 				FF9D9F3E1640926D002A9272 /* MyTestClass.m in Sources */,
 				FFD77E8416471CC400597D70 /* Base64Tests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FF9D9F0F163F174B002A9272 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FF9D9F10163F174B002A9272 /* IQSerialization.m in Sources */,
-				FF9D9F11163F174B002A9272 /* yajl_alloc.c in Sources */,
-				FF9D9F12163F174B002A9272 /* yajl_buf.c in Sources */,
-				FF9D9F13163F174B002A9272 /* yajl_encode.c in Sources */,
-				FF9D9F14163F174B002A9272 /* yajl_gen.c in Sources */,
-				FF9D9F15163F174B002A9272 /* yajl_lex.c in Sources */,
-				FF9D9F16163F174B002A9272 /* yajl_parser.c in Sources */,
-				FF9D9F17163F174B002A9272 /* yajl_tree.c in Sources */,
-				FF9D9F18163F174B002A9272 /* yajl.c in Sources */,
-				FF9D9F19163F174B002A9272 /* IQSerialization+JSON.m in Sources */,
-				FF9D9F1A163F174B002A9272 /* IQSerialization+XMLRPC.m in Sources */,
-				FF9D9F1B163F174B002A9272 /* IQObjectFactory.m in Sources */,
-				FFD77E80164703EE00597D70 /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,6 +743,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FFB0288D1666DA5300CED715 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFB028A61666DBC200CED715 /* IQObjectFactory.m in Sources */,
+				FFB028A71666DBC500CED715 /* IQXMLWriter.m in Sources */,
+				FFB028A81666DBCA00CED715 /* IQSerialization+SimpleXML.m in Sources */,
+				FFB028A91666DBCF00CED715 /* IQSerialization.m in Sources */,
+				FFB028AA1666DBCF00CED715 /* NSData+Base64.m in Sources */,
+				FFB028AB1666DBCF00CED715 /* IQSerialization+JSON.m in Sources */,
+				FFB028AC1666DBCF00CED715 /* IQSerialization+XMLRPC.m in Sources */,
+				FFB028AD1666DCAA00CED715 /* yajl_alloc.c in Sources */,
+				FFB028AE1666DCAA00CED715 /* yajl_buf.c in Sources */,
+				FFB028AF1666DCB000CED715 /* yajl_encode.c in Sources */,
+				FFB028B01666DCB000CED715 /* yajl_gen.c in Sources */,
+				FFB028B11666DCB000CED715 /* yajl_lex.c in Sources */,
+				FFB028B21666DCB000CED715 /* yajl_parser.c in Sources */,
+				FFB028B31666DCB000CED715 /* yajl_tree.c in Sources */,
+				FFB028B41666DCB000CED715 /* yajl.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -687,10 +773,10 @@
 			target = FF9D9E561639D803002A9272 /* IQSerialization - iOS */;
 			targetProxy = FF9D9E6E1639D803002A9272 /* PBXContainerItemProxy */;
 		};
-		FF9D9F25163F1A3D002A9272 /* PBXTargetDependency */ = {
+		FFB0294E1666EA0400CED715 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FF9D9E561639D803002A9272 /* IQSerialization - iOS */;
-			targetProxy = FF9D9F26163F1A3D002A9272 /* PBXContainerItemProxy */;
+			target = FFB028911666DA5300CED715 /* IQSerialization - OSX */;
+			targetProxy = FFB0294D1666EA0400CED715 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -717,6 +803,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -737,6 +824,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -745,13 +833,16 @@
 		FF9D9E7D1639D803002A9272 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/IQSerialization.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "IQSerialization/IQSerialization-Prefix.pch";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
 				HEADER_SEARCH_PATHS = Contrib/yajl;
+				INFOPLIST_FILE = "IQSerialization/IQSerialization-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = IQSerialization;
-				SKIP_INSTALL = YES;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "Contrib/**";
 			};
 			name = Debug;
@@ -759,13 +850,16 @@
 		FF9D9E7E1639D803002A9272 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DSTROOT = /tmp/IQSerialization.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "IQSerialization/IQSerialization-Prefix.pch";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
 				HEADER_SEARCH_PATHS = Contrib/yajl;
+				INFOPLIST_FILE = "IQSerialization/IQSerialization-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = IQSerialization;
-				SKIP_INSTALL = YES;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "Contrib/**";
 			};
 			name = Release;
@@ -777,8 +871,6 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "IQSerialization/IQSerialization-Prefix.pch";
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Tests_iOS;
@@ -793,8 +885,6 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "IQSerialization/IQSerialization-Prefix.pch";
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Tests_iOS;
@@ -802,45 +892,12 @@
 			};
 			name = Release;
 		};
-		FF9D9F21163F174B002A9272 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				DSTROOT = /tmp/IQSerialization.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "IQSerialization/IQSerialization-Prefix.pch";
-				HEADER_SEARCH_PATHS = Contrib/yajl;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = IQSerialization;
-				SDKROOT = "";
-				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "Contrib/**";
-			};
-			name = Debug;
-		};
-		FF9D9F22163F174B002A9272 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				DSTROOT = /tmp/IQSerialization.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "IQSerialization/IQSerialization-Prefix.pch";
-				HEADER_SEARCH_PATHS = Contrib/yajl;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = IQSerialization;
-				SDKROOT = "";
-				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "Contrib/**";
-			};
-			name = Release;
-		};
 		FF9D9F33163F1A3D002A9272 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "IQSerialization/IQSerialization-Prefix.pch";
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Tests_OSX;
@@ -853,9 +910,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "IQSerialization/IQSerialization-Prefix.pch";
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Tests_OSX;
@@ -930,6 +986,64 @@
 			};
 			name = Release;
 		};
+		FFB028A41666DA5300CED715 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				HEADER_SEARCH_PATHS = Contrib/yajl;
+				INFOPLIST_FILE = "IQSerialization/IQSerialization-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = IQSerialization;
+				SDKROOT = "";
+				USER_HEADER_SEARCH_PATHS = "Contrib/**";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		FFB028A51666DA5300CED715 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				HEADER_SEARCH_PATHS = Contrib/yajl;
+				INFOPLIST_FILE = "IQSerialization/IQSerialization-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = IQSerialization;
+				SDKROOT = "";
+				USER_HEADER_SEARCH_PATHS = "Contrib/**";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		FFB028EB1666E00C00CED715 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = IQSerialization;
+			};
+			name = Debug;
+		};
+		FFB028EC1666E00C00CED715 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = IQSerialization;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -960,15 +1074,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF9D9F20163F174B002A9272 /* Build configuration list for PBXNativeTarget "IQSerialization - OSX" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FF9D9F21163F174B002A9272 /* Debug */,
-				FF9D9F22163F174B002A9272 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		FF9D9F32163F1A3D002A9272 /* Build configuration list for PBXNativeTarget "Tests - OSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -992,6 +1097,24 @@
 			buildConfigurations = (
 				FF9D9FCB1646AD4F002A9272 /* Debug */,
 				FF9D9FCC1646AD4F002A9272 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFB028A31666DA5300CED715 /* Build configuration list for PBXNativeTarget "IQSerialization - OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFB028A41666DA5300CED715 /* Debug */,
+				FFB028A51666DA5300CED715 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFB028ED1666E00C00CED715 /* Build configuration list for PBXAggregateTarget "IQSerialization - Universal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFB028EB1666E00C00CED715 /* Debug */,
+				FFB028EC1666E00C00CED715 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
