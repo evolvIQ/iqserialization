@@ -50,7 +50,14 @@ extern BOOL _IQXMLRPCSerializeObjectToStream(NSOutputStream* stream, id object, 
 - (NSDictionary*)dictionaryFromData:(NSData *)data format:(IQSerializationFormat)fmt
 {
     NSMutableDictionary* ret = [NSMutableDictionary dictionary];
-    if([self deserializeObject:ret fromData:data format:fmt]) {
+    if(fmt == IQSerializationFormatXMLPlist || fmt == IQSerializationFormatBinaryPlist) {
+        NSError* err = nil;
+        NSDictionary* ret = [NSPropertyListSerialization propertyListWithData:data options:kCFPropertyListImmutable format:nil error:&err];
+        if(!ret) {
+            error = err;
+        }
+        return ret;
+    } else if([self deserializeObject:ret fromData:data format:fmt]) {
         return ret;
     }
     return nil;
@@ -58,7 +65,14 @@ extern BOOL _IQXMLRPCSerializeObjectToStream(NSOutputStream* stream, id object, 
 - (NSArray*)arrayFromData:(NSData *)data format:(IQSerializationFormat)fmt
 {
     NSMutableArray* ret = [NSMutableArray array];
-    if([self deserializeObject:ret fromData:data format:fmt]) {
+    if(fmt == IQSerializationFormatXMLPlist || fmt == IQSerializationFormatBinaryPlist) {
+        NSError* err = nil;
+        NSArray* ret = [NSPropertyListSerialization propertyListWithData:data options:kCFPropertyListImmutable format:nil error:&err];
+        if(!ret) {
+            error = err;
+        }
+        return ret;
+    } else if([self deserializeObject:ret fromData:data format:fmt]) {
         return ret;
     }
     return nil;
