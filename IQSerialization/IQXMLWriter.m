@@ -146,7 +146,7 @@ static NSString *const XSI_NAMESPACE_URI_PREFIX = @"xsi";
         [namespaceCounts addObject:previousCount];
     } else {
         // the count has changed, save the it
-        NSNumber* count = [NSNumber numberWithInt:[namespaceURIs count]];
+        NSNumber* count = [NSNumber numberWithInt:(int)[namespaceURIs count]];
         
         [namespaceCounts addObject:count];
     }
@@ -258,7 +258,7 @@ static NSString *const XSI_NAMESPACE_URI_PREFIX = @"xsi";
 }
 
 - (void) writeStartDocument {
-    NSString* xmlEncoding = (__bridge NSString*)CFStringConvertEncodingToIANACharSetName(encoding);
+    NSString* xmlEncoding = (__bridge NSString*)CFStringConvertEncodingToIANACharSetName((CFStringEncoding)encoding);
     if(!xmlEncoding) {
         [NSException raise:@"UnsupportedTextEncoding" format:@"An encoding was specified that is not supported by IQXMLWriter"];
     }
