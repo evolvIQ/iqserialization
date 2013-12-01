@@ -23,7 +23,6 @@
 /* Begin PBXBuildFile section */
 		FF9D9E5B1639D803002A9272 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E5A1639D803002A9272 /* Foundation.framework */; };
 		FF9D9E621639D803002A9272 /* IQSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9E611639D803002A9272 /* IQSerialization.m */; };
-		FF9D9E6A1639D803002A9272 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E691639D803002A9272 /* SenTestingKit.framework */; };
 		FF9D9E6D1639D803002A9272 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E5A1639D803002A9272 /* Foundation.framework */; };
 		FF9D9EDC1639DC4B002A9272 /* yajl_alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ECC1639DC4B002A9272 /* yajl_alloc.c */; };
 		FF9D9EDD1639DC4B002A9272 /* yajl_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ECE1639DC4B002A9272 /* yajl_buf.c */; };
@@ -40,7 +39,6 @@
 		FF9D9F02163A1349002A9272 /* IQXMLRPCSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F01163A1349002A9272 /* IQXMLRPCSerializationTests.m */; };
 		FF9D9F28163F1A3D002A9272 /* IQJSONSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9E781639D803002A9272 /* IQJSONSerializationTests.m */; };
 		FF9D9F29163F1A3D002A9272 /* IQXMLRPCSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F01163A1349002A9272 /* IQXMLRPCSerializationTests.m */; };
-		FF9D9F2B163F1A3D002A9272 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E691639D803002A9272 /* SenTestingKit.framework */; };
 		FF9D9F2D163F1A3D002A9272 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E5A1639D803002A9272 /* Foundation.framework */; };
 		FF9D9F3B163F2605002A9272 /* IQSerialization+SimpleXML.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F3A163F2605002A9272 /* IQSerialization+SimpleXML.m */; };
 		FF9D9F3E1640926D002A9272 /* MyTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F3D1640926D002A9272 /* MyTestClass.m */; };
@@ -95,6 +93,8 @@
 		FFD77E8416471CC400597D70 /* Base64Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E8316471CC400597D70 /* Base64Tests.m */; };
 		FFD77E8516471CC400597D70 /* Base64Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E8316471CC400597D70 /* Base64Tests.m */; };
 		FFD77E951648713900597D70 /* IQXMLWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E941648713900597D70 /* IQXMLWriter.m */; };
+		FFFE9B1E184BF1CC007BACB7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFE9B1D184BF1CC007BACB7 /* XCTest.framework */; };
+		FFFE9B1F184BF291007BACB7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFE9B1D184BF1CC007BACB7 /* XCTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,7 +132,6 @@
 		FF9D9E5F1639D803002A9272 /* IQSerialization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQSerialization.h; sourceTree = "<group>"; };
 		FF9D9E611639D803002A9272 /* IQSerialization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQSerialization.m; sourceTree = "<group>"; };
 		FF9D9E681639D803002A9272 /* Tests_iOS.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests_iOS.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF9D9E691639D803002A9272 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF9D9E6B1639D803002A9272 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF9D9E731639D803002A9272 /* IQSerializationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IQSerializationTests-Info.plist"; sourceTree = "<group>"; };
 		FF9D9E781639D803002A9272 /* IQJSONSerializationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQJSONSerializationTests.m; sourceTree = "<group>"; };
@@ -163,7 +162,7 @@
 		FF9D9EFD163A0EDF002A9272 /* IQObjectFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQObjectFactory.h; sourceTree = "<group>"; };
 		FF9D9EFE163A0EDF002A9272 /* IQObjectFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQObjectFactory.m; sourceTree = "<group>"; };
 		FF9D9F01163A1349002A9272 /* IQXMLRPCSerializationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQXMLRPCSerializationTests.m; sourceTree = "<group>"; };
-		FF9D9F35163F1A3D002A9272 /* Tests_OSX.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests_OSX.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF9D9F35163F1A3D002A9272 /* Tests_OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests_OSX.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF9D9F39163F2605002A9272 /* IQSerialization+SimpleXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQSerialization+SimpleXML.h"; sourceTree = "<group>"; };
 		FF9D9F3A163F2605002A9272 /* IQSerialization+SimpleXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQSerialization+SimpleXML.m"; sourceTree = "<group>"; };
 		FF9D9F3C1640926C002A9272 /* MyTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTestClass.h; sourceTree = "<group>"; };
@@ -196,6 +195,7 @@
 		FFD77E87164753D200597D70 /* NOTICE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NOTICE; sourceTree = "<group>"; };
 		FFD77E931648713800597D70 /* IQXMLWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQXMLWriter.h; sourceTree = "<group>"; };
 		FFD77E941648713900597D70 /* IQXMLWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQXMLWriter.m; sourceTree = "<group>"; };
+		FFFE9B1D184BF1CC007BACB7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,9 +211,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFFE9B1F184BF291007BACB7 /* XCTest.framework in Frameworks */,
 				FFB0296616674DF200CED715 /* libIQSerialization.a in Frameworks */,
 				FF9D9F7A1641BFA1002A9272 /* UIKit.framework in Frameworks */,
-				FF9D9E6A1639D803002A9272 /* SenTestingKit.framework in Frameworks */,
 				FF9D9E6D1639D803002A9272 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,8 +222,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFFE9B1E184BF1CC007BACB7 /* XCTest.framework in Frameworks */,
 				FFB028BF1666DCEF00CED715 /* IQSerialization.framework in Frameworks */,
-				FF9D9F2B163F1A3D002A9272 /* SenTestingKit.framework in Frameworks */,
 				FF9D9F2D163F1A3D002A9272 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,7 +280,7 @@
 			children = (
 				FF9D9E571639D803002A9272 /* libIQSerialization.a */,
 				FF9D9E681639D803002A9272 /* Tests_iOS.octest */,
-				FF9D9F35163F1A3D002A9272 /* Tests_OSX.octest */,
+				FF9D9F35163F1A3D002A9272 /* Tests_OSX.xctest */,
 				FF9D9F7F1641D7F1002A9272 /* PerformanceTest */,
 				FF9D9FB21646AD4E002A9272 /* PerformanceTest-iOS.app */,
 				FFB028921666DA5300CED715 /* IQSerialization.framework */,
@@ -291,8 +291,8 @@
 		FF9D9E591639D803002A9272 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FFFE9B1D184BF1CC007BACB7 /* XCTest.framework */,
 				FF9D9E5A1639D803002A9272 /* Foundation.framework */,
-				FF9D9E691639D803002A9272 /* SenTestingKit.framework */,
 				FF9D9E6B1639D803002A9272 /* UIKit.framework */,
 				FF9D9F811641D7F1002A9272 /* CoreFoundation.framework */,
 				FF9D9FB61646AD4E002A9272 /* CoreGraphics.framework */,
@@ -516,8 +516,8 @@
 			);
 			name = "Tests - OSX";
 			productName = IQSerializationTests;
-			productReference = FF9D9F35163F1A3D002A9272 /* Tests_OSX.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = FF9D9F35163F1A3D002A9272 /* Tests_OSX.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		FF9D9F7E1641D7F1002A9272 /* PerformanceTest */ = {
 			isa = PBXNativeTarget;
@@ -868,8 +868,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
@@ -882,8 +883,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
@@ -897,12 +899,15 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\\\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\\\"",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Tests_OSX;
 				SDKROOT = "";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -911,12 +916,15 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\\\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\\\"",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Tests_OSX;
 				SDKROOT = "";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

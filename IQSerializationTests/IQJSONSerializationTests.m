@@ -18,9 +18,9 @@
 
 #import "IQSerialization.h"
 #import "MyTestClass.h"
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface IQJSONSerializationTests : SenTestCase
+@interface IQJSONSerializationTests : XCTestCase
 
 @end
 
@@ -31,8 +31,8 @@
     NSString* json = @"}";
     IQSerialization* ser = [IQSerialization new];
     NSDictionary* dict = [ser dictionaryFromString:json format:IQSerializationFormatJSON];
-    STAssertNil(dict, @"Should fail");
-    STAssertEquals((int)ser.error.code, 1001, @"Error code should be 1001");
+    XCTAssertNil(dict, @"Should fail");
+    XCTAssertEqual((int)ser.error.code, 1001, @"Error code should be 1001");
 }
 
 - (void)testParseBasicJSON
@@ -40,11 +40,11 @@
     NSString* json = @"{\"a\":3, \"b\":true, \"c\":false}";
     IQSerialization* ser = [IQSerialization new];
     NSDictionary* dict = [ser dictionaryFromString:json format:IQSerializationFormatJSON];
-    STAssertNotNil(dict, @"Failed to generate dict: %@", ser.error);
-    STAssertEquals((int)dict.count, 3, @"Counts should equal");
-    STAssertEqualObjects(dict[@"a"], [NSNumber numberWithInt:3], @"Object 'a' is not 3");
-    STAssertEqualObjects(dict[@"b"], [NSNumber numberWithBool:YES], @"Object 'b' is not true");
-    STAssertEqualObjects(dict[@"c"], [NSNumber numberWithBool:NO], @"Object 'c' is not false");
+    XCTAssertNotNil(dict, @"Failed to generate dict: %@", ser.error);
+    XCTAssertEqual((int)dict.count, 3, @"Counts should equal");
+    XCTAssertEqualObjects(dict[@"a"], [NSNumber numberWithInt:3], @"Object 'a' is not 3");
+    XCTAssertEqualObjects(dict[@"b"], [NSNumber numberWithBool:YES], @"Object 'b' is not true");
+    XCTAssertEqualObjects(dict[@"c"], [NSNumber numberWithBool:NO], @"Object 'c' is not false");
 }
 
 - (void)testParseJSONArrays
@@ -52,11 +52,11 @@
     NSString* json = @"{\"a\":[1,2,3,[4]]}";
     IQSerialization* ser = [IQSerialization new];
     NSDictionary* dict = [ser dictionaryFromString:json format:IQSerializationFormatJSON];
-    STAssertNotNil(dict, @"Failed to generate dict: %@", ser.error);
-    STAssertEquals((int)dict.count, 1, @"Expected one item in parent");
-    STAssertEquals((int)[[dict objectForKey:@"a"] count], 4, @"Object 'a.length' is not 4");
-    STAssertEqualObjects([[dict objectForKey:@"a"] objectAtIndex:0], [NSNumber numberWithInt:1], @"Object 'a[0]' is not 1");
-    STAssertEqualObjects([[[dict objectForKey:@"a"] objectAtIndex:3] objectAtIndex:0], [NSNumber numberWithInt:4], @"Object 'a[3]' is not 4");
+    XCTAssertNotNil(dict, @"Failed to generate dict: %@", ser.error);
+    XCTAssertEqual((int)dict.count, 1, @"Expected one item in parent");
+    XCTAssertEqual((int)[[dict objectForKey:@"a"] count], 4, @"Object 'a.length' is not 4");
+    XCTAssertEqualObjects([[dict objectForKey:@"a"] objectAtIndex:0], [NSNumber numberWithInt:1], @"Object 'a[0]' is not 1");
+    XCTAssertEqualObjects([[[dict objectForKey:@"a"] objectAtIndex:3] objectAtIndex:0], [NSNumber numberWithInt:4], @"Object 'a[3]' is not 4");
 }
 
 - (void)testParseJSONTyped
@@ -65,13 +65,13 @@
     IQSerialization* ser = [IQSerialization new];
     MyTestClass* obj = [[MyTestClass alloc] init];
     if(![ser deserializeObject:obj fromString:json format:IQSerializationFormatJSON]) {
-        STFail(@"Failed to parse JSON: %@", ser.error);
+        XCTFail(@"Failed to parse JSON: %@", ser.error);
         return;
     }
-    STAssertEqualObjects(obj.stringProperty, @"Hello World", @"stringProperty not parsed");
-    STAssertEquals(obj.intProperty, 42, @"intProperty not parsed");
-    STAssertEqualObjects(obj.innerObject.class, [MyInnerClass class], @"innerObject is of the wrong type");
-    STAssertEqualObjects(obj.innerObject.innerString, @"Hello Again", @"innerObject.innerString not parsed");
+    XCTAssertEqualObjects(obj.stringProperty, @"Hello World", @"stringProperty not parsed");
+    XCTAssertEqual(obj.intProperty, 42, @"intProperty not parsed");
+    XCTAssertEqualObjects(obj.innerObject.class, [MyInnerClass class], @"innerObject is of the wrong type");
+    XCTAssertEqualObjects(obj.innerObject.innerString, @"Hello Again", @"innerObject.innerString not parsed");
 }
 
 - (void)testParseJSONTypedUnknown
@@ -80,17 +80,17 @@
     IQSerialization* ser = [IQSerialization new];
     MyTestClass* obj = [[MyTestClass alloc] init];
     if([ser deserializeObject:obj fromString:json format:IQSerializationFormatJSON]) {
-        STFail(@"Parsing this object should have failed");
+        XCTFail(@"Parsing this object should have failed");
         return;
     }
     ser.ignoreUnknownProperties = YES;
     obj = [[MyTestClass alloc] init];
     if(![ser deserializeObject:obj fromString:json format:IQSerializationFormatJSON]) {
-        STFail(@"Failed to parse JSON: %@", ser.error);
+        XCTFail(@"Failed to parse JSON: %@", ser.error);
         return;
     }
-    STAssertEqualObjects(obj.stringProperty, @"Hello World", @"stringProperty not parsed");
-    STAssertEquals(obj.intProperty, 42, @"intProperty not parsed");
+    XCTAssertEqualObjects(obj.stringProperty, @"Hello World", @"stringProperty not parsed");
+    XCTAssertEqual(obj.intProperty, 42, @"intProperty not parsed");
 }
 
 - (void)testGenerateJSONFromDict
@@ -102,11 +102,11 @@
     dict[@"d"] = [NSNumber numberWithInt:1];
     dict[@"e"] = [NSNumber numberWithDouble:1.0];
     NSString* json = [dict JSONRepresentation];
-    STAssertTrue([json rangeOfString:@"\"a\":\"b\""].length > 0, @"Did not find 'a'");
-    STAssertTrue([json rangeOfString:@"\"b\":true"].length > 0, @"Did not find 'b'");
-    STAssertTrue([json rangeOfString:@"\"c\":false"].length > 0, @"Did not find 'c'");
-    STAssertTrue([json rangeOfString:@"\"d\":1"].length > 0, @"Did not find 'd'");
-    STAssertTrue([json rangeOfString:@"\"e\":1.0"].length > 0, @"Did not find 'e'");
+    XCTAssertTrue([json rangeOfString:@"\"a\":\"b\""].length > 0, @"Did not find 'a'");
+    XCTAssertTrue([json rangeOfString:@"\"b\":true"].length > 0, @"Did not find 'b'");
+    XCTAssertTrue([json rangeOfString:@"\"c\":false"].length > 0, @"Did not find 'c'");
+    XCTAssertTrue([json rangeOfString:@"\"d\":1"].length > 0, @"Did not find 'd'");
+    XCTAssertTrue([json rangeOfString:@"\"e\":1.0"].length > 0, @"Did not find 'e'");
 }
 
 - (void)testGenerateJSONFromArray
@@ -114,7 +114,7 @@
     NSArray* arr = [NSArray arrayWithObjects:@"b", [NSNumber numberWithBool:YES], [NSNumber numberWithBool:NO],
                     [NSNumber numberWithInt:1], [NSNumber numberWithDouble:1.0], nil];
     NSString* json = [arr JSONRepresentation];
-    STAssertEqualObjects(json, @"[\"b\",true,false,1,1.0]", @"Did not find array in output");
+    XCTAssertEqualObjects(json, @"[\"b\",true,false,1,1.0]", @"Did not find array in output");
 }
 
 - (void)testGenerateTypedJSON
@@ -122,12 +122,12 @@
     MyTestClass* obj = [[MyTestClass alloc] init];
     obj.stringProperty = @"Hello";
     NSString* json = [obj JSONRepresentation];
-    STAssertTrue([json rangeOfString:@"\"intProperty\":0"].length > 0, @"Did not find intProperty in JSON");
-    STAssertTrue([json rangeOfString:@"\"stringProperty\":\"Hello\""].length > 0, @"Did not find stringProperty in JSON");
+    XCTAssertTrue([json rangeOfString:@"\"intProperty\":0"].length > 0, @"Did not find intProperty in JSON");
+    XCTAssertTrue([json rangeOfString:@"\"stringProperty\":\"Hello\""].length > 0, @"Did not find stringProperty in JSON");
     IQSerialization* ser = [IQSerialization new];
     ser.ignoreNilValues = NO;
     json = [ser stringFromObject:obj format:IQSerializationFormatJSON];
-    STAssertTrue([json rangeOfString:@"\"innerObject\":null"].length > 0, @"Did not find innerObject in JSON");
+    XCTAssertTrue([json rangeOfString:@"\"innerObject\":null"].length > 0, @"Did not find innerObject in JSON");
 }
 
 - (void)testParseAndGenerateJSON
@@ -135,11 +135,11 @@
     NSString* json = @"{\"a\":[true,2,\"3\",[4,1.0,-1,-1.0],[],{}]}";
     IQSerialization* ser = [IQSerialization new];
     NSDictionary* dict = [ser dictionaryFromString:json format:IQSerializationFormatJSON];
-    STAssertNotNil(dict, @"Failed to generate dict: %@", ser.error);
-    STAssertEqualObjects([[dict.description stringByReplacingOccurrencesOfString:@" " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""]
+    XCTAssertNotNil(dict, @"Failed to generate dict: %@", ser.error);
+    XCTAssertEqualObjects([[dict.description stringByReplacingOccurrencesOfString:@" " withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@""]
                          , @"{a=(1,2,3,(4,1,\"-1\",\"-1\"),(),{});}", @"Unexpected parse result");
     NSString* outJson = [dict JSONRepresentation];
-    STAssertEqualObjects(json, outJson, @"Generated JSON did not matched parsed JSON");
+    XCTAssertEqualObjects(json, outJson, @"Generated JSON did not matched parsed JSON");
 }
 
 @end

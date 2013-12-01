@@ -16,10 +16,10 @@
 //  limitations under the License.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "NSData+Base64.h"
 
-@interface Base64Tests : SenTestCase
+@interface Base64Tests : XCTestCase
 
 @end
 
@@ -31,26 +31,26 @@
     for(int i=0; i<sizeof(dataToEncode); i++) {
         NSData* data = [NSData dataWithBytes:dataToEncode length:i];
         NSString* string = [data base64String];
-        STAssertNotNil(string, @"Failed to encode data");
+        XCTAssertNotNil(string, @"Failed to encode data");
         if(i == 3) {
-            STAssertEqualObjects(string, @"U29t", @"Invalid Base64 encode");
+            XCTAssertEqualObjects(string, @"U29t", @"Invalid Base64 encode");
         }
         if(i == sizeof(dataToEncode)-1) {
-            STAssertEqualObjects(string, @"U29tZURhdGEA/wMI/g==", @"Invalid Base64 encode");
+            XCTAssertEqualObjects(string, @"U29tZURhdGEA/wMI/g==", @"Invalid Base64 encode");
         }
         NSData* decData = [NSData dataWithBase64String:string];
-        STAssertNotNil(decData, @"Failed to decode string");
-        STAssertEquals((int)decData.length, i, @"Decoded data from %@ is of the wrong length", string);
+        XCTAssertNotNil(decData, @"Failed to decode string");
+        XCTAssertEqual((int)decData.length, i, @"Decoded data from %@ is of the wrong length", string);
         if(i!=decData.length) break;
-        STAssertEqualObjects(decData, data, @"Invalid Base64 decode of encode");
+        XCTAssertEqualObjects(decData, data, @"Invalid Base64 decode of encode");
         
         NSUInteger origLength = string.length;
         string = [string stringByReplacingOccurrencesOfString:@"=" withString:@""];
         if(string.length != origLength) {
             NSData* decDataNoPad = [NSData dataWithBase64String:string];
-            STAssertNotNil(decDataNoPad, @"Failed to decode string with missing padding (%d)", i);
+            XCTAssertNotNil(decDataNoPad, @"Failed to decode string with missing padding (%d)", i);
             if(decDataNoPad) {
-                STAssertEqualObjects(decDataNoPad, data, @"Invalid Base64 decode of encode");
+                XCTAssertEqualObjects(decDataNoPad, data, @"Invalid Base64 decode of encode");
             }
         }
     }
@@ -66,17 +66,17 @@
     for(int i=0; i<sizeof(dataToEncode); i++) {
         NSData* data = [NSData dataWithBytes:dataToEncode length:i];
         NSData* encData = [data base64Data];
-        STAssertNotNil(encData, @"Failed to encode data in iteration %d", i);
+        XCTAssertNotNil(encData, @"Failed to encode data in iteration %d", i);
         if(!encData) break;
         NSData* decData = [NSData dataWithBase64Data:encData];
-        STAssertNotNil(decData, @"Failed to decode data in iteration %d", i);
-        STAssertEquals((int)decData.length, i, @"Decoded data is of the wrong length");
+        XCTAssertNotNil(decData, @"Failed to decode data in iteration %d", i);
+        XCTAssertEqual((int)decData.length, i, @"Decoded data is of the wrong length");
         if(i!=decData.length) break;
         if(!decData) {
             NSLog(@"Data: %@", [[NSString alloc] initWithData:encData encoding:NSASCIIStringEncoding]);
             break;
         }
-        STAssertEqualObjects(decData, data, @"Invalid Base64 decode of encode");
+        XCTAssertEqualObjects(decData, data, @"Invalid Base64 decode of encode");
     }
 }
 

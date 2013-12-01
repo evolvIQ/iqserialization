@@ -227,7 +227,6 @@ typedef enum IQXMLRPCSerializerState {
 }
 - (void)parserDidEndDocument:(NSXMLParser *)parser
 {
-    NSLog(@"Did end document");
 }
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError
 {

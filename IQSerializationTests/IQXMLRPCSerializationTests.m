@@ -17,9 +17,9 @@
 //
 
 #import "IQSerialization.h"
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface IQXMLRPCSerializationTests : SenTestCase
+@interface IQXMLRPCSerializationTests : XCTestCase
 
 @end
 
@@ -31,13 +31,13 @@
     NSString* xml = @"<?xml";
     IQSerialization* ser = [IQSerialization new];
     NSDictionary* dict = [ser dictionaryFromString:xml format:IQSerializationFormatXMLRPC];
-    STAssertNil(dict, @"Should fail");
-    STAssertEqualObjects(ser.error.domain, NSXMLParserErrorDomain, @"Error domain should be NSXMLParserErrorDomain");
+    XCTAssertNil(dict, @"Should fail");
+    XCTAssertEqualObjects(ser.error.domain, NSXMLParserErrorDomain, @"Error domain should be NSXMLParserErrorDomain");
     
     xml = @"<xml/>";
     dict = [ser dictionaryFromString:xml format:IQSerializationFormatXMLRPC];
-    STAssertNil(dict, @"Should fail");
-    STAssertEqualObjects(ser.error.domain, IQSerializationErrorDomain, @"Error domain should be IQSerializationErrorDomain");
+    XCTAssertNil(dict, @"Should fail");
+    XCTAssertEqualObjects(ser.error.domain, IQSerializationErrorDomain, @"Error domain should be IQSerializationErrorDomain");
 }
 
 - (void)testXMLRPCParseParams
@@ -46,13 +46,13 @@
     IQSerialization* ser = [IQSerialization new];
     ser.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
     NSArray* params = [ser arrayFromString:xmlrpc format:IQSerializationFormatXMLRPC];
-    STAssertNotNil(params, @"Failed to parse: %@", ser.error);
-    STAssertEqualObjects(params[0][@"a"], [NSNumber numberWithInt:3], @"Wrong value for 'a'");
-    STAssertNil((id)params[0][@"b"], @"Wrong value for 'b'");
-    STAssertEqualObjects([params[0][@"c"] description], @"2012-10-01 12:34:00 +0000", @"Wrong value for 'b'");
-    STAssertEqualObjects(params[0][@"x"][0], [NSNumber numberWithInt:1], @"Wrong value for 'x[0]'");
-    STAssertEqualObjects(params[0][@"x"][1], [NSNumber numberWithDouble:3.14], @"Wrong value for 'x[1]'");
-    STAssertEqualObjects(params[0][@"x"][2], [NSNumber numberWithBool:YES], @"Wrong value for 'x[2]'");
+    XCTAssertNotNil(params, @"Failed to parse: %@", ser.error);
+    XCTAssertEqualObjects(params[0][@"a"], [NSNumber numberWithInt:3], @"Wrong value for 'a'");
+    XCTAssertNil((id)params[0][@"b"], @"Wrong value for 'b'");
+    XCTAssertEqualObjects([params[0][@"c"] description], @"2012-10-01 12:34:00 +0000", @"Wrong value for 'b'");
+    XCTAssertEqualObjects(params[0][@"x"][0], [NSNumber numberWithInt:1], @"Wrong value for 'x[0]'");
+    XCTAssertEqualObjects(params[0][@"x"][1], [NSNumber numberWithDouble:3.14], @"Wrong value for 'x[1]'");
+    XCTAssertEqualObjects(params[0][@"x"][2], [NSNumber numberWithBool:YES], @"Wrong value for 'x[2]'");
     NSLog(@"params is %@", params);
 }
 @end
