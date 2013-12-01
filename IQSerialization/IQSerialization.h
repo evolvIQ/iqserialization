@@ -22,10 +22,12 @@
 #import "IQSerialization+JSON.h"
 #import "IQSerialization+XMLRPC.h"
 
+/*! \file */
+
 /**
  Serialization format specifier.
  */
-typedef enum IQSerializationFormat {
+typedef enum {
     /**
      JSON or JSON-RPC serialization, using the YAJL parser/generator.
      See http://json.org, http://json-rpc.org
@@ -74,7 +76,7 @@ typedef enum IQSerializationFormat {
  Flags used to control the serialization for a specific object. Not all flags are understood by all serializers, and some flags
  are mutually exclusive.
  */
-typedef enum IQSerializationFlags {
+typedef enum {
     /**
      Specifies the default serialization flags.
      */
@@ -136,6 +138,9 @@ typedef enum IQSerializationFlags {
 
 /**
  Reads a dictionary from a string. Convenience method that will call deserializeObject:fromString.
+ 
+ @param string The string to deserialize.
+ @param fmt The serialization format used to parse the string.
  
  @returns The dictionary if successful, or nil if an error occurred. The error property will hold the
  error in this case.

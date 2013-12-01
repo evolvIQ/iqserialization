@@ -14,5 +14,7 @@ build/*
 xcuserdata
 profile
 *.moved-aside
+Documentation/latex
+Documentation/html
 PerformanceTest/test.json
-
+Products/*
