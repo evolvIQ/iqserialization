@@ -22,6 +22,10 @@ In addition, a convienient Base64 encoding/decoding API is provided as a categor
 How to use it
 -------------
 
+See the documentation page here:
+
+* http://evolviq.github.com/iqserialization
+
 Add IQSerialization.xcodeproj as to your project and set up the include directories. In your code, 
 
     #import <IQSerialization/IQSerialization.h>
