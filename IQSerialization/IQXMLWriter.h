@@ -2,7 +2,7 @@
 //  IQXMLWriter.h
 //  IQSerialization for iOS and Mac OS X
 //
-//  Copyright 2012 Rickard Petzäll, EvolvIQ
+//  Copyright © 2012-2015 Rickard Lyrenius
 //  Based on XSWI by Thomas Rørvik Skjølberg
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
