@@ -93,6 +93,24 @@
     XCTAssertEqual(obj.intProperty, 42, @"intProperty not parsed");
 }
 
+- (void)testParseJSONIgnoredNulls {
+    NSString* json = @"{\"stringProperty\":\"Hello World\", \"nullProperty\":null}";
+    IQSerialization* ser = [IQSerialization new];
+    id dict = [ser dictionaryFromString:json format:IQSerializationFormatJSON];
+    XCTAssertNotNil(dict, @"Failed to parse JSON: %@", ser.error);
+    XCTAssertEqualObjects(dict, @{@"stringProperty":@"Hello World"});
+}
+
+- (void)testParseJSONExplicitNulls {
+    NSString* json = @"{\"stringProperty\":\"Hello World\", \"nullProperty\":null}";
+    IQSerialization* ser = [IQSerialization new];
+    ser.ignoreNilValues = NO;
+    id dict = [ser dictionaryFromString:json format:IQSerializationFormatJSON];
+    XCTAssertNotNil(dict, @"Failed to parse JSON: %@", ser.error);
+    id expected = @{@"stringProperty":@"Hello World", @"nullProperty":[NSNull null]};
+    XCTAssertEqualObjects(dict, expected);
+}
+
 - (void)testGenerateJSONFromDict
 {
     NSMutableDictionary* dict = [NSMutableDictionary dictionary];
@@ -129,6 +147,28 @@
     json = [ser stringFromObject:obj format:IQSerializationFormatJSON];
     XCTAssertTrue([json rangeOfString:@"\"innerObject\":null"].length > 0, @"Did not find innerObject in JSON");
 }
+
+- (void)testGenerateJSONIgnoredNulls {
+    id object = @{@"stringProperty":@"Hello World", @"nullProperty":[NSNull null]};
+    IQSerialization* ser = [IQSerialization new];
+
+    NSString* json = [ser stringFromObject:object format:IQSerializationFormatJSON];
+    XCTAssertNotNil(json, @"Failed to generate JSON: %@", ser.error);
+
+    XCTAssertTrue([json containsString:@"stringProperty"], @"stringProperty missing");
+    XCTAssertTrue(![json containsString:@"nullProperty"], @"nullProperty should be removed but it is not");
+}
+
+- (void)testGenerateJSONExplicitNulls {
+    id object = @{@"stringProperty":@"Hello World", @"nullProperty":[NSNull null]};
+    IQSerialization* ser = [IQSerialization new];
+    ser.ignoreNilValues = NO;
+
+    NSString* json = [ser stringFromObject:object format:IQSerializationFormatJSON];
+    XCTAssertNotNil(json, @"Failed to generate JSON: %@", ser.error);
+
+    XCTAssertTrue([json containsString:@"stringProperty"], @"stringProperty missing");
+    XCTAssertTrue([json containsString:@"nullProperty"], @"nullProperty missing");}
 
 - (void)testParseAndGenerateJSON
 {

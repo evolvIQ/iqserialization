@@ -270,27 +270,116 @@ BOOL _IQDeserializeXMLRPCData(id object, NSData* xmlData, IQSerialization* seria
     }
     return YES;
 }
-BOOL _IQXMLRPCSerializeRoot(IQXMLWriter* writer, id object, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError)
+static BOOL _IQXMLRPCSerializeValue(IQXMLWriter* writer, id object, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError)
 {
-    writer.encoding = serialization.textEncoding;
-    if(flags & IQSerializationFlagsRPCResponse) {
-        [writer writeStartElement:@"methodResponse"];
-    }
-    if(flags & (IQSerializationFlagsRPCRequest|IQSerializationFlagsRPCResponse)) {
-        [writer writeStartElement:@"params"];
-        if([object isKindOfClass:[NSArray class]] || [object isKindOfClass:[NSSet class]] || [object isKindOfClass:[NSOrderedSet class]]) {
-            for(id child in object) {
-                [writer writeStartElement:@"param"];
+    [writer writeStartElement:@"value"];
+    if(!object || object == [NSNull null]) {
+        [writer writeEmptyElement:@"nil"];
+    } else if ([object isKindOfClass:[NSNumber class]]) {
+        const char* t = [object objCType];
+        BOOL handled = NO;
+        if(t && t[0] == 'c') {
+            char val = [object charValue];
+            if(val == 0 || val == 1) {
+                [writer writeStartElement:@"boolean"];
+                [writer writeCharacters:val?@"1":@"0"];
                 [writer writeEndElement];
             }
-        } else {
-            [writer writeStartElement:@"param"];
-            // Write the value
+        } else if(t && (t[0] == 'd' || t[0] == 'f')) {
+            [writer writeStartElement:@"double"];
+            [writer writeCharacters:[object stringValue]];
+            [writer writeEndElement];
+        }
+        if(!handled) {
+            [writer writeStartElement:@"int"];
+            [writer writeCharacters:[object stringValue]];
+            [writer writeEndElement];
+        }
+    } else if([object isKindOfClass:[NSString class]]) {
+        [writer writeStartElement:@"string"];
+        [writer writeCharacters:(NSString*)object];
+        [writer writeEndElement];
+    } else if([object isKindOfClass:[NSArray class]] || [object isKindOfClass:[NSSet class]] || [object isKindOfClass:[NSOrderedSet class]]) {
+        [writer writeStartElement:@"array"];
+        [writer writeStartElement:@"data"];
+        for(id value in object) {
+            if(!_IQXMLRPCSerializeValue(writer, value, serialization, flags, outError))
+                return NO;
+        }
+        [writer writeEndElement];
+        [writer writeEndElement];
+    } else if([object isKindOfClass:[NSDictionary class]]) {
+        [writer writeStartElement:@"struct"];
+        for(NSString* key in object) {
+            id value = [object objectForKey:key];
+            if((!value || value == [NSNull null]) && serialization.ignoreNilValues) {
+                continue;
+            }
+            [writer writeStartElement:@"member"];
+            [writer writeStartElement:@"name"];
+            [writer writeCharacters:key];
+            [writer writeEndElement];
+            if(!_IQXMLRPCSerializeValue(writer, value, serialization, flags, outError))
+                return NO;
+            [writer writeEndElement];
+        }
+        [writer writeEndElement];
+    } else {
+        [writer writeStartElement:@"struct"];
+        for(NSString* property in [serialization _propertiesForObject:object]) {
+            id value = [object valueForKey:property];
+            if((!value || value == [NSNull null]) && serialization.ignoreNilValues) {
+                continue;
+            }
+            [writer writeStartElement:@"member"];
+            [writer writeStartElement:@"name"];
+            [writer writeCharacters:property];
+            [writer writeEndElement];
+            if(!_IQXMLRPCSerializeValue(writer, value, serialization, flags, outError))
+                return NO;
             [writer writeEndElement];
         }
         [writer writeEndElement];
     }
-    if(flags & IQSerializationFlagsRPCResponse) {
+    [writer writeEndElement];
+    return YES;
+}
+static BOOL _IQXMLRPCSerializeRoot(IQXMLWriter* writer, id object, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError)
+{
+    writer.encoding = serialization.textEncoding;
+    if(flags & (IQSerializationFlagsRPCResponse|IQSerializationFlagsRPCFault)) {
+        [writer writeStartElement:@"methodResponse"];
+    } else if(flags & IQSerializationFlagsRPCRequest) {
+        [writer writeStartElement:@"methodCall"];
+        id name = object[@"methodName"];
+        if(!name) name = object[@"method"];
+        id params = object[@"params"];
+        if(name || params) {
+            object = params;
+        }
+        if(name) {
+            [writer writeStartElement:@"methodName"];
+            [writer writeCharacters:name];
+            [writer writeEndElement];
+        }
+    }
+    [writer writeStartElement:@"params"];
+    if([object isKindOfClass:[NSArray class]] || [object isKindOfClass:[NSSet class]] || [object isKindOfClass:[NSOrderedSet class]]) {
+        for(id value in object) {
+            if((value == nil || value == [NSNull null]) && serialization.ignoreNilValues)
+                continue;
+            [writer writeStartElement:@"param"];
+            if(!_IQXMLRPCSerializeValue(writer, value, serialization, flags, &outError))
+                return NO;
+            [writer writeEndElement];
+        }
+    } else {
+        [writer writeStartElement:@"param"];
+        // Write the value
+        [writer writeEndElement];
+    }
+    [writer writeEndElement];
+    if(flags & (IQSerializationFlagsRPCResponse|IQSerializationFlagsRPCFault|IQSerializationFlagsRPCRequest)) {
         [writer writeEndElement];
     }
     return YES;

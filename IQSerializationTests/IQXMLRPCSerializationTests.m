@@ -54,5 +54,43 @@
     XCTAssertEqualObjects(params[0][@"x"][1], [NSNumber numberWithDouble:3.14], @"Wrong value for 'x[1]'");
     XCTAssertEqualObjects(params[0][@"x"][2], [NSNumber numberWithBool:YES], @"Wrong value for 'x[2]'");
     NSLog(@"params is %@", params);
+- (void)testXMLRPCParseIgnoredNulls {
+    NSString* xmlrpc = @"<params><param><value><int>42</int></value></param><param><value><nil/></value></param></params>";
+    IQSerialization* ser = [IQSerialization new];
+    id dict = [ser arrayFromString:xmlrpc format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(dict, @"Failed to parse: %@", ser.error);
+
+    XCTAssertEqualObjects(dict, @[ @42 ]);
+}
+
+- (void)testXMLRPCParseExplicitNulls {
+    NSString* xmlrpc = @"<params><param><value><int>42</int></value></param><param><value><nil/></value></param></params>";
+    IQSerialization* ser = [IQSerialization new];
+    ser.ignoreNilValues = NO;
+    id dict = [ser arrayFromString:xmlrpc format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(dict, @"Failed to parse: %@", ser.error);
+
+    id expected = @[ @42, [NSNull null] ];
+    XCTAssertEqualObjects(dict, expected);
+}
+- (void)testXMLRPCGenerateIgnoredNulls {
+    id object = @[ @42, [NSNull null] ];
+    IQSerialization* ser = [IQSerialization new];
+    NSString* xmlrpc = [ser stringFromObject:object format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(object, @"Failed to generate: %@", ser.error);
+    id doc = [[NSXMLDocument alloc] initWithXMLString:xmlrpc options:0 error:nil];
+    NSXMLElement* root = [[doc children] firstObject];
+    XCTAssertEqual(root.childCount, 1);
+}
+
+- (void)testXMLRPCGenerateExplicitNulls {
+    id object = @[ @42, [NSNull null] ];
+    IQSerialization* ser = [IQSerialization new];
+    ser.ignoreNilValues = NO;
+    NSString* xmlrpc = [ser stringFromObject:object format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(object, @"Failed to generate: %@", ser.error);
+    id doc = [[NSXMLDocument alloc] initWithXMLString:xmlrpc options:0 error:nil];
+    NSXMLElement* root = [[doc children] firstObject];
+    XCTAssertEqual(root.childCount, 2);
 }
 @end

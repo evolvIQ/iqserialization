@@ -193,7 +193,7 @@ static void _do_yajl_gen(id object, yajl_gen gen, IQSerialization* serialization
         yajl_gen_map_open(gen);
         for(NSString* key in object) {
             id value = [object objectForKey:key];
-            if(!value && serialization.ignoreNilValues) {
+            if((!value || value == [NSNull null]) && serialization.ignoreNilValues) {
                 continue;
             }
             yajl_gen_string(gen, (unsigned char*)[key UTF8String], [key lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
@@ -204,7 +204,7 @@ static void _do_yajl_gen(id object, yajl_gen gen, IQSerialization* serialization
         yajl_gen_map_open(gen);
         for(NSString* property in [serialization _propertiesForObject:object]) {
             id value = [object valueForKey:property];
-            if(!value && serialization.ignoreNilValues) {
+            if((!value || value == [NSNull null]) && serialization.ignoreNilValues) {
                 continue;
             }
             yajl_gen_string(gen, (unsigned char*)[property UTF8String], [property lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
