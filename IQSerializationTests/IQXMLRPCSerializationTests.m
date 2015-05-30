@@ -44,16 +44,60 @@
 {
     NSString* xmlrpc = @"<params><param><value><struct><member><name>a</name><value><int>3</int></value></member><member><name>x</name><value><array><data><value><int>1</int></value><value><double>3.14</double></value><value><boolean>1</boolean></value><value><nil/></value></data></array></value></member><member><name>b</name><value><nil/></value></member><member><name>c</name><value><dateTime.iso8601>20121001T12:34:00</dateTime.iso8601></value></member></struct></value></param></params>";
     IQSerialization* ser = [IQSerialization new];
-    ser.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
     NSArray* params = [ser arrayFromString:xmlrpc format:IQSerializationFormatXMLRPC];
     XCTAssertNotNil(params, @"Failed to parse: %@", ser.error);
-    XCTAssertEqualObjects(params[0][@"a"], [NSNumber numberWithInt:3], @"Wrong value for 'a'");
+    XCTAssertEqualObjects(params[0][@"a"], @3, @"Wrong value for 'a'");
     XCTAssertNil((id)params[0][@"b"], @"Wrong value for 'b'");
     XCTAssertEqualObjects([params[0][@"c"] description], @"2012-10-01 12:34:00 +0000", @"Wrong value for 'b'");
-    XCTAssertEqualObjects(params[0][@"x"][0], [NSNumber numberWithInt:1], @"Wrong value for 'x[0]'");
-    XCTAssertEqualObjects(params[0][@"x"][1], [NSNumber numberWithDouble:3.14], @"Wrong value for 'x[1]'");
-    XCTAssertEqualObjects(params[0][@"x"][2], [NSNumber numberWithBool:YES], @"Wrong value for 'x[2]'");
-    NSLog(@"params is %@", params);
+    XCTAssertEqualObjects(params[0][@"x"][0], @1, @"Wrong value for 'x[0]'");
+    XCTAssertEqualObjects(params[0][@"x"][1], @3.14, @"Wrong value for 'x[1]'");
+    XCTAssertEqualObjects(params[0][@"x"][2], @YES, @"Wrong value for 'x[2]'");
+}
+
+- (void)testXMLRPCParseMultipleParams
+{
+    NSString* xmlrpc = @"<params><param><value><int>42</int></value></param><param><value><int>1</int></value></param></params>";
+    IQSerialization* ser = [IQSerialization new];
+    id params = [ser arrayFromString:xmlrpc format:IQSerializationFormatXMLRPC];
+    id expected = @[@42, @1];
+
+    XCTAssertNotNil(params, @"Failed to parse: %@", ser.error);
+
+    XCTAssertEqualObjects(params, expected);
+}
+
+- (void)testXMLRPCParseMethodResponse
+{
+    NSString* xmlrpc = @"<?xml version=\"1.0\"?><methodResponse><params><param><value><string>South Dakota</string></value></param></params></methodResponse>";
+    IQSerialization* ser = [IQSerialization new];
+    id response = [ser dictionaryFromString:xmlrpc format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(response, @"Failed to parse: %@", ser.error);
+    XCTAssertEqualObjects(response, @{@"response" : @[ @"South Dakota" ]});
+}
+
+- (void)testXMLRPCParseFault
+{
+    NSString* xmlrpc = @"<?xml version=\"1.0\"?><methodResponse><fault><value><struct><member><name>faultCode</name><value><int>4</int></value></member><member><name>faultString</name><value><string>Too many parameters.</string></value></member></struct></value></fault></methodResponse>";
+    IQSerialization* ser = [IQSerialization new];
+    id response = [ser dictionaryFromString:xmlrpc format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(response, @"Failed to parse: %@", ser.error);
+    id fault = @{@"faultCode" : @4, @"faultString" : @"Too many parameters."};
+    XCTAssertEqualObjects(response, @{@"fault" : fault});
+}
+
+- (void)testXMLRPCParseMethodCall
+{
+    NSString* xmlrpc = @"<?xml version=\"1.0\"?><methodCall><methodName>examples.getStateName</methodName><params><param><value><i4>40</i4></value></param></params></methodCall>";
+    IQSerialization* ser = [IQSerialization new];
+    id request = [ser dictionaryFromString:xmlrpc format:IQSerializationFormatXMLRPC];
+    id expected = @{
+                    @"params" : @[ @40 ],
+                    @"methodName" : @"examples.getStateName"
+                    };
+    XCTAssertNotNil(request, @"Failed to parse: %@", ser.error);
+    XCTAssertEqualObjects(request, expected);
+}
+
 - (void)testXMLRPCParseIgnoredNulls {
     NSString* xmlrpc = @"<params><param><value><int>42</int></value></param><param><value><nil/></value></param></params>";
     IQSerialization* ser = [IQSerialization new];
@@ -73,6 +117,21 @@
     id expected = @[ @42, [NSNull null] ];
     XCTAssertEqualObjects(dict, expected);
 }
+
+- (void)testXMLRPCGenerateParams
+{
+    id params = @[ @42, @"Hello", @{ @"Key" : @1 }];
+    IQSerialization* ser = [IQSerialization new];
+    NSString* string = [ser stringFromObject:params format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(string, @"Failed to generate: %@", ser.error);
+    id doc = [[NSXMLDocument alloc] initWithXMLString:string options:0 error:nil];
+    XCTAssertNotNil(doc, @"Resulting XML was not wellformed");
+    id root = [[[doc children] firstObject] name];
+    XCTAssertEqualObjects(root, @"params");
+    id parsed = [ser arrayFromString:string format:IQSerializationFormatXMLRPC];
+    XCTAssertEqualObjects(parsed, params, @"Object changed during write/parse cycle");
+}
+
 - (void)testXMLRPCGenerateIgnoredNulls {
     id object = @[ @42, [NSNull null] ];
     IQSerialization* ser = [IQSerialization new];

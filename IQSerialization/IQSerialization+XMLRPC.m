@@ -23,6 +23,9 @@
 typedef enum IQXMLRPCSerializerState {
     IQXMLRPCSerializerStateRoot = 0,
     IQXMLRPCSerializerStateMethodResponse,
+    IQXMLRPCSerializerStateMethodCall,
+    IQXMLRPCSerializerStateMethodName,
+    IQXMLRPCSerializerStateFault,
     IQXMLRPCSerializerStateParams,
     IQXMLRPCSerializerStateParam,
     IQXMLRPCSerializerStateValue,
@@ -39,8 +42,8 @@ typedef enum IQXMLRPCSerializerState {
     NSString* stringBuffer;
     BOOL ownBuffer;
     NSString* dataType;
-    NSMutableArray* elementStack;
-    NSDateFormatter* dateFormatter;
+    NSMutableArray *elementStack;
+    NSDateFormatter *dateFormatter1, *dateFormatter2, *dateFormatter3;
 }
 @end
 
@@ -52,11 +55,17 @@ typedef enum IQXMLRPCSerializerState {
         formatter = [NSNumberFormatter new];
         [formatter setNumberStyle:0];
         formatter.locale = [NSLocale systemLocale];
-        dateFormatter = [NSDateFormatter new];
-        dateFormatter.dateFormat = @"yyyyMMdd'T'HH:mm:ss";
-        if(serialization.timeZone != nil) {
-            dateFormatter.timeZone = serialization.timeZone;
-        }
+        NSTimeZone* tz = serialization.timeZone;
+        if(!tz) tz =[NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+        dateFormatter1 = [NSDateFormatter new];
+        dateFormatter1.dateFormat = @"yyyyMMdd'T'HH:mm:ss";
+        dateFormatter1.timeZone = tz;
+        dateFormatter2 = [NSDateFormatter new];
+        dateFormatter2.dateFormat = @"yyyyMMdd'T'HH:mm:ssZ";
+        dateFormatter2.timeZone = tz;
+        dateFormatter3 = [NSDateFormatter new];
+        dateFormatter3.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        dateFormatter3.timeZone = tz;
         explicitNull = !serialization.ignoreNilValues;
         encoding = serialization.textEncoding;
     }
@@ -68,8 +77,19 @@ typedef enum IQXMLRPCSerializerState {
         case IQXMLRPCSerializerStateRoot:
             if([elementName isEqualToString:@"methodResponse"]) {
                 state = IQXMLRPCSerializerStateMethodResponse;
+                if(![self _createChildObject]) {
+                    [parser abortParsing];
+                }
+            } else if([elementName isEqualToString:@"methodCall"]) {
+                state = IQXMLRPCSerializerStateMethodCall;
+                if(![self _createChildObject]) {
+                    [parser abortParsing];
+                }
             } else if([elementName isEqualToString:@"params"]) {
                 state = IQXMLRPCSerializerStateParams;
+                if(![self _createChildArray]) {
+                    [parser abortParsing];
+                }
             } else if([elementName isEqualToString:@"value"]) {
                 state = IQXMLRPCSerializerStateValue;
             } else {
@@ -79,22 +99,50 @@ typedef enum IQXMLRPCSerializerState {
             break;
         case IQXMLRPCSerializerStateMethodResponse:
             if([elementName isEqualToString:@"params"]) {
+                key = @"response";
                 state = IQXMLRPCSerializerStateParams;
+                if(![self _createChildArray]) {
+                    [parser abortParsing];
+                }
+            } else if([elementName isEqualToString:@"fault"]) {
+                key = @"fault";
+                state = IQXMLRPCSerializerStateFault;
             } else {
                 [self _fail:[NSString stringWithFormat:@"Expected 'params' element, but got '%@'", elementName]];
+                [parser abortParsing];
+            }
+            break;
+        case IQXMLRPCSerializerStateMethodCall:
+            if([elementName isEqualToString:@"params"]) {
+                key = @"params";
+                state = IQXMLRPCSerializerStateParams;
+                if(![self _createChildArray]) {
+                    [parser abortParsing];
+                }
+            } else if([elementName isEqualToString:@"methodName"]) {
+                key = @"methodName";
+                state = IQXMLRPCSerializerStateMethodName;
+            } else {
+                [self _fail:[NSString stringWithFormat:@"Expected 'params' or 'methodName' element, but got '%@'", elementName]];
                 [parser abortParsing];
             }
             break;
         case IQXMLRPCSerializerStateParams:
             if([elementName isEqualToString:@"param"]) {
                 state = IQXMLRPCSerializerStateParam;
-                if(![self _createChildArray]) {
-                    [parser abortParsing];
-                }
             } else {
                 [self _fail:[NSString stringWithFormat:@"Expected 'param' element, but got '%@'", elementName]];
                 [parser abortParsing];
             }
+            break;
+        case IQXMLRPCSerializerStateFault:
+            if([elementName isEqualToString:@"value"]) {
+                state = IQXMLRPCSerializerStateValue;
+            } else {
+                [self _fail:[NSString stringWithFormat:@"Expected 'value' element, but got '%@'", elementName]];
+                [parser abortParsing];
+            }
+            break;
             break;
         case IQXMLRPCSerializerStateParam:
         case IQXMLRPCSerializerStateValueArrayData:
@@ -170,7 +218,11 @@ typedef enum IQXMLRPCSerializerState {
     } else if([elementName isEqualToString:@"double"]) {
         ret = [self _setScalarValue:[formatter numberFromString:stringBuffer]];
     } else if([elementName isEqualToString:@"dateTime.iso8601"]) {
-        NSDate* date = [dateFormatter dateFromString:stringBuffer];
+        NSDate* date = [dateFormatter1 dateFromString:stringBuffer];
+        if(!date)
+            date = [dateFormatter2 dateFromString:stringBuffer];
+        if(!date)
+            date = [dateFormatter3 dateFromString:stringBuffer];
         if(!date) {
             ret = [self _fail:[NSString stringWithFormat:@"Unparseable date '%@'", stringBuffer]];
         } else {
@@ -178,6 +230,8 @@ typedef enum IQXMLRPCSerializerState {
         }
     } else if([elementName isEqualToString:@"base64"]) {
         ret = [self _setScalarValue:[NSData dataWithBase64String:stringBuffer]];
+    } else if([elementName isEqualToString:@"methodName"]) {
+        ret = [self _setScalarValue:stringBuffer];
     } else {
         ret = [self _fail:[NSString stringWithFormat:@"Unknown data type name '%@'", elementName]];
     }
@@ -188,6 +242,7 @@ typedef enum IQXMLRPCSerializerState {
 {
     switch (state) {
         case IQXMLRPCSerializerStateValueContent:
+        case IQXMLRPCSerializerStateMethodName:
             if(![self _setScalarValueForElement:elementName]) {
                 [parser abortParsing];
             }
@@ -202,6 +257,8 @@ typedef enum IQXMLRPCSerializerState {
                 [parser abortParsing];
             }
             break;
+        case IQXMLRPCSerializerStateMethodCall:
+            break;
         default:
             break;
     }
@@ -212,7 +269,7 @@ typedef enum IQXMLRPCSerializerState {
 }
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-    if(state == IQXMLRPCSerializerStateValueContent || state == IQXMLRPCSerializerStateMemberName) {
+    if(state == IQXMLRPCSerializerStateValueContent || state == IQXMLRPCSerializerStateMemberName || state == IQXMLRPCSerializerStateMethodName) {
         if(stringBuffer == nil) {
             stringBuffer = string;
             ownBuffer = NO;
@@ -369,7 +426,7 @@ static BOOL _IQXMLRPCSerializeRoot(IQXMLWriter* writer, id object, IQSerializati
             if((value == nil || value == [NSNull null]) && serialization.ignoreNilValues)
                 continue;
             [writer writeStartElement:@"param"];
-            if(!_IQXMLRPCSerializeValue(writer, value, serialization, flags, &outError))
+            if(!_IQXMLRPCSerializeValue(writer, value, serialization, flags, outError))
                 return NO;
             [writer writeEndElement];
         }
