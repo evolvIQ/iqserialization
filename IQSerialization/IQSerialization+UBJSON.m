@@ -1,5 +1,5 @@
 //
-//  IQSimpleXMLSerialization.h
+//  IQSerialization+UBJSON.m
 //  IQSerialization for iOS and Mac OS X
 //
 //  Copyright © 2012-2015 Rickard Lyrenius
@@ -16,9 +16,5 @@
 //  limitations under the License.
 //
 
-#import <Foundation/Foundation.h>
+#import "IQSerialization+UBJSON.h"
 
-@interface NSDictionary (SimpleXMLSerialization)
-+ (NSDictionary*) dictionaryWithSimpleXMLData:(NSData*)jsonData;
-+ (NSDictionary*) dictionaryWithSimpleXMLString:(NSString*)jsonString;
-@end

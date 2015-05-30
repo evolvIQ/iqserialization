@@ -5,7 +5,7 @@
 //  Based on XSWI by Thomas Rørvik Skjølberg
 //
 //  Copyright © 2012-2015 Rickard Lyrenius
-//  Copyright (C) 2010 by Thomas Rørvik Skjølberg
+//  Copyright © 2010 Thomas Rørvik Skjølberg
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.

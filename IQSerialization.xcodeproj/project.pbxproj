@@ -40,12 +40,12 @@
 		FF9D9F28163F1A3D002A9272 /* IQJSONSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9E781639D803002A9272 /* IQJSONSerializationTests.m */; };
 		FF9D9F29163F1A3D002A9272 /* IQXMLRPCSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F01163A1349002A9272 /* IQXMLRPCSerializationTests.m */; };
 		FF9D9F2D163F1A3D002A9272 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E5A1639D803002A9272 /* Foundation.framework */; };
-		FF9D9F3B163F2605002A9272 /* IQSerialization+SimpleXML.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F3A163F2605002A9272 /* IQSerialization+SimpleXML.m */; };
+		FF9D9F3B163F2605002A9272 /* IQSerialization+UBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F3A163F2605002A9272 /* IQSerialization+UBJSON.m */; };
 		FF9D9F7A1641BFA1002A9272 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9F791641BFA1002A9272 /* UIKit.framework */; };
 		FFB028941666DA5300CED715 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB028931666DA5300CED715 /* Cocoa.framework */; };
 		FFB028A61666DBC200CED715 /* IQObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EFE163A0EDF002A9272 /* IQObjectFactory.m */; };
 		FFB028A71666DBC500CED715 /* IQXMLWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E941648713900597D70 /* IQXMLWriter.m */; };
-		FFB028A81666DBCA00CED715 /* IQSerialization+SimpleXML.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F3A163F2605002A9272 /* IQSerialization+SimpleXML.m */; };
+		FFB028A81666DBCA00CED715 /* IQSerialization+UBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F3A163F2605002A9272 /* IQSerialization+UBJSON.m */; };
 		FFB028A91666DBCF00CED715 /* IQSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9E611639D803002A9272 /* IQSerialization.m */; };
 		FFB028AA1666DBCF00CED715 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E7E164703EE00597D70 /* NSData+Base64.m */; };
 		FFB028AB1666DBCF00CED715 /* IQSerialization+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EE61639DD3D002A9272 /* IQSerialization+JSON.m */; };
@@ -62,15 +62,15 @@
 		FFB0290A1666E39C00CED715 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = FFD77E7D164703EE00597D70 /* NSData+Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FFB0290B1666E39F00CED715 /* IQSerialization+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9EE51639DD3D002A9272 /* IQSerialization+JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FFB0290C1666E3B900CED715 /* IQSerialization+XMLRPC.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9EF3163A0E02002A9272 /* IQSerialization+XMLRPC.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FFB0290D1666E3C500CED715 /* IQSerialization+SimpleXML.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9F39163F2605002A9272 /* IQSerialization+SimpleXML.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB0290D1666E3C500CED715 /* IQSerialization+UBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9F39163F2605002A9272 /* IQSerialization+UBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FFB0290E1666E3CA00CED715 /* IQXMLWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = FFD77E931648713800597D70 /* IQXMLWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FFB0290F1666E3CC00CED715 /* IQObjectFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9EFD163A0EDF002A9272 /* IQObjectFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB0290F1666E3CC00CED715 /* IQObjectFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9EFD163A0EDF002A9272 /* IQObjectFactory.h */; };
 		FFB029401666E72E00CED715 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = FFD77E7D164703EE00597D70 /* NSData+Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FFB029411666E72E00CED715 /* IQSerialization+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9EE51639DD3D002A9272 /* IQSerialization+JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FFB029421666E72E00CED715 /* IQSerialization+XMLRPC.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9EF3163A0E02002A9272 /* IQSerialization+XMLRPC.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FFB029431666E72E00CED715 /* IQSerialization+SimpleXML.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9F39163F2605002A9272 /* IQSerialization+SimpleXML.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB029431666E72E00CED715 /* IQSerialization+UBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9F39163F2605002A9272 /* IQSerialization+UBJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FFB029441666E72E00CED715 /* IQXMLWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = FFD77E931648713800597D70 /* IQXMLWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FFB029451666E72E00CED715 /* IQObjectFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9EFD163A0EDF002A9272 /* IQObjectFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFB029451666E72E00CED715 /* IQObjectFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9EFD163A0EDF002A9272 /* IQObjectFactory.h */; };
 		FFB029461666E75A00CED715 /* IQSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9E5F1639D803002A9272 /* IQSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FFB0296616674DF200CED715 /* libIQSerialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E571639D803002A9272 /* libIQSerialization.a */; };
 		FFD77E7F164703EE00597D70 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E7E164703EE00597D70 /* NSData+Base64.m */; };
@@ -82,6 +82,19 @@
 		FFFCF9FF1B1907E400418EC9 /* PerformanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCF9FD1B1907E400418EC9 /* PerformanceTests.m */; };
 		FFFCFA021B190AB300418EC9 /* MyTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFA011B190AB300418EC9 /* MyTestClass.m */; };
 		FFFCFA031B190AB300418EC9 /* MyTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFA011B190AB300418EC9 /* MyTestClass.m */; };
+		FFFCFA961B19CFB900418EC9 /* yajl_version.h in Headers */ = {isa = PBXBuildFile; fileRef = FFFCFA911B19CFB900418EC9 /* yajl_version.h */; };
+		FFFCFAA81B19D88900418EC9 /* IQStreamObjectTokenizer.h in Headers */ = {isa = PBXBuildFile; fileRef = FFFCFAA61B19D88900418EC9 /* IQStreamObjectTokenizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFFCFAA91B19D88900418EC9 /* IQStreamObjectTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAA71B19D88900418EC9 /* IQStreamObjectTokenizer.m */; };
+		FFFCFAAA1B19D8B400418EC9 /* IQStreamObjectTokenizer.h in Headers */ = {isa = PBXBuildFile; fileRef = FFFCFAA61B19D88900418EC9 /* IQStreamObjectTokenizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FFFCFAAB1B19E37400418EC9 /* IQStreamObjectTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAA71B19D88900418EC9 /* IQStreamObjectTokenizer.m */; };
+		FFFCFAAD1B19E48D00418EC9 /* TokenizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAAC1B19E48D00418EC9 /* TokenizerTests.m */; };
+		FFFCFAAE1B19E48D00418EC9 /* TokenizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAAC1B19E48D00418EC9 /* TokenizerTests.m */; };
+		FFFCFAB01B19E5EE00418EC9 /* IQUBJSONSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAAF1B19E5EE00418EC9 /* IQUBJSONSerializationTests.m */; };
+		FFFCFAB11B19E5EE00418EC9 /* IQUBJSONSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAAF1B19E5EE00418EC9 /* IQUBJSONSerializationTests.m */; };
+		FFFCFAB41B19EABA00418EC9 /* IQSerialization+Tokenization.h in Headers */ = {isa = PBXBuildFile; fileRef = FFFCFAB21B19EABA00418EC9 /* IQSerialization+Tokenization.h */; };
+		FFFCFAB51B19EABA00418EC9 /* IQSerialization+Tokenization.h in Headers */ = {isa = PBXBuildFile; fileRef = FFFCFAB21B19EABA00418EC9 /* IQSerialization+Tokenization.h */; };
+		FFFCFAB61B19EABA00418EC9 /* IQSerialization+Tokenization.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAB31B19EABA00418EC9 /* IQSerialization+Tokenization.m */; };
+		FFFCFAB71B19EABA00418EC9 /* IQSerialization+Tokenization.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAB31B19EABA00418EC9 /* IQSerialization+Tokenization.m */; };
 		FFFE9B1F184BF291007BACB7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFE9B1D184BF1CC007BACB7 /* XCTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -111,26 +124,21 @@
 		FF9D9E6B1639D803002A9272 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF9D9E731639D803002A9272 /* IQSerializationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IQSerializationTests-Info.plist"; sourceTree = "<group>"; };
 		FF9D9E781639D803002A9272 /* IQJSONSerializationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQJSONSerializationTests.m; sourceTree = "<group>"; };
-		FF9D9EC71639DC4B002A9272 /* yajl_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_common.h; path = Contrib/yajl/api/yajl_common.h; sourceTree = SOURCE_ROOT; };
-		FF9D9EC81639DC4B002A9272 /* yajl_gen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_gen.h; path = Contrib/yajl/api/yajl_gen.h; sourceTree = SOURCE_ROOT; };
-		FF9D9EC91639DC4B002A9272 /* yajl_parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_parse.h; path = Contrib/yajl/api/yajl_parse.h; sourceTree = SOURCE_ROOT; };
-		FF9D9ECA1639DC4B002A9272 /* yajl_tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_tree.h; path = Contrib/yajl/api/yajl_tree.h; sourceTree = SOURCE_ROOT; };
-		FF9D9ECB1639DC4B002A9272 /* yajl_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_version.h; path = Contrib/yajl/api/yajl_version.h; sourceTree = SOURCE_ROOT; };
-		FF9D9ECC1639DC4B002A9272 /* yajl_alloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yajl_alloc.c; path = Contrib/yajl/yajl_alloc.c; sourceTree = SOURCE_ROOT; };
-		FF9D9ECD1639DC4B002A9272 /* yajl_alloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_alloc.h; path = Contrib/yajl/yajl_alloc.h; sourceTree = SOURCE_ROOT; };
-		FF9D9ECE1639DC4B002A9272 /* yajl_buf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yajl_buf.c; path = Contrib/yajl/yajl_buf.c; sourceTree = SOURCE_ROOT; };
-		FF9D9ECF1639DC4B002A9272 /* yajl_buf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_buf.h; path = Contrib/yajl/yajl_buf.h; sourceTree = SOURCE_ROOT; };
-		FF9D9ED01639DC4B002A9272 /* yajl_bytestack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_bytestack.h; path = Contrib/yajl/yajl_bytestack.h; sourceTree = SOURCE_ROOT; };
-		FF9D9ED11639DC4B002A9272 /* yajl_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_common.h; path = Contrib/yajl/yajl_common.h; sourceTree = SOURCE_ROOT; };
-		FF9D9ED21639DC4B002A9272 /* yajl_encode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yajl_encode.c; path = Contrib/yajl/yajl_encode.c; sourceTree = SOURCE_ROOT; };
-		FF9D9ED31639DC4B002A9272 /* yajl_encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_encode.h; path = Contrib/yajl/yajl_encode.h; sourceTree = SOURCE_ROOT; };
-		FF9D9ED41639DC4B002A9272 /* yajl_gen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yajl_gen.c; path = Contrib/yajl/yajl_gen.c; sourceTree = SOURCE_ROOT; };
-		FF9D9ED51639DC4B002A9272 /* yajl_lex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yajl_lex.c; path = Contrib/yajl/yajl_lex.c; sourceTree = SOURCE_ROOT; };
-		FF9D9ED61639DC4B002A9272 /* yajl_lex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_lex.h; path = Contrib/yajl/yajl_lex.h; sourceTree = SOURCE_ROOT; };
-		FF9D9ED71639DC4B002A9272 /* yajl_parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yajl_parser.c; path = Contrib/yajl/yajl_parser.c; sourceTree = SOURCE_ROOT; };
-		FF9D9ED81639DC4B002A9272 /* yajl_parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_parser.h; path = Contrib/yajl/yajl_parser.h; sourceTree = SOURCE_ROOT; };
-		FF9D9ED91639DC4B002A9272 /* yajl_tree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yajl_tree.c; path = Contrib/yajl/yajl_tree.c; sourceTree = SOURCE_ROOT; };
-		FF9D9EDB1639DC4B002A9272 /* yajl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yajl.c; path = Contrib/yajl/yajl.c; sourceTree = SOURCE_ROOT; };
+		FF9D9ECC1639DC4B002A9272 /* yajl_alloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yajl_alloc.c; path = Contrib/yajl/src/yajl_alloc.c; sourceTree = SOURCE_ROOT; };
+		FF9D9ECD1639DC4B002A9272 /* yajl_alloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_alloc.h; path = Contrib/yajl/src/yajl_alloc.h; sourceTree = SOURCE_ROOT; };
+		FF9D9ECE1639DC4B002A9272 /* yajl_buf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yajl_buf.c; path = Contrib/yajl/src/yajl_buf.c; sourceTree = SOURCE_ROOT; };
+		FF9D9ECF1639DC4B002A9272 /* yajl_buf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_buf.h; path = Contrib/yajl/src/yajl_buf.h; sourceTree = SOURCE_ROOT; };
+		FF9D9ED01639DC4B002A9272 /* yajl_bytestack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_bytestack.h; path = Contrib/yajl/src/yajl_bytestack.h; sourceTree = SOURCE_ROOT; };
+		FF9D9ED11639DC4B002A9272 /* yajl_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_common.h; path = Contrib/yajl/src/api/yajl_common.h; sourceTree = SOURCE_ROOT; };
+		FF9D9ED21639DC4B002A9272 /* yajl_encode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yajl_encode.c; path = Contrib/yajl/src/yajl_encode.c; sourceTree = SOURCE_ROOT; };
+		FF9D9ED31639DC4B002A9272 /* yajl_encode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_encode.h; path = Contrib/yajl/src/yajl_encode.h; sourceTree = SOURCE_ROOT; };
+		FF9D9ED41639DC4B002A9272 /* yajl_gen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yajl_gen.c; path = Contrib/yajl/src/yajl_gen.c; sourceTree = SOURCE_ROOT; };
+		FF9D9ED51639DC4B002A9272 /* yajl_lex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yajl_lex.c; path = Contrib/yajl/src/yajl_lex.c; sourceTree = SOURCE_ROOT; };
+		FF9D9ED61639DC4B002A9272 /* yajl_lex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_lex.h; path = Contrib/yajl/src/yajl_lex.h; sourceTree = SOURCE_ROOT; };
+		FF9D9ED71639DC4B002A9272 /* yajl_parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yajl_parser.c; path = Contrib/yajl/src/yajl_parser.c; sourceTree = SOURCE_ROOT; };
+		FF9D9ED81639DC4B002A9272 /* yajl_parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_parser.h; path = Contrib/yajl/src/yajl_parser.h; sourceTree = SOURCE_ROOT; };
+		FF9D9ED91639DC4B002A9272 /* yajl_tree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yajl_tree.c; path = Contrib/yajl/src/yajl_tree.c; sourceTree = SOURCE_ROOT; };
+		FF9D9EDB1639DC4B002A9272 /* yajl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = yajl.c; path = Contrib/yajl/src/yajl.c; sourceTree = SOURCE_ROOT; };
 		FF9D9EE51639DD3D002A9272 /* IQSerialization+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQSerialization+JSON.h"; sourceTree = "<group>"; };
 		FF9D9EE61639DD3D002A9272 /* IQSerialization+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQSerialization+JSON.m"; sourceTree = "<group>"; };
 		FF9D9EF3163A0E02002A9272 /* IQSerialization+XMLRPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQSerialization+XMLRPC.h"; sourceTree = "<group>"; };
@@ -139,8 +147,8 @@
 		FF9D9EFE163A0EDF002A9272 /* IQObjectFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQObjectFactory.m; sourceTree = "<group>"; };
 		FF9D9F01163A1349002A9272 /* IQXMLRPCSerializationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQXMLRPCSerializationTests.m; sourceTree = "<group>"; };
 		FF9D9F35163F1A3D002A9272 /* Tests_OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests_OSX.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF9D9F39163F2605002A9272 /* IQSerialization+SimpleXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQSerialization+SimpleXML.h"; sourceTree = "<group>"; };
-		FF9D9F3A163F2605002A9272 /* IQSerialization+SimpleXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQSerialization+SimpleXML.m"; sourceTree = "<group>"; };
+		FF9D9F39163F2605002A9272 /* IQSerialization+UBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQSerialization+UBJSON.h"; sourceTree = "<group>"; };
+		FF9D9F3A163F2605002A9272 /* IQSerialization+UBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQSerialization+UBJSON.m"; sourceTree = "<group>"; };
 		FF9D9F791641BFA1002A9272 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FF9D9F811641D7F1002A9272 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		FF9D9FB61646AD4E002A9272 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -160,6 +168,13 @@
 		FFFCF9FD1B1907E400418EC9 /* PerformanceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformanceTests.m; sourceTree = "<group>"; };
 		FFFCFA001B190AB300418EC9 /* MyTestClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTestClass.h; sourceTree = "<group>"; };
 		FFFCFA011B190AB300418EC9 /* MyTestClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTestClass.m; sourceTree = "<group>"; };
+		FFFCFA911B19CFB900418EC9 /* yajl_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = yajl_version.h; path = Contrib/yajl/include/yajl/yajl_version.h; sourceTree = SOURCE_ROOT; };
+		FFFCFAA61B19D88900418EC9 /* IQStreamObjectTokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQStreamObjectTokenizer.h; sourceTree = "<group>"; };
+		FFFCFAA71B19D88900418EC9 /* IQStreamObjectTokenizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQStreamObjectTokenizer.m; sourceTree = "<group>"; };
+		FFFCFAAC1B19E48D00418EC9 /* TokenizerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenizerTests.m; sourceTree = "<group>"; };
+		FFFCFAAF1B19E5EE00418EC9 /* IQUBJSONSerializationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQUBJSONSerializationTests.m; sourceTree = "<group>"; };
+		FFFCFAB21B19EABA00418EC9 /* IQSerialization+Tokenization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQSerialization+Tokenization.h"; sourceTree = "<group>"; };
+		FFFCFAB31B19EABA00418EC9 /* IQSerialization+Tokenization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQSerialization+Tokenization.m"; sourceTree = "<group>"; };
 		FFFE9B1D184BF1CC007BACB7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -246,14 +261,18 @@
 			children = (
 				FF9D9E5F1639D803002A9272 /* IQSerialization.h */,
 				FF9D9E611639D803002A9272 /* IQSerialization.m */,
+				FFFCFAB21B19EABA00418EC9 /* IQSerialization+Tokenization.h */,
+				FFFCFAB31B19EABA00418EC9 /* IQSerialization+Tokenization.m */,
+				FFFCFAA61B19D88900418EC9 /* IQStreamObjectTokenizer.h */,
+				FFFCFAA71B19D88900418EC9 /* IQStreamObjectTokenizer.m */,
 				FFD77E7D164703EE00597D70 /* NSData+Base64.h */,
 				FFD77E7E164703EE00597D70 /* NSData+Base64.m */,
 				FF9D9EE51639DD3D002A9272 /* IQSerialization+JSON.h */,
 				FF9D9EE61639DD3D002A9272 /* IQSerialization+JSON.m */,
 				FF9D9EF3163A0E02002A9272 /* IQSerialization+XMLRPC.h */,
 				FF9D9EF4163A0E02002A9272 /* IQSerialization+XMLRPC.m */,
-				FF9D9F39163F2605002A9272 /* IQSerialization+SimpleXML.h */,
-				FF9D9F3A163F2605002A9272 /* IQSerialization+SimpleXML.m */,
+				FF9D9F39163F2605002A9272 /* IQSerialization+UBJSON.h */,
+				FF9D9F3A163F2605002A9272 /* IQSerialization+UBJSON.m */,
 				FFD77E931648713800597D70 /* IQXMLWriter.h */,
 				FFD77E941648713900597D70 /* IQXMLWriter.m */,
 				FF9D9EFD163A0EDF002A9272 /* IQObjectFactory.h */,
@@ -279,9 +298,11 @@
 				FFFCFA011B190AB300418EC9 /* MyTestClass.m */,
 				FF9D9E781639D803002A9272 /* IQJSONSerializationTests.m */,
 				FF9D9F01163A1349002A9272 /* IQXMLRPCSerializationTests.m */,
+				FFFCFAAF1B19E5EE00418EC9 /* IQUBJSONSerializationTests.m */,
+				FFFCF9FD1B1907E400418EC9 /* PerformanceTests.m */,
+				FFFCFAAC1B19E48D00418EC9 /* TokenizerTests.m */,
 				FFD77E8316471CC400597D70 /* Base64Tests.m */,
 				FF9D9E721639D803002A9272 /* Supporting Files */,
-				FFFCF9FD1B1907E400418EC9 /* PerformanceTests.m */,
 			);
 			path = IQSerializationTests;
 			sourceTree = "<group>";
@@ -297,11 +318,7 @@
 		FF9D9E831639D8A9002A9272 /* yajl */ = {
 			isa = PBXGroup;
 			children = (
-				FF9D9EC71639DC4B002A9272 /* yajl_common.h */,
-				FF9D9EC81639DC4B002A9272 /* yajl_gen.h */,
-				FF9D9EC91639DC4B002A9272 /* yajl_parse.h */,
-				FF9D9ECA1639DC4B002A9272 /* yajl_tree.h */,
-				FF9D9ECB1639DC4B002A9272 /* yajl_version.h */,
+				FFFCFA911B19CFB900418EC9 /* yajl_version.h */,
 				FF9D9ECC1639DC4B002A9272 /* yajl_alloc.c */,
 				FF9D9ECD1639DC4B002A9272 /* yajl_alloc.h */,
 				FF9D9ECE1639DC4B002A9272 /* yajl_buf.c */,
@@ -340,11 +357,13 @@
 			files = (
 				FFB029091666E39600CED715 /* IQSerialization.h in Headers */,
 				FFB0290A1666E39C00CED715 /* NSData+Base64.h in Headers */,
+				FFFCFAB51B19EABA00418EC9 /* IQSerialization+Tokenization.h in Headers */,
 				FFB0290B1666E39F00CED715 /* IQSerialization+JSON.h in Headers */,
 				FFB0290C1666E3B900CED715 /* IQSerialization+XMLRPC.h in Headers */,
-				FFB0290D1666E3C500CED715 /* IQSerialization+SimpleXML.h in Headers */,
+				FFB0290D1666E3C500CED715 /* IQSerialization+UBJSON.h in Headers */,
 				FFB0290E1666E3CA00CED715 /* IQXMLWriter.h in Headers */,
 				FFB0290F1666E3CC00CED715 /* IQObjectFactory.h in Headers */,
+				FFFCFAAA1B19D8B400418EC9 /* IQStreamObjectTokenizer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,9 +372,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFB029401666E72E00CED715 /* NSData+Base64.h in Headers */,
+				FFFCFAA81B19D88900418EC9 /* IQStreamObjectTokenizer.h in Headers */,
+				FFFCFAB41B19EABA00418EC9 /* IQSerialization+Tokenization.h in Headers */,
 				FFB029411666E72E00CED715 /* IQSerialization+JSON.h in Headers */,
 				FFB029421666E72E00CED715 /* IQSerialization+XMLRPC.h in Headers */,
-				FFB029431666E72E00CED715 /* IQSerialization+SimpleXML.h in Headers */,
+				FFFCFA961B19CFB900418EC9 /* yajl_version.h in Headers */,
+				FFB029431666E72E00CED715 /* IQSerialization+UBJSON.h in Headers */,
 				FFB029441666E72E00CED715 /* IQXMLWriter.h in Headers */,
 				FFB029451666E72E00CED715 /* IQObjectFactory.h in Headers */,
 				FFB029461666E75A00CED715 /* IQSerialization.h in Headers */,
@@ -546,13 +568,15 @@
 				FF9D9EDE1639DC4B002A9272 /* yajl_encode.c in Sources */,
 				FF9D9EDF1639DC4B002A9272 /* yajl_gen.c in Sources */,
 				FF9D9EE01639DC4B002A9272 /* yajl_lex.c in Sources */,
+				FFFCFAB61B19EABA00418EC9 /* IQSerialization+Tokenization.m in Sources */,
 				FF9D9EE11639DC4B002A9272 /* yajl_parser.c in Sources */,
 				FF9D9EE21639DC4B002A9272 /* yajl_tree.c in Sources */,
 				FF9D9EE41639DC4B002A9272 /* yajl.c in Sources */,
 				FF9D9EE71639DD3D002A9272 /* IQSerialization+JSON.m in Sources */,
 				FF9D9EF5163A0E02002A9272 /* IQSerialization+XMLRPC.m in Sources */,
 				FF9D9EFF163A0EDF002A9272 /* IQObjectFactory.m in Sources */,
-				FF9D9F3B163F2605002A9272 /* IQSerialization+SimpleXML.m in Sources */,
+				FFFCFAA91B19D88900418EC9 /* IQStreamObjectTokenizer.m in Sources */,
+				FF9D9F3B163F2605002A9272 /* IQSerialization+UBJSON.m in Sources */,
 				FFD77E7F164703EE00597D70 /* NSData+Base64.m in Sources */,
 				FFD77E951648713900597D70 /* IQXMLWriter.m in Sources */,
 			);
@@ -562,11 +586,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFFCFAB01B19E5EE00418EC9 /* IQUBJSONSerializationTests.m in Sources */,
 				FFFCFA021B190AB300418EC9 /* MyTestClass.m in Sources */,
 				FF9D9EFC163A0E4B002A9272 /* IQJSONSerializationTests.m in Sources */,
 				FF9D9F02163A1349002A9272 /* IQXMLRPCSerializationTests.m in Sources */,
 				FFFCF9FE1B1907E400418EC9 /* PerformanceTests.m in Sources */,
 				FFD77E8416471CC400597D70 /* Base64Tests.m in Sources */,
+				FFFCFAAD1B19E48D00418EC9 /* TokenizerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,11 +600,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFFCFAB11B19E5EE00418EC9 /* IQUBJSONSerializationTests.m in Sources */,
 				FFFCFA031B190AB300418EC9 /* MyTestClass.m in Sources */,
 				FF9D9F28163F1A3D002A9272 /* IQJSONSerializationTests.m in Sources */,
 				FF9D9F29163F1A3D002A9272 /* IQXMLRPCSerializationTests.m in Sources */,
 				FFFCF9FF1B1907E400418EC9 /* PerformanceTests.m in Sources */,
 				FFD77E8516471CC400597D70 /* Base64Tests.m in Sources */,
+				FFFCFAAE1B19E48D00418EC9 /* TokenizerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,16 +616,18 @@
 			files = (
 				FFB028A61666DBC200CED715 /* IQObjectFactory.m in Sources */,
 				FFB028A71666DBC500CED715 /* IQXMLWriter.m in Sources */,
-				FFB028A81666DBCA00CED715 /* IQSerialization+SimpleXML.m in Sources */,
+				FFB028A81666DBCA00CED715 /* IQSerialization+UBJSON.m in Sources */,
 				FFB028A91666DBCF00CED715 /* IQSerialization.m in Sources */,
 				FFB028AA1666DBCF00CED715 /* NSData+Base64.m in Sources */,
 				FFB028AB1666DBCF00CED715 /* IQSerialization+JSON.m in Sources */,
+				FFFCFAB71B19EABA00418EC9 /* IQSerialization+Tokenization.m in Sources */,
 				FFB028AC1666DBCF00CED715 /* IQSerialization+XMLRPC.m in Sources */,
 				FFB028AD1666DCAA00CED715 /* yajl_alloc.c in Sources */,
 				FFB028AE1666DCAA00CED715 /* yajl_buf.c in Sources */,
 				FFB028AF1666DCB000CED715 /* yajl_encode.c in Sources */,
 				FFB028B01666DCB000CED715 /* yajl_gen.c in Sources */,
 				FFB028B11666DCB000CED715 /* yajl_lex.c in Sources */,
+				FFFCFAAB1B19E37400418EC9 /* IQStreamObjectTokenizer.m in Sources */,
 				FFB028B21666DCB000CED715 /* yajl_parser.c in Sources */,
 				FFB028B31666DCB000CED715 /* yajl_tree.c in Sources */,
 				FFB028B41666DCB000CED715 /* yajl.c in Sources */,
@@ -623,7 +653,7 @@
 		FF9D9E7A1639D803002A9272 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -651,7 +681,7 @@
 		FF9D9E7B1639D803002A9272 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -735,6 +765,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Tests_OSX;
@@ -746,6 +778,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Tests_OSX;
@@ -764,7 +798,6 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				HEADER_SEARCH_PATHS = Contrib/yajl;
 				INFOPLIST_FILE = "IQSerialization/IQSerialization-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = IQSerialization;
@@ -785,7 +818,6 @@
 					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				HEADER_SEARCH_PATHS = Contrib/yajl;
 				INFOPLIST_FILE = "IQSerialization/IQSerialization-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = IQSerialization;

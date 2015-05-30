@@ -1,5 +1,5 @@
 //
-//  IQJSONSerialization.h
+//  IQSerialization+UBJSON.h
 //  IQSerialization for iOS and Mac OS X
 //
 //  Copyright © 2012-2015 Rickard Lyrenius
@@ -18,11 +18,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDictionary (JSONSerialization)
-+ (NSDictionary*) dictionaryWithJSONData:(NSData*)jsonData;
-+ (NSDictionary*) dictionaryWithJSONString:(NSString*)jsonString;
-@end
-
-@interface NSObject (JSONSerialization)
-- (NSString*) JSONRepresentation;
+@interface NSDictionary (SimpleXMLSerialization)
++ (NSDictionary*) dictionaryWithSimpleXMLData:(NSData*)jsonData;
++ (NSDictionary*) dictionaryWithSimpleXMLString:(NSString*)jsonString;
 @end

@@ -47,6 +47,10 @@ typedef enum IQXMLRPCSerializerState {
 }
 @end
 
+#define DATE_FORMAT_STANDARD @"yyyyMMdd'T'HH:mm:ss"
+#define DATE_FORMAT_TIMEZONE @"yyyyMMdd'T'HH:mm:ssZ"
+#define DATE_FORMAT_ALTERNATIVE @"yyyy-MM-dd'T'HH:mm:ss"
+
 @implementation _IQXMLRPCObjectFactory
 - (id)initWithSerialization:(IQSerialization*)serialization
 {
@@ -58,13 +62,13 @@ typedef enum IQXMLRPCSerializerState {
         NSTimeZone* tz = serialization.timeZone;
         if(!tz) tz =[NSTimeZone timeZoneWithAbbreviation:@"UTC"];
         dateFormatter1 = [NSDateFormatter new];
-        dateFormatter1.dateFormat = @"yyyyMMdd'T'HH:mm:ss";
+        dateFormatter1.dateFormat = DATE_FORMAT_STANDARD;
         dateFormatter1.timeZone = tz;
         dateFormatter2 = [NSDateFormatter new];
-        dateFormatter2.dateFormat = @"yyyyMMdd'T'HH:mm:ssZ";
+        dateFormatter2.dateFormat = DATE_FORMAT_TIMEZONE;
         dateFormatter2.timeZone = tz;
         dateFormatter3 = [NSDateFormatter new];
-        dateFormatter3.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        dateFormatter3.dateFormat = DATE_FORMAT_ALTERNATIVE;
         dateFormatter3.timeZone = tz;
         explicitNull = !serialization.ignoreNilValues;
         encoding = serialization.textEncoding;
@@ -197,6 +201,7 @@ typedef enum IQXMLRPCSerializerState {
             break;
         case IQXMLRPCSerializerStateValueContent:
         case IQXMLRPCSerializerStateMemberName:
+        case IQXMLRPCSerializerStateMethodName:
             [self _fail:[NSString stringWithFormat:@"Unexpected '%@' element", elementName]];
             [parser abortParsing];
             break;
@@ -327,7 +332,7 @@ BOOL _IQDeserializeXMLRPCData(id object, NSData* xmlData, IQSerialization* seria
     }
     return YES;
 }
-static BOOL _IQXMLRPCSerializeValue(IQXMLWriter* writer, id object, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError)
+static BOOL _IQXMLRPCSerializeValue(IQXMLWriter* writer, id object, IQSerialization* serialization, NSDateFormatter* dateFormatter, IQSerializationFlags flags, NSError** outError)
 {
     [writer writeStartElement:@"value"];
     if(!object || object == [NSNull null]) {
@@ -356,11 +361,15 @@ static BOOL _IQXMLRPCSerializeValue(IQXMLWriter* writer, id object, IQSerializat
         [writer writeStartElement:@"string"];
         [writer writeCharacters:(NSString*)object];
         [writer writeEndElement];
+    } else if([object isKindOfClass:[NSDate class]]) {
+        [writer writeStartElement:@"dateTime.iso8601"];
+        [writer writeCharacters:[dateFormatter stringFromDate:(NSDate*)object]];
+        [writer writeEndElement];
     } else if([object isKindOfClass:[NSArray class]] || [object isKindOfClass:[NSSet class]] || [object isKindOfClass:[NSOrderedSet class]]) {
         [writer writeStartElement:@"array"];
         [writer writeStartElement:@"data"];
         for(id value in object) {
-            if(!_IQXMLRPCSerializeValue(writer, value, serialization, flags, outError))
+            if(!_IQXMLRPCSerializeValue(writer, value, serialization, dateFormatter, flags, outError))
                 return NO;
         }
         [writer writeEndElement];
@@ -376,7 +385,7 @@ static BOOL _IQXMLRPCSerializeValue(IQXMLWriter* writer, id object, IQSerializat
             [writer writeStartElement:@"name"];
             [writer writeCharacters:key];
             [writer writeEndElement];
-            if(!_IQXMLRPCSerializeValue(writer, value, serialization, flags, outError))
+            if(!_IQXMLRPCSerializeValue(writer, value, serialization, dateFormatter, flags, outError))
                 return NO;
             [writer writeEndElement];
         }
@@ -392,7 +401,7 @@ static BOOL _IQXMLRPCSerializeValue(IQXMLWriter* writer, id object, IQSerializat
             [writer writeStartElement:@"name"];
             [writer writeCharacters:property];
             [writer writeEndElement];
-            if(!_IQXMLRPCSerializeValue(writer, value, serialization, flags, outError))
+            if(!_IQXMLRPCSerializeValue(writer, value, serialization, dateFormatter, flags, outError))
                 return NO;
             [writer writeEndElement];
         }
@@ -403,6 +412,12 @@ static BOOL _IQXMLRPCSerializeValue(IQXMLWriter* writer, id object, IQSerializat
 }
 static BOOL _IQXMLRPCSerializeRoot(IQXMLWriter* writer, id object, IQSerialization* serialization, IQSerializationFlags flags, NSError** outError)
 {
+    NSTimeZone* tz = serialization.timeZone;
+    if(!tz) tz = [NSTimeZone timeZoneWithAbbreviation:@"UTC"];
+    NSDateFormatter* dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateFormat = serialization.forceWriteTimezone ? DATE_FORMAT_TIMEZONE : DATE_FORMAT_STANDARD;
+    dateFormatter.timeZone = tz;
+
     writer.encoding = serialization.textEncoding;
     if(flags & (IQSerializationFlagsRPCResponse|IQSerializationFlagsRPCFault)) {
         [writer writeStartElement:@"methodResponse"];
@@ -426,7 +441,7 @@ static BOOL _IQXMLRPCSerializeRoot(IQXMLWriter* writer, id object, IQSerializati
             if((value == nil || value == [NSNull null]) && serialization.ignoreNilValues)
                 continue;
             [writer writeStartElement:@"param"];
-            if(!_IQXMLRPCSerializeValue(writer, value, serialization, flags, outError))
+            if(!_IQXMLRPCSerializeValue(writer, value, serialization, dateFormatter, flags, outError))
                 return NO;
             [writer writeEndElement];
         }

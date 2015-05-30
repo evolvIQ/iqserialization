@@ -173,11 +173,12 @@ typedef enum {
 
 /**
  Serializes an object to a string. Convenience method that will call <code>serializeObject:format</code>.
- 
+
  @returns The string if successful, or nil if an error occurred. The error property will hold the
  error in this case.
  */
 - (NSString*)stringFromObject:(id)object format:(IQSerializationFormat)fmt;
+
 /**
  Serializes an object to a string. Convenience method that will call <code>serializeObject:format</code>.
  
@@ -288,5 +289,18 @@ typedef enum {
  To use UTC times, set this property to <code>[NSTimeZone timeZoneWithName:@"UTC"]</code>.
  */
 @property (nonatomic, retain) NSTimeZone* timeZone;
+
+/**  \brief Always include timezones when serializing date/times, even if breaking the standard.
+ 
+ Some serialization formats (like XML-RPC) does not strictly allow including timezone information
+ with the formatted dates. Setting this property to YES, the specification is relaxed to allow
+ sending complete date/times with timezone at the expense of compatibility with some implementations.
+ 
+ Note that dates with timezone are always parsed, regardless of this property value.
+ 
+ Default is NO.
+ */
+@property (nonatomic) BOOL forceWriteTimezone;
+
 
 @end

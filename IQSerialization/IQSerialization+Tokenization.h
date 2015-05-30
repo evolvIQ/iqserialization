@@ -1,5 +1,5 @@
 //
-//  IQJSONSerialization.h
+//  IQSerialization+Tokenization.h
 //  IQSerialization for iOS and Mac OS X
 //
 //  Copyright © 2012-2015 Rickard Lyrenius
@@ -17,12 +17,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IQSerialization.h"
 
-@interface NSDictionary (JSONSerialization)
-+ (NSDictionary*) dictionaryWithJSONData:(NSData*)jsonData;
-+ (NSDictionary*) dictionaryWithJSONString:(NSString*)jsonString;
-@end
+@interface IQSerialization (Tokenization)
 
-@interface NSObject (JSONSerialization)
-- (NSString*) JSONRepresentation;
+- (NSData*) extractNextDocumentFromStream:(NSInputStream*)stream format:(IQSerializationFormat)fmt state:(NSObject**)state maxDocumentLength:(NSUInteger)maxSize;
+
 @end

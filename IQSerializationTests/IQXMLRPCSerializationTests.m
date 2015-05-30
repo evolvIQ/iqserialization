@@ -132,6 +132,62 @@
     XCTAssertEqualObjects(parsed, params, @"Object changed during write/parse cycle");
 }
 
+- (void)testXMLRPCGenerateStandardDateTime
+{
+    id params = @[ [NSDate dateWithString:@"2014-05-21 13:36:00 +0200"] ];
+    IQSerialization* ser = [IQSerialization new];
+    NSString* string = [ser stringFromObject:params format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(string, @"Failed to generate: %@", ser.error);
+    id doc = [[NSXMLDocument alloc] initWithXMLString:string options:0 error:nil];
+    XCTAssertNotNil(doc, @"Resulting XML was not wellformed");
+    id root = [[doc children] firstObject];
+    id value = [[[[[[[[[root children] firstObject] children] firstObject] children] firstObject] children] firstObject] stringValue];
+    XCTAssertEqualObjects(value, @"20140521T11:36:00");
+}
+
+- (void)testXMLRPCGenerateLocalDateTime
+{
+    id params = @[ [NSDate dateWithString:@"2014-05-21 13:36:00 +0200"] ];
+    IQSerialization* ser = [IQSerialization new];
+    ser.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"CET"];
+    NSString* string = [ser stringFromObject:params format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(string, @"Failed to generate: %@", ser.error);
+    id doc = [[NSXMLDocument alloc] initWithXMLString:string options:0 error:nil];
+    XCTAssertNotNil(doc, @"Resulting XML was not wellformed");
+    id root = [[doc children] firstObject];
+    id value = [[[[[[[[[root children] firstObject] children] firstObject] children] firstObject] children] firstObject] stringValue];
+    XCTAssertEqualObjects(value, @"20140521T13:36:00");
+}
+
+- (void)testXMLRPCGenerateTZExtendedDateTime
+{
+    id params = @[ [NSDate dateWithString:@"2014-05-21 13:36:00 +0200"] ];
+    IQSerialization* ser = [IQSerialization new];
+    ser.forceWriteTimezone = YES;
+    NSString* string = [ser stringFromObject:params format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(string, @"Failed to generate: %@", ser.error);
+    id doc = [[NSXMLDocument alloc] initWithXMLString:string options:0 error:nil];
+    XCTAssertNotNil(doc, @"Resulting XML was not wellformed");
+    id root = [[doc children] firstObject];
+    id value = [[[[[[[[[root children] firstObject] children] firstObject] children] firstObject] children] firstObject] stringValue];
+    XCTAssertEqualObjects(value, @"20140521T11:36:00+0000");
+}
+
+- (void)testXMLRPCGenerateTZExtendedLocalDateTime
+{
+    id params = @[ [NSDate dateWithString:@"2014-05-21 13:36:00 +0200"] ];
+    IQSerialization* ser = [IQSerialization new];
+    ser.forceWriteTimezone = YES;
+    ser.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"CET"];
+    NSString* string = [ser stringFromObject:params format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(string, @"Failed to generate: %@", ser.error);
+    id doc = [[NSXMLDocument alloc] initWithXMLString:string options:0 error:nil];
+    XCTAssertNotNil(doc, @"Resulting XML was not wellformed");
+    id root = [[doc children] firstObject];
+    id value = [[[[[[[[[root children] firstObject] children] firstObject] children] firstObject] children] firstObject] stringValue];
+    XCTAssertEqualObjects(value, @"20140521T13:36:00+0200");
+}
+
 - (void)testXMLRPCGenerateIgnoredNulls {
     id object = @[ @42, [NSNull null] ];
     IQSerialization* ser = [IQSerialization new];

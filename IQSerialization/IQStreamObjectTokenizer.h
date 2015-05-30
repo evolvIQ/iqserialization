@@ -1,5 +1,5 @@
 //
-//  IQSimpleXMLSerialization.m
+//  IQSerialization.h
 //  IQSerialization for iOS and Mac OS X
 //
 //  Copyright © 2012-2015 Rickard Lyrenius
@@ -16,5 +16,22 @@
 //  limitations under the License.
 //
 
-#import "IQSerialization+SimpleXML.h"
+#import <Foundation/Foundation.h>
 
+#import "IQSerialization.h"
+
+@protocol IQStreamObjectDelegate
+@required
+- (void) stream:(NSStream*)stream containsDocumentWithData:(NSData*)data;
+@optional
+- (void) endOfStream:(NSStream*)stream;
+@end
+
+@interface IQStreamObjectTokenizer : NSObject
+- (id) initWithStream:(NSInputStream*)stream serialization:(IQSerialization*)serialization format:(IQSerializationFormat)format;
+- (void) scheduleInRunLoop:(NSRunLoop*)runLoop forMode:(NSString*)mode;
+- (void) run;
+
+@property (nonatomic) id<IQStreamObjectDelegate> delegate;
+@property (nonatomic) NSUInteger maxObjectSize;
+@end
