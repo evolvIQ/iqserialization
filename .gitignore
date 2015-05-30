@@ -18,3 +18,7 @@ Documentation/latex
 Documentation/html
 PerformanceTest/test.json
 Products/*
+Contrib/yajl/share/pkgconfig
+CMakeCache.txt
+CMakeFiles/
+
