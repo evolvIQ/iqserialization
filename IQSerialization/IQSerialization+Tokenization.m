@@ -22,6 +22,7 @@ typedef enum {
     State_Init,
     State_Document,
     State_ElementOrComment,
+    State_CommentOrInstruction,
     State_BeginElement,
     State_EmptyElement,
     State_EndElement,
@@ -36,7 +37,7 @@ typedef enum {
 @interface _IQTokenizationState : NSObject {
 @public
     NSMutableData* _data;
-    int _depth, _endCommentCount;
+    int _depth, _dashCount;
     char _last;
     State _state;
     NSUInteger _startPos;
@@ -73,7 +74,7 @@ static unsigned int ScanXml(_IQTokenizationState* s, NSUInteger max, uint8_t* bu
                     } else {
                         s->_state = State_Document;
                     }
-                } else if((s->_state == State_Comment && s->_endCommentCount >= 2) || s->_state == State_Instruction) {
+                } else if((s->_state == State_Comment && s->_dashCount >= 2) || s->_state == State_Instruction) {
                     s->_state = State_Document;
                 }
                 break;
@@ -89,19 +90,24 @@ static unsigned int ScanXml(_IQTokenizationState* s, NSUInteger max, uint8_t* bu
                 break;
             case '!':
                 if(s->_state == State_ElementOrComment) {
+                    s->_state = State_CommentOrInstruction;
+                }
+                break;
+            case '-':
+                if(s->_state == State_CommentOrInstruction && s->_dashCount > 0) {
                     s->_state = State_Comment;
                 }
                 break;
             default:
                 if(s->_state == State_ElementOrComment) {
                     s->_state = State_BeginElement;
+                } else if(s->_state == State_CommentOrInstruction) {
+                    s->_state = State_Instruction;
                 }
                 break;
         }
-        if(s->_state == State_Comment) {
-            if(buf[i] == '-') ++s->_endCommentCount;
-            else s->_endCommentCount = 0;
-        }
+        if(buf[i] == '-') ++s->_dashCount;
+        else s->_dashCount = 0;
         s->_last = buf[i];
     }
     return 0;

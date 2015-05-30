@@ -112,6 +112,19 @@
     XCTAssertEqualObjects([[NSString alloc] initWithData:array[1] encoding:NSUTF8StringEncoding], @"<root2/>");
 }
 
+- (void)testTwoXmlDocumentsWithDoctype {
+    NSInputStream* testData = STREAM(@"<!doctype misc><root></root>\r\n<!doctype misc><root2/>");
+    [testData open];
+    XCTAssertTrue(testData.hasBytesAvailable);
+    IQSerialization* serialization = [IQSerialization new];
+    IQStreamObjectTokenizer* tokenizer = [[IQStreamObjectTokenizer alloc] initWithStream:testData serialization:serialization format:IQSerializationFormatSimpleXML];
+    tokenizer.delegate = self;
+    [tokenizer run];
+    XCTAssertEqual(array.count, 2, @"Expected 2 documents, found %d", (int)array.count);
+    XCTAssertEqualObjects([[NSString alloc] initWithData:array[0] encoding:NSUTF8StringEncoding], @"<!doctype misc><root></root>");
+    XCTAssertEqualObjects([[NSString alloc] initWithData:array[1] encoding:NSUTF8StringEncoding], @"<!doctype misc><root2/>");
+}
+
 - (void)testTwoXmlDocumentsWithAngleBracketComments {
     NSInputStream* testData = STREAM(@"<root><!-- Weird <> comment --></root><root2/>");
     [testData open];
