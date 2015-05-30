@@ -17,7 +17,9 @@ The following formats are implemented:
 
 * XML-RPC - Written in pure Objective-C using `NSXMLParser`
   
-In addition, a convienient Base64 encoding/decoding API is provided as a category on the `NSData` class.
+In addition, the following features are provided:
+* Convienient Base64 encoding/decoding API is provided as a category on the `NSData` class.
+* Splitting of streams into documents based by tokenizations. Useful when sending multiple objects over a single stream, such as JSON-RPC/XML-RPC over a web socket or when reading XML-based log files.
 
 How to use it
 -------------
