@@ -68,6 +68,8 @@ static NSString *const XSI_NAMESPACE_URI_PREFIX = @"xsi";
     
     // if true, then write elements without children as <start /> instead of <start></start>
     BOOL automaticEmptyElements;
+
+    CFStringEncoding cfEncoding;
 }
 
 #pragma mark - Private methods
@@ -107,6 +109,7 @@ static NSString *const XSI_NAMESPACE_URI_PREFIX = @"xsi";
         [namespaceCounts addObject:[NSNumber numberWithInt:2]];
         [self setPrefix:XML_NAMESPACE_URI_PREFIX namespaceURI:XML_NAMESPACE_URI];
         [self setPrefix:XMLNS_NAMESPACE_URI_PREFIX namespaceURI:XMLNS_NAMESPACE_URI];
+        self.encoding = NSUTF8StringEncoding;
     }
     return self;
 }
@@ -136,6 +139,12 @@ static NSString *const XSI_NAMESPACE_URI_PREFIX = @"xsi";
         outputBuffer = buffer;
     }
     return self;
+}
+
+- (void) setEncoding:(NSStringEncoding)v
+{
+    self->encoding = v;
+    self->cfEncoding = CFStringConvertNSStringEncodingToEncoding(v);
 }
 
 - (void) pushNamespaceStack {
@@ -258,7 +267,7 @@ static NSString *const XSI_NAMESPACE_URI_PREFIX = @"xsi";
 }
 
 - (void) writeStartDocument {
-    NSString* xmlEncoding = (__bridge NSString*)CFStringConvertEncodingToIANACharSetName((CFStringEncoding)encoding);
+    NSString* xmlEncoding = (__bridge NSString*)CFStringConvertEncodingToIANACharSetName(cfEncoding);
     if(!xmlEncoding) {
         [NSException raise:@"UnsupportedTextEncoding" format:@"An encoding was specified that is not supported by IQXMLWriter"];
     }
@@ -607,7 +616,7 @@ static NSString *const XSI_NAMESPACE_URI_PREFIX = @"xsi";
         CFStringRef r = (__bridge CFStringRef)value;
         for(CFIndex off = 0; off < length;) {
             CFIndex used;
-            off += CFStringGetBytes(r, CFRangeMake(off, length - off), encoding, '?', !startedWriting, buf, 512, &used);
+            off += CFStringGetBytes(r, CFRangeMake(off, length - off), cfEncoding, '?', !startedWriting, buf, 512, &used);
             startedWriting = YES;
             if(outputStream) {
                 [outputStream write:buf maxLength:used];
