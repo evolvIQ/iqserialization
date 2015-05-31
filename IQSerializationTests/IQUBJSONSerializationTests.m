@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 EvolvIQ. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 #import <XCTest/XCTest.h>
 
 @interface IQSimpleXMLSerializationTests : XCTestCase

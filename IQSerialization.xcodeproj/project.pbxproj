@@ -95,7 +95,6 @@
 		FFFCFAB51B19EABA00418EC9 /* IQSerialization+Tokenization.h in Headers */ = {isa = PBXBuildFile; fileRef = FFFCFAB21B19EABA00418EC9 /* IQSerialization+Tokenization.h */; };
 		FFFCFAB61B19EABA00418EC9 /* IQSerialization+Tokenization.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAB31B19EABA00418EC9 /* IQSerialization+Tokenization.m */; };
 		FFFCFAB71B19EABA00418EC9 /* IQSerialization+Tokenization.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAB31B19EABA00418EC9 /* IQSerialization+Tokenization.m */; };
-		FFFE9B1F184BF291007BACB7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFE9B1D184BF1CC007BACB7 /* XCTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,7 +190,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFFE9B1F184BF291007BACB7 /* XCTest.framework in Frameworks */,
 				FFB0296616674DF200CED715 /* libIQSerialization.a in Frameworks */,
 				FF9D9F7A1641BFA1002A9272 /* UIKit.framework in Frameworks */,
 				FF9D9E6D1639D803002A9272 /* Foundation.framework in Frameworks */,
@@ -742,7 +740,6 @@
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Tests_iOS;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -757,7 +754,6 @@
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Tests_iOS;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -765,7 +761,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
@@ -778,7 +773,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";

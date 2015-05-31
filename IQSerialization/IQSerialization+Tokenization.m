@@ -28,6 +28,7 @@ typedef enum {
     State_EndElement,
     State_Instruction,
     State_Comment,
+    State_Cdata,
 
     State_String,
 
@@ -37,7 +38,7 @@ typedef enum {
 @interface _IQTokenizationState : NSObject {
 @public
     NSMutableData* _data;
-    int _depth, _dashCount;
+    int _depth, _dashCount, _closeBracketCount;
     char _last;
     State _state;
     NSUInteger _startPos;
@@ -76,6 +77,8 @@ static unsigned int ScanXml(_IQTokenizationState* s, NSUInteger max, uint8_t* bu
                     }
                 } else if((s->_state == State_Comment && s->_dashCount >= 2) || s->_state == State_Instruction) {
                     s->_state = State_Document;
+                } else if(s->_state == State_Cdata && s->_closeBracketCount >= 2) {
+                    s->_state = State_Document;
                 }
                 break;
             case '/':
@@ -98,6 +101,11 @@ static unsigned int ScanXml(_IQTokenizationState* s, NSUInteger max, uint8_t* bu
                     s->_state = State_Comment;
                 }
                 break;
+            case '[':
+                if(s->_state == State_CommentOrInstruction) {
+                    s->_state = State_Cdata;
+                }
+                break;
             default:
                 if(s->_state == State_ElementOrComment) {
                     s->_state = State_BeginElement;
@@ -108,6 +116,8 @@ static unsigned int ScanXml(_IQTokenizationState* s, NSUInteger max, uint8_t* bu
         }
         if(buf[i] == '-') ++s->_dashCount;
         else s->_dashCount = 0;
+        if(buf[i] == ']') ++s->_closeBracketCount;
+        else s->_closeBracketCount = 0;
         s->_last = buf[i];
     }
     return 0;
