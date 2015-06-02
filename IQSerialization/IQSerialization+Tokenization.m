@@ -17,211 +17,59 @@
 //
 
 #import "IQSerialization+Tokenization.h"
-
-typedef enum {
-    State_Init,
-    State_Document,
-    State_ElementOrComment,
-    State_CommentOrInstruction,
-    State_BeginElement,
-    State_EmptyElement,
-    State_EndElement,
-    State_Instruction,
-    State_Comment,
-    State_Cdata,
-
-    State_String,
-
-    State_Rescan
-} State;
+#import <splitstream.h>
 
 @interface _IQTokenizationState : NSObject {
 @public
-    NSMutableData* _data;
-    int _depth, _dashCount, _closeBracketCount;
-    char _last;
-    State _state;
-    NSUInteger _startPos;
+    SplitstreamState state;
+    BOOL didReturnDocument;
 }
+- (id) initWithDepth:(int)depth;
 @end
 
 @implementation IQSerialization (Tokenization)
 
-#pragma mark - XML tokenization
-
-static unsigned int ScanXml(_IQTokenizationState* s, NSUInteger max, uint8_t* buf, unsigned int len, unsigned int* start) {
-    for(unsigned int i = 0; i < len; ++i) {
-        switch(buf[i]) {
-            case '<':
-                if(s->_state == State_Init || s->_state == State_Document) {
-                    if(s->_state == State_Init) {
-                        *start = i;
-                    }
-                    s->_state = State_ElementOrComment;
-                }
-                break;
-            case '>':
-                if(s->_state == State_BeginElement || s->_state == State_ElementOrComment) {
-                    s->_state = State_Document;
-                    if(s->_last != '/') ++s->_depth;
-                    else if(s->_depth == 0) {
-                        s->_last = buf[i];
-                        return i + 1;
-                    }
-                } else if(s->_state == State_EndElement) {
-                    if(--s->_depth == 0) {
-                        s->_last = buf[i];
-                        return i + 1;
-                    } else {
-                        s->_state = State_Document;
-                    }
-                } else if((s->_state == State_Comment && s->_dashCount >= 2) || s->_state == State_Instruction) {
-                    s->_state = State_Document;
-                } else if(s->_state == State_Cdata && s->_closeBracketCount >= 2) {
-                    s->_state = State_Document;
-                }
-                break;
-            case '/':
-                if(s->_state == State_ElementOrComment) {
-                    s->_state = State_EndElement;
-                }
-                break;
-            case '?':
-                if(s->_state == State_ElementOrComment) {
-                    s->_state = State_Instruction;
-                }
-                break;
-            case '!':
-                if(s->_state == State_ElementOrComment) {
-                    s->_state = State_CommentOrInstruction;
-                }
-                break;
-            case '-':
-                if(s->_state == State_CommentOrInstruction && s->_dashCount > 0) {
-                    s->_state = State_Comment;
-                }
-                break;
-            case '[':
-                if(s->_state == State_CommentOrInstruction) {
-                    s->_state = State_Cdata;
-                }
-                break;
-            default:
-                if(s->_state == State_ElementOrComment) {
-                    s->_state = State_BeginElement;
-                } else if(s->_state == State_CommentOrInstruction) {
-                    s->_state = State_Instruction;
-                }
-                break;
-        }
-        if(buf[i] == '-') ++s->_dashCount;
-        else s->_dashCount = 0;
-        if(buf[i] == ']') ++s->_closeBracketCount;
-        else s->_closeBracketCount = 0;
-        s->_last = buf[i];
-    }
-    return 0;
-}
-
-#pragma mark - JSON tokenization
-
-static unsigned int ScanJson(_IQTokenizationState* s, NSUInteger max, uint8_t* buf, unsigned int len, unsigned int* start) {
-    for(unsigned int i = 0; i < len; ++i) {
-        switch(buf[i]) {
-            case '{':
-            case '[':
-                if(s->_state == State_Init) {
-                    *start = i;
-                    s->_state = State_Document;
-                }
-                if(s->_state != State_String)
-                    ++s->_depth;
-                break;
-            case '}':
-            case ']':
-                if(s->_state == State_Document) {
-                    if(--s->_depth == 0) {
-                        s->_last = buf[i];
-                        return i + 1;
-                    }
-                }
-                break;
-            case '"':
-                if(s->_state == State_String) {
-                    if(s->_last != '\\') {
-                        s->_state = State_Document;
-                    }
-                } else {
-                    s->_state = State_String;
-                }
-                break;
-        }
-        s->_last = buf[i];
-    }
-    return 0;
-}
-
-#pragma mark - Generic helpers
-
-typedef unsigned int (*Scanner)(_IQTokenizationState* s, NSUInteger max, uint8_t* buf, unsigned int len, unsigned int* start);
-
-static NSData* TryGetDoc(_IQTokenizationState* s, NSUInteger max, uint8_t* buf, unsigned int len, Scanner scan) {
-    unsigned int start = 0;
-    unsigned int end = scan(s, max, buf, len, &start);
-    NSData* documentData = nil;
-    if(end > 0) {
-        if(!s->_data) s->_data = [NSMutableData data];
-        [s->_data appendBytes:buf+start length:end-start];
-        NSLog(@"Has document: %@", [[NSString alloc] initWithData:s->_data encoding:NSUTF8StringEncoding]);
-        documentData = s->_data;
-        s->_data = nil;
-        s->_state = State_Rescan;
-        start = end;
-    }
-    if(s->_state != State_Init && start < len) {
-        if(!s->_data) s->_data = [NSMutableData data];
-        [s->_data appendBytes:buf+start length:len-start];
-    }
-    return documentData;
-}
-
-static NSData* ReadNextDocument(NSInputStream* stream, NSObject** state, NSUInteger max, Scanner scan) {
+static NSData* ReadNextDocument(NSUInteger bufsize, NSInputStream* stream, NSObject** state, NSUInteger max, SplitstreamScanner scanner, int depth) {
     if(!state) return nil;
-    if(!*state) *state = [_IQTokenizationState new];
+    if(!*state) *state = [[_IQTokenizationState alloc] initWithDepth:depth];
     _IQTokenizationState* s = (_IQTokenizationState*)*state;
 
-    if(s->_state == State_Rescan) {
-        s->_state = State_Init;
-        if(s->_data) {
-            NSData* oldDoc = s->_data;
-            s->_data = nil;
-            NSData* currentDocumentData = TryGetDoc(s, max, (uint8_t*)oldDoc.bytes, oldDoc.length, scan);
-            if(currentDocumentData) return currentDocumentData;
+    if(s->didReturnDocument) {
+        SplitstreamDocument doc = SplitstreamGetNextDocument(&s->state, max, NULL, 0, scanner);
+        if(doc.buffer) {
+            s->didReturnDocument = YES;
+            return [NSData dataWithBytesNoCopy:(void*)doc.buffer length:doc.length freeWhenDone:YES];
         }
     }
 
     while(stream && stream.hasBytesAvailable) {
-        uint8_t buf[12];
-        unsigned int len = [(NSInputStream *)stream read:buf maxLength:sizeof(buf)];
+        char buf[bufsize];
+        unsigned int len = [(NSInputStream *)stream read:(unsigned char*)buf maxLength:sizeof(buf)];
         if(len == 0) return nil;
 
-        NSData* currentDocumentData = TryGetDoc(s, max, buf, len, scan);
-        if(currentDocumentData) return currentDocumentData;
+        SplitstreamDocument doc = SplitstreamGetNextDocument(&s->state, max, buf, len, scanner);
+        if(doc.buffer) {
+            s->didReturnDocument = YES;
+            return [NSData dataWithBytesNoCopy:(void*)doc.buffer length:doc.length freeWhenDone:YES];
+        }
     }
+    s->didReturnDocument = NO;
 
     return nil;
 }
 
 #pragma mark - Interface
 
-- (NSData*) extractNextDocumentFromStream:(NSInputStream*)stream format:(IQSerializationFormat)fmt state:(NSObject**)state maxDocumentLength:(NSUInteger)maxSize {
+- (NSData*) extractNextDocumentFromStream:(NSInputStream*)stream format:(IQSerializationFormat)fmt state:(NSObject**)state maxDocumentLength:(NSUInteger)maxSize startDepth:(NSUInteger)startDepth {
+    NSUInteger readBufferSize = self.readBufferSize;
+    if(!readBufferSize) readBufferSize = 1024;
     switch(fmt) {
         case IQSerializationFormatSimpleXML:
         case IQSerializationFormatXMLRPC:
         case IQSerializationFormatXMLPlist:
-            return ReadNextDocument(stream, state, maxSize, ScanXml);
+            return ReadNextDocument(readBufferSize, stream, state, maxSize, SplitstreamXMLScanner, (int)startDepth);
         case IQSerializationFormatJSON:
-            return ReadNextDocument(stream, state, maxSize, ScanJson);
+            return ReadNextDocument(readBufferSize, stream, state, maxSize, SplitstreamJSONScanner, (int)startDepth);
         default:
             return nil;
     }
@@ -230,4 +78,18 @@ static NSData* ReadNextDocument(NSInputStream* stream, NSObject** state, NSUInte
 @end
 
 @implementation _IQTokenizationState
+- (id) initWithDepth:(int)depth {
+    if(self = [super init]) {
+        SplitstreamInitDepth(&state, depth);
+    }
+    return self;
+}
+
+- (id) init {
+    return [self initWithDepth:0];
+}
+
+- (void) dealloc {
+    SplitstreamFree(&state);
+}
 @end

@@ -302,5 +302,9 @@ typedef enum {
  */
 @property (nonatomic) BOOL forceWriteTimezone;
 
+/**  \brief The size of read buffers for stream operations.
+ */
+@property (nonatomic) NSUInteger readBufferSize;
+
 
 @end

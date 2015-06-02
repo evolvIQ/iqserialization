@@ -34,4 +34,5 @@
 
 @property (nonatomic) id<IQStreamObjectDelegate> delegate;
 @property (nonatomic) NSUInteger maxObjectSize;
+@property (nonatomic) NSUInteger startDepth;
 @end

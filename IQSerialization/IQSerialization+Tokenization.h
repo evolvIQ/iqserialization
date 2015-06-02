@@ -21,6 +21,5 @@
 
 @interface IQSerialization (Tokenization)
 
-- (NSData*) extractNextDocumentFromStream:(NSInputStream*)stream format:(IQSerializationFormat)fmt state:(NSObject**)state maxDocumentLength:(NSUInteger)maxSize;
-
+- (NSData*) extractNextDocumentFromStream:(NSInputStream*)stream format:(IQSerializationFormat)fmt state:(NSObject**)state maxDocumentLength:(NSUInteger)maxSize startDepth:(NSUInteger)startDepth;
 @end

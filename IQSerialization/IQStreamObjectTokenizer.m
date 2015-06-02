@@ -46,15 +46,17 @@
     NSObject* state = nil;
     NSData* docData;
     while(_stream.streamStatus != NSStreamStatusAtEnd) {
-        docData = [_serialization extractNextDocumentFromStream:_stream format:_format state:&state maxDocumentLength:self.maxObjectSize];
+        docData = [_serialization extractNextDocumentFromStream:_stream format:_format state:&state maxDocumentLength:self.maxObjectSize startDepth:self.startDepth];
         if(docData) {
             [self.delegate stream:_stream containsDocumentWithData:docData];
         }
     }
-    docData = [_serialization extractNextDocumentFromStream:nil format:_format state:&state maxDocumentLength:self.maxObjectSize];
-    if(docData) {
-        [self.delegate stream:_stream containsDocumentWithData:docData];
-    }
+    do {
+        docData = [_serialization extractNextDocumentFromStream:nil format:_format state:&state maxDocumentLength:self.maxObjectSize startDepth:self.startDepth];
+        if(docData) {
+            [self.delegate stream:_stream containsDocumentWithData:docData];
+        }
+    } while (docData);
     if([(id)self.delegate respondsToSelector:@selector(endOfStream:)]) {
         [self.delegate endOfStream:_stream];
     }
@@ -67,13 +69,13 @@
         case NSStreamEventHasBytesAvailable:
             while(((NSInputStream*)stream).hasBytesAvailable) {
                 NSObject* state = _state;
-                NSData* docData = [_serialization extractNextDocumentFromStream:(NSInputStream*)stream format:_format state:&state maxDocumentLength:self.maxObjectSize];
+                NSData* docData = [_serialization extractNextDocumentFromStream:(NSInputStream*)stream format:_format state:&state maxDocumentLength:self.maxObjectSize startDepth:self.startDepth];
                 if(_state != state) _state = state;
                 if(docData) {
                     [self.delegate stream:stream containsDocumentWithData:docData];
                 }
                 if(stream.streamStatus == NSStreamStatusAtEnd) {
-                    docData = [_serialization extractNextDocumentFromStream:nil format:_format state:&state maxDocumentLength:self.maxObjectSize];
+                    docData = [_serialization extractNextDocumentFromStream:nil format:_format state:&state maxDocumentLength:self.maxObjectSize startDepth:self.startDepth];
                     if(_state != state) _state = state;
                     if(docData) {
                         [self.delegate stream:stream containsDocumentWithData:docData];
