@@ -16,6 +16,7 @@
 //  limitations under the License.
 //
 
+#import <Foundation/Foundation.h>
 #import "IQSerialization.h"
 #import <XCTest/XCTest.h>
 
@@ -183,6 +184,8 @@
     XCTAssertEqualObjects(dict, expected);
 }
 
+#ifndef TARGET_OS_IPHONE
+
 - (void)testXMLRPCGenerateParams
 {
     id params = @[ @42, @"Hello", @{ @"Key" : @1 }];
@@ -273,4 +276,6 @@
     NSXMLElement* root = [[doc children] firstObject];
     XCTAssertEqual(root.childCount, 2);
 }
+
+#endif
 @end

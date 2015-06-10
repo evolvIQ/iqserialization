@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 EvolvIQ. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
 #import <XCTest/XCTest.h>
 #import "NSData+Base64.h"
 

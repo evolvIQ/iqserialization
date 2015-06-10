@@ -33,7 +33,6 @@
 		FF02846D1B1B29F800297499 /* splitstream.c in Sources */ = {isa = PBXBuildFile; fileRef = FF0284631B1B29F800297499 /* splitstream.c */; };
 		FF9D9E5B1639D803002A9272 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E5A1639D803002A9272 /* Foundation.framework */; };
 		FF9D9E621639D803002A9272 /* IQSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9E611639D803002A9272 /* IQSerialization.m */; };
-		FF9D9E6D1639D803002A9272 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E5A1639D803002A9272 /* Foundation.framework */; };
 		FF9D9EDC1639DC4B002A9272 /* yajl_alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ECC1639DC4B002A9272 /* yajl_alloc.c */; };
 		FF9D9EDD1639DC4B002A9272 /* yajl_buf.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ECE1639DC4B002A9272 /* yajl_buf.c */; };
 		FF9D9EDE1639DC4B002A9272 /* yajl_encode.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ED21639DC4B002A9272 /* yajl_encode.c */; };
@@ -44,14 +43,11 @@
 		FF9D9EE41639DC4B002A9272 /* yajl.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EDB1639DC4B002A9272 /* yajl.c */; };
 		FF9D9EE71639DD3D002A9272 /* IQSerialization+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EE61639DD3D002A9272 /* IQSerialization+JSON.m */; };
 		FF9D9EF5163A0E02002A9272 /* IQSerialization+XMLRPC.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EF4163A0E02002A9272 /* IQSerialization+XMLRPC.m */; };
-		FF9D9EFC163A0E4B002A9272 /* IQJSONSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9E781639D803002A9272 /* IQJSONSerializationTests.m */; };
 		FF9D9EFF163A0EDF002A9272 /* IQObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EFE163A0EDF002A9272 /* IQObjectFactory.m */; };
-		FF9D9F02163A1349002A9272 /* IQXMLRPCSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F01163A1349002A9272 /* IQXMLRPCSerializationTests.m */; };
 		FF9D9F28163F1A3D002A9272 /* IQJSONSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9E781639D803002A9272 /* IQJSONSerializationTests.m */; };
 		FF9D9F29163F1A3D002A9272 /* IQXMLRPCSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F01163A1349002A9272 /* IQXMLRPCSerializationTests.m */; };
 		FF9D9F2D163F1A3D002A9272 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E5A1639D803002A9272 /* Foundation.framework */; };
 		FF9D9F3B163F2605002A9272 /* IQSerialization+UBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F3A163F2605002A9272 /* IQSerialization+UBJSON.m */; };
-		FF9D9F7A1641BFA1002A9272 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9F791641BFA1002A9272 /* UIKit.framework */; };
 		FFB028941666DA5300CED715 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB028931666DA5300CED715 /* Cocoa.framework */; };
 		FFB028A61666DBC200CED715 /* IQObjectFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EFE163A0EDF002A9272 /* IQObjectFactory.m */; };
 		FFB028A71666DBC500CED715 /* IQXMLWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E941648713900597D70 /* IQXMLWriter.m */; };
@@ -82,24 +78,26 @@
 		FFB029441666E72E00CED715 /* IQXMLWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = FFD77E931648713800597D70 /* IQXMLWriter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FFB029451666E72E00CED715 /* IQObjectFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9EFD163A0EDF002A9272 /* IQObjectFactory.h */; };
 		FFB029461666E75A00CED715 /* IQSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = FF9D9E5F1639D803002A9272 /* IQSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FFB0296616674DF200CED715 /* libIQSerialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E571639D803002A9272 /* libIQSerialization.a */; };
+		FFB188BA1B28380F00A63B60 /* libIQSerialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E571639D803002A9272 /* libIQSerialization.a */; };
+		FFB188C01B28382800A63B60 /* MyTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFA011B190AB300418EC9 /* MyTestClass.m */; };
+		FFB188C11B28382800A63B60 /* IQJSONSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9E781639D803002A9272 /* IQJSONSerializationTests.m */; };
+		FFB188C21B28382800A63B60 /* IQXMLRPCSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F01163A1349002A9272 /* IQXMLRPCSerializationTests.m */; };
+		FFB188C31B28382800A63B60 /* IQUBJSONSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAAF1B19E5EE00418EC9 /* IQUBJSONSerializationTests.m */; };
+		FFB188C41B28382800A63B60 /* PerformanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCF9FD1B1907E400418EC9 /* PerformanceTests.m */; };
+		FFB188C51B28382800A63B60 /* TokenizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAAC1B19E48D00418EC9 /* TokenizerTests.m */; };
+		FFB188C61B28382800A63B60 /* Base64Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E8316471CC400597D70 /* Base64Tests.m */; };
 		FFD77E7F164703EE00597D70 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E7E164703EE00597D70 /* NSData+Base64.m */; };
-		FFD77E8416471CC400597D70 /* Base64Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E8316471CC400597D70 /* Base64Tests.m */; };
 		FFD77E8516471CC400597D70 /* Base64Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E8316471CC400597D70 /* Base64Tests.m */; };
 		FFD77E951648713900597D70 /* IQXMLWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD77E941648713900597D70 /* IQXMLWriter.m */; };
 		FFFCF9FC1B1906E900418EC9 /* IQSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB028921666DA5300CED715 /* IQSerialization.framework */; };
-		FFFCF9FE1B1907E400418EC9 /* PerformanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCF9FD1B1907E400418EC9 /* PerformanceTests.m */; };
 		FFFCF9FF1B1907E400418EC9 /* PerformanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCF9FD1B1907E400418EC9 /* PerformanceTests.m */; };
-		FFFCFA021B190AB300418EC9 /* MyTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFA011B190AB300418EC9 /* MyTestClass.m */; };
 		FFFCFA031B190AB300418EC9 /* MyTestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFA011B190AB300418EC9 /* MyTestClass.m */; };
 		FFFCFA961B19CFB900418EC9 /* yajl_version.h in Headers */ = {isa = PBXBuildFile; fileRef = FFFCFA911B19CFB900418EC9 /* yajl_version.h */; };
 		FFFCFAA81B19D88900418EC9 /* IQStreamObjectTokenizer.h in Headers */ = {isa = PBXBuildFile; fileRef = FFFCFAA61B19D88900418EC9 /* IQStreamObjectTokenizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FFFCFAA91B19D88900418EC9 /* IQStreamObjectTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAA71B19D88900418EC9 /* IQStreamObjectTokenizer.m */; };
 		FFFCFAAA1B19D8B400418EC9 /* IQStreamObjectTokenizer.h in Headers */ = {isa = PBXBuildFile; fileRef = FFFCFAA61B19D88900418EC9 /* IQStreamObjectTokenizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FFFCFAAB1B19E37400418EC9 /* IQStreamObjectTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAA71B19D88900418EC9 /* IQStreamObjectTokenizer.m */; };
-		FFFCFAAD1B19E48D00418EC9 /* TokenizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAAC1B19E48D00418EC9 /* TokenizerTests.m */; };
 		FFFCFAAE1B19E48D00418EC9 /* TokenizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAAC1B19E48D00418EC9 /* TokenizerTests.m */; };
-		FFFCFAB01B19E5EE00418EC9 /* IQUBJSONSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAAF1B19E5EE00418EC9 /* IQUBJSONSerializationTests.m */; };
 		FFFCFAB11B19E5EE00418EC9 /* IQUBJSONSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FFFCFAAF1B19E5EE00418EC9 /* IQUBJSONSerializationTests.m */; };
 		FFFCFAB41B19EABA00418EC9 /* IQSerialization+Tokenization.h in Headers */ = {isa = PBXBuildFile; fileRef = FFFCFAB21B19EABA00418EC9 /* IQSerialization+Tokenization.h */; };
 		FFFCFAB51B19EABA00418EC9 /* IQSerialization+Tokenization.h in Headers */ = {isa = PBXBuildFile; fileRef = FFFCFAB21B19EABA00418EC9 /* IQSerialization+Tokenization.h */; };
@@ -108,19 +106,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FF9D9E6E1639D803002A9272 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FF9D9E4E1639D803002A9272 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FF9D9E561639D803002A9272;
-			remoteInfo = IQSerialization;
-		};
 		FFB0294D1666EA0400CED715 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FF9D9E4E1639D803002A9272 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = FFB028911666DA5300CED715;
 			remoteInfo = "IQSerialization - OSX";
+		};
+		FFB188BB1B28380F00A63B60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF9D9E4E1639D803002A9272 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF9D9E561639D803002A9272;
+			remoteInfo = "IQSerialization - iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -134,7 +132,6 @@
 		FF9D9E5A1639D803002A9272 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FF9D9E5F1639D803002A9272 /* IQSerialization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQSerialization.h; sourceTree = "<group>"; };
 		FF9D9E611639D803002A9272 /* IQSerialization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQSerialization.m; sourceTree = "<group>"; };
-		FF9D9E681639D803002A9272 /* Tests_iOS.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests_iOS.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF9D9E6B1639D803002A9272 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		FF9D9E731639D803002A9272 /* IQSerializationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IQSerializationTests-Info.plist"; sourceTree = "<group>"; };
 		FF9D9E781639D803002A9272 /* IQJSONSerializationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQJSONSerializationTests.m; sourceTree = "<group>"; };
@@ -172,6 +169,7 @@
 		FFB028971666DA5300CED715 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FFB028981666DA5300CED715 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FFB0289B1666DA5300CED715 /* IQSerialization-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IQSerialization-Info.plist"; sourceTree = "<group>"; };
+		FFB188B41B28380F00A63B60 /* Tests - iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests - iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD77E7D164703EE00597D70 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		FFD77E7E164703EE00597D70 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		FFD77E8316471CC400597D70 /* Base64Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Tests.m; sourceTree = "<group>"; };
@@ -201,16 +199,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF9D9E641639D803002A9272 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FFB0296616674DF200CED715 /* libIQSerialization.a in Frameworks */,
-				FF9D9F7A1641BFA1002A9272 /* UIKit.framework in Frameworks */,
-				FF9D9E6D1639D803002A9272 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FF9D9F2A163F1A3D002A9272 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -225,6 +213,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFB028941666DA5300CED715 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFB188B11B28380F00A63B60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFB188BA1B28380F00A63B60 /* libIQSerialization.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,9 +257,9 @@
 			isa = PBXGroup;
 			children = (
 				FF9D9E571639D803002A9272 /* libIQSerialization.a */,
-				FF9D9E681639D803002A9272 /* Tests_iOS.octest */,
 				FF9D9F35163F1A3D002A9272 /* Tests_OSX.xctest */,
 				FFB028921666DA5300CED715 /* IQSerialization.framework */,
+				FFB188B41B28380F00A63B60 /* Tests - iOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -435,25 +431,6 @@
 			productReference = FF9D9E571639D803002A9272 /* libIQSerialization.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		FF9D9E671639D803002A9272 /* Tests - iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FF9D9E7F1639D803002A9272 /* Build configuration list for PBXNativeTarget "Tests - iOS" */;
-			buildPhases = (
-				FF9D9E631639D803002A9272 /* Sources */,
-				FF9D9E641639D803002A9272 /* Frameworks */,
-				FF9D9E651639D803002A9272 /* Resources */,
-				FF9D9E661639D803002A9272 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FF9D9E6F1639D803002A9272 /* PBXTargetDependency */,
-			);
-			name = "Tests - iOS";
-			productName = IQSerializationTests;
-			productReference = FF9D9E681639D803002A9272 /* Tests_iOS.octest */;
-			productType = "com.apple.product-type.bundle.ocunit-test";
-		};
 		FF9D9F24163F1A3D002A9272 /* Tests - OSX */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF9D9F32163F1A3D002A9272 /* Build configuration list for PBXNativeTarget "Tests - OSX" */;
@@ -491,6 +468,24 @@
 			productReference = FFB028921666DA5300CED715 /* IQSerialization.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		FFB188B31B28380F00A63B60 /* Tests - iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFB188BD1B28380F00A63B60 /* Build configuration list for PBXNativeTarget "Tests - iOS" */;
+			buildPhases = (
+				FFB188B01B28380F00A63B60 /* Sources */,
+				FFB188B11B28380F00A63B60 /* Frameworks */,
+				FFB188B21B28380F00A63B60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FFB188BC1B28380F00A63B60 /* PBXTargetDependency */,
+			);
+			name = "Tests - iOS";
+			productName = "Tests - iOS";
+			productReference = FFB188B41B28380F00A63B60 /* Tests - iOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -499,6 +494,11 @@
 			attributes = {
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = EvolvIQ;
+				TargetAttributes = {
+					FFB188B31B28380F00A63B60 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+				};
 			};
 			buildConfigurationList = FF9D9E511639D803002A9272 /* Build configuration list for PBXProject "IQSerialization" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -514,21 +514,14 @@
 			targets = (
 				FF9D9E561639D803002A9272 /* IQSerialization - iOS */,
 				FFB028EA1666E00C00CED715 /* IQSerialization - Universal */,
-				FF9D9E671639D803002A9272 /* Tests - iOS */,
 				FFB028911666DA5300CED715 /* IQSerialization - OSX */,
 				FF9D9F24163F1A3D002A9272 /* Tests - OSX */,
+				FFB188B31B28380F00A63B60 /* Tests - iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FF9D9E651639D803002A9272 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FF9D9F2F163F1A3D002A9272 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -543,22 +536,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		FF9D9E661639D803002A9272 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
+		FFB188B21B28380F00A63B60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
 		FF9D9F31163F1A3D002A9272 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -616,20 +603,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF9D9E631639D803002A9272 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FFFCFAB01B19E5EE00418EC9 /* IQUBJSONSerializationTests.m in Sources */,
-				FFFCFA021B190AB300418EC9 /* MyTestClass.m in Sources */,
-				FF9D9EFC163A0E4B002A9272 /* IQJSONSerializationTests.m in Sources */,
-				FF9D9F02163A1349002A9272 /* IQXMLRPCSerializationTests.m in Sources */,
-				FFFCF9FE1B1907E400418EC9 /* PerformanceTests.m in Sources */,
-				FFD77E8416471CC400597D70 /* Base64Tests.m in Sources */,
-				FFFCFAAD1B19E48D00418EC9 /* TokenizerTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FF9D9F27163F1A3D002A9272 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -671,18 +644,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FFB188B01B28380F00A63B60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFB188C21B28382800A63B60 /* IQXMLRPCSerializationTests.m in Sources */,
+				FFB188C51B28382800A63B60 /* TokenizerTests.m in Sources */,
+				FFB188C11B28382800A63B60 /* IQJSONSerializationTests.m in Sources */,
+				FFB188C01B28382800A63B60 /* MyTestClass.m in Sources */,
+				FFB188C41B28382800A63B60 /* PerformanceTests.m in Sources */,
+				FFB188C31B28382800A63B60 /* IQUBJSONSerializationTests.m in Sources */,
+				FFB188C61B28382800A63B60 /* Base64Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FF9D9E6F1639D803002A9272 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FF9D9E561639D803002A9272 /* IQSerialization - iOS */;
-			targetProxy = FF9D9E6E1639D803002A9272 /* PBXContainerItemProxy */;
-		};
 		FFB0294E1666EA0400CED715 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FFB028911666DA5300CED715 /* IQSerialization - OSX */;
 			targetProxy = FFB0294D1666EA0400CED715 /* PBXContainerItemProxy */;
+		};
+		FFB188BC1B28380F00A63B60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF9D9E561639D803002A9272 /* IQSerialization - iOS */;
+			targetProxy = FFB188BB1B28380F00A63B60 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -744,6 +731,7 @@
 				DSTROOT = /tmp/IQSerialization.dst;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				HEADER_SEARCH_PATHS = Contrib/yajl;
 				INFOPLIST_FILE = "IQSerialization/IQSerialization-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
@@ -760,6 +748,7 @@
 				DSTROOT = /tmp/IQSerialization.dst;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				HEADER_SEARCH_PATHS = Contrib/yajl;
 				INFOPLIST_FILE = "IQSerialization/IQSerialization-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
@@ -767,34 +756,6 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "Contrib/**";
-			};
-			name = Release;
-		};
-		FF9D9E801639D803002A9272 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = Tests_iOS;
-			};
-			name = Debug;
-		};
-		FF9D9E811639D803002A9272 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = Tests_iOS;
 			};
 			name = Release;
 		};
@@ -876,6 +837,88 @@
 			};
 			name = Release;
 		};
+		FFB188BE1B28380F00A63B60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FFB188BF1B28380F00A63B60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -893,15 +936,6 @@
 			buildConfigurations = (
 				FF9D9E7D1639D803002A9272 /* Debug */,
 				FF9D9E7E1639D803002A9272 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FF9D9E7F1639D803002A9272 /* Build configuration list for PBXNativeTarget "Tests - iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FF9D9E801639D803002A9272 /* Debug */,
-				FF9D9E811639D803002A9272 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -932,6 +966,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		FFB188BD1B28380F00A63B60 /* Build configuration list for PBXNativeTarget "Tests - iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFB188BE1B28380F00A63B60 /* Debug */,
+				FFB188BF1B28380F00A63B60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
