@@ -40,7 +40,7 @@ typedef enum IQXMLRPCSerializerState {
 @interface _IQXMLRPCObjectFactory : _IQObjectFactory<NSXMLParserDelegate> {
     IQXMLRPCSerializerState state;
     NSString* stringBuffer;
-    BOOL ownBuffer;
+    BOOL ownBuffer, didSetValue;
     NSString* dataType;
     NSMutableArray *elementStack;
     NSDateFormatter *dateFormatter1, *dateFormatter2, *dateFormatter3;
@@ -142,11 +142,11 @@ typedef enum IQXMLRPCSerializerState {
         case IQXMLRPCSerializerStateFault:
             if([elementName isEqualToString:@"value"]) {
                 state = IQXMLRPCSerializerStateValue;
+                didSetValue = NO;
             } else {
                 [self _fail:[NSString stringWithFormat:@"Expected 'value' element, but got '%@'", elementName]];
                 [parser abortParsing];
             }
-            break;
             break;
         case IQXMLRPCSerializerStateParam:
         case IQXMLRPCSerializerStateValueArrayData:
@@ -212,16 +212,17 @@ typedef enum IQXMLRPCSerializerState {
 - (BOOL)_setScalarValueForElement:(NSString*)elementName
 {
     BOOL ret;
+    didSetValue = YES;
     if([elementName isEqualToString:@"string"]) {
-        ret = [self _setScalarValue:stringBuffer];
+        ret = [self _setScalarValue:stringBuffer ? stringBuffer : @""];
     } else if([elementName isEqualToString:@"int"] || [elementName isEqualToString:@"i4"]) {
-        ret = [self _setScalarValue:[formatter numberFromString:stringBuffer]];
+        ret = [self _setScalarValue:stringBuffer ? [formatter numberFromString:stringBuffer] : @0];
     } else if([elementName isEqualToString:@"boolean"]) {
         ret = [self _setScalarValue:[NSNumber numberWithBool:[stringBuffer intValue] != 0]];
     } else if([elementName isEqualToString:@"nil"]) {
         ret = [self _setScalarValue:nil];
     } else if([elementName isEqualToString:@"double"]) {
-        ret = [self _setScalarValue:[formatter numberFromString:stringBuffer]];
+        ret = [self _setScalarValue:stringBuffer ? [formatter numberFromString:stringBuffer] : @0.0];
     } else if([elementName isEqualToString:@"dateTime.iso8601"]) {
         NSDate* date = [dateFormatter1 dateFromString:stringBuffer];
         if(!date)
@@ -234,7 +235,8 @@ typedef enum IQXMLRPCSerializerState {
             ret = [self _setScalarValue:date];
         }
     } else if([elementName isEqualToString:@"base64"]) {
-        ret = [self _setScalarValue:[NSData dataWithBase64String:stringBuffer]];
+        NSData* data = stringBuffer ? [NSData dataWithBase64String:stringBuffer] : [NSData dataWithBytes:nil length:0];
+        ret = [self _setScalarValue:data];
     } else if([elementName isEqualToString:@"methodName"]) {
         ret = [self _setScalarValue:stringBuffer];
     } else {
@@ -250,6 +252,12 @@ typedef enum IQXMLRPCSerializerState {
         case IQXMLRPCSerializerStateMethodName:
             if(![self _setScalarValueForElement:elementName]) {
                 [parser abortParsing];
+            }
+            break;
+        case IQXMLRPCSerializerStateValue:
+            if(!didSetValue) {
+                // An empty value means an empty string
+                [self _setScalarValueForElement:@"string"];
             }
             break;
         case IQXMLRPCSerializerStateMemberName:

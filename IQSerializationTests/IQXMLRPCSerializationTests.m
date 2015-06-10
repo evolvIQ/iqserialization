@@ -118,6 +118,71 @@
     XCTAssertEqualObjects(dict, expected);
 }
 
+- (void)testXMLRPCParseEmptyString1 {
+    NSString* xmlrpc = @"<params><param><value><string></string></value></param></params>";
+    IQSerialization* ser = [IQSerialization new];
+    ser.ignoreNilValues = NO;
+    id dict = [ser arrayFromString:xmlrpc format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(dict, @"Failed to parse: %@", ser.error);
+
+    id expected = @[ @"" ];
+    XCTAssertEqualObjects(dict, expected);
+}
+
+- (void)testXMLRPCParseEmptyString2 {
+    NSString* xmlrpc = @"<params><param><value><string/></value></param></params>";
+    IQSerialization* ser = [IQSerialization new];
+    ser.ignoreNilValues = NO;
+    id dict = [ser arrayFromString:xmlrpc format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(dict, @"Failed to parse: %@", ser.error);
+
+    id expected = @[ @"" ];
+    XCTAssertEqualObjects(dict, expected);
+}
+
+- (void)testXMLRPCParseEmptyString3 {
+    NSString* xmlrpc = @"<params><param><value></value></param></params>";
+    IQSerialization* ser = [IQSerialization new];
+    ser.ignoreNilValues = NO;
+    id dict = [ser arrayFromString:xmlrpc format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(dict, @"Failed to parse: %@", ser.error);
+
+    id expected = @[ @"" ];
+    XCTAssertEqualObjects(dict, expected);
+}
+
+- (void)testXMLRPCParseEmptyData {
+    NSString* xmlrpc = @"<params><param><value><base64></base64></value></param></params>";
+    IQSerialization* ser = [IQSerialization new];
+    ser.ignoreNilValues = NO;
+    id dict = [ser arrayFromString:xmlrpc format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(dict, @"Failed to parse: %@", ser.error);
+
+    id expected = @[ [NSData dataWithBytes:nil length:0] ];
+    XCTAssertEqualObjects(dict, expected);
+}
+
+- (void)testXMLRPCParseNil {
+    NSString* xmlrpc = @"<params><param><value><nil/></value></param></params>";
+    IQSerialization* ser = [IQSerialization new];
+    ser.ignoreNilValues = NO;
+    id dict = [ser arrayFromString:xmlrpc format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(dict, @"Failed to parse: %@", ser.error);
+
+    id expected = @[ [NSNull null] ];
+    XCTAssertEqualObjects(dict, expected);
+}
+
+- (void)testXMLRPCParseNilWithIgnore {
+    NSString* xmlrpc = @"<params><param><value><nil/></value></param></params>";
+    IQSerialization* ser = [IQSerialization new];
+    id dict = [ser arrayFromString:xmlrpc format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(dict, @"Failed to parse: %@", ser.error);
+
+    id expected = @[ ];
+    XCTAssertEqualObjects(dict, expected);
+}
+
 - (void)testXMLRPCGenerateParams
 {
     id params = @[ @42, @"Hello", @{ @"Key" : @1 }];
