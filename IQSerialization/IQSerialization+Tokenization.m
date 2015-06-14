@@ -44,7 +44,7 @@ static NSData* ReadNextDocument(NSUInteger bufsize, NSInputStream* stream, NSObj
 
     while(stream && stream.hasBytesAvailable) {
         char buf[bufsize];
-        unsigned int len = [(NSInputStream *)stream read:(unsigned char*)buf maxLength:sizeof(buf)];
+        NSInteger len = [(NSInputStream *)stream read:(unsigned char*)buf maxLength:sizeof(buf)];
         if(len == 0) return nil;
 
         SplitstreamDocument doc = SplitstreamGetNextDocument(&s->state, max, buf, len, scanner);

@@ -77,8 +77,8 @@ static NSString *const XSI_NAMESPACE_URI_PREFIX = @"xsi";
 - (void)_writeStartDocumentWithEncodingAndVersion:(NSString*)encoding version:(NSString*)version;
 
 - (void)_write:(NSString*)value;
-- (void)_writeCharacters:(const unichar*)characters length:(int)length;
-- (void)_writeEscapeCharacters:(const unichar*)characters length:(int)length;
+- (void)_writeCharacters:(const unichar*)characters length:(NSUInteger)length;
+- (void)_writeEscapeCharacters:(const unichar*)characters length:(NSUInteger)length;
 @end
 
 @implementation IQXMLWriter
@@ -627,7 +627,7 @@ static NSString *const XSI_NAMESPACE_URI_PREFIX = @"xsi";
     }
 }
 
-- (void)_writeCharacters:(const unichar*)characters length:(int)length
+- (void)_writeCharacters:(const unichar*)characters length:(NSUInteger)length
 {
     if(outputStringBuffer) {
         CFStringAppendCharacters((CFMutableStringRef)outputStringBuffer, characters, length);
@@ -660,9 +660,9 @@ static NSString *const XSI_NAMESPACE_URI_PREFIX = @"xsi";
             @throw([NSException exceptionWithName:@"XMLWriterException" reason:[NSString stringWithFormat:@"Could not allocate data buffer of %i unicode characters", 256] userInfo:NULL]);
         }
         
-        int count = 0;
+        NSUInteger count = 0;
         do {
-            int length;
+            NSUInteger length;
             if(count + 256 < [value length]) {
                 length = 256;
             } else {
@@ -680,12 +680,12 @@ static NSString *const XSI_NAMESPACE_URI_PREFIX = @"xsi";
     }
 }
 
-- (void)_writeEscapeCharacters:(const unichar*)characters length:(int)length
+- (void)_writeEscapeCharacters:(const unichar*)characters length:(NSUInteger)length
 {
-    int rangeStart = 0;
-    int rangeLength = 0;
+    NSUInteger rangeStart = 0;
+    NSUInteger rangeLength = 0;
     
-    for(int i = 0; i < length; i++) {
+    for(NSUInteger i = 0; i < length; i++) {
         
         UniChar c = characters[i];
         if (c <= 0xd7ff)  {

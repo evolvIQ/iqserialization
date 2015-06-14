@@ -56,7 +56,7 @@ else if(c == -1) {return nil;} \
 } if(!valid) { c = 0; end = YES;}
     
     for(; input < inputend;) {
-        int c, valid, end = NO;
+        int c = 0, valid, end = NO;
         B64_NEXT_CHAR
         *output = (c & 0x3f) << 2;
         B64_NEXT_CHAR
