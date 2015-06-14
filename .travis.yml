@@ -1,5 +1,5 @@
 language: objective-c
 script:
-	- xcodebuild test -sdk iphonesimulator -scheme "IQSerialization - iOS"
-	- xcodebuild test -scheme "IQSerialization - OSX"
+  - xcodebuild test -sdk iphonesimulator -scheme 'IQSerialization - iOS'
+  - xcodebuild test -scheme 'IQSerialization - OSX'
 
