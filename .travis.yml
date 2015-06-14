@@ -1,2 +1,5 @@
 language: objective-c
 xcode_project: IQSerialization.xcodeproj
+xcode_scheme:
+	- "IQSerialization - OSX"
+	- "IQSerialization - iOS"
