@@ -155,8 +155,8 @@
     NSString* json = [ser stringFromObject:object format:IQSerializationFormatJSON];
     XCTAssertNotNil(json, @"Failed to generate JSON: %@", ser.error);
 
-    XCTAssertTrue([json containsString:@"stringProperty"], @"stringProperty missing");
-    XCTAssertTrue(![json containsString:@"nullProperty"], @"nullProperty should be removed but it is not");
+    XCTAssertTrue([json rangeOfString:@"stringProperty"].length > 0, @"stringProperty missing");
+    XCTAssertTrue([json rangeOfString:@"nullProperty"].length == 0, @"nullProperty should be removed but it is not");
 }
 
 - (void)testGenerateJSONExplicitNulls {
@@ -167,8 +167,8 @@
     NSString* json = [ser stringFromObject:object format:IQSerializationFormatJSON];
     XCTAssertNotNil(json, @"Failed to generate JSON: %@", ser.error);
 
-    XCTAssertTrue([json containsString:@"stringProperty"], @"stringProperty missing");
-    XCTAssertTrue([json containsString:@"nullProperty"], @"nullProperty missing");}
+    XCTAssertTrue([json rangeOfString:@"stringProperty"].length > 0, @"stringProperty missing");
+    XCTAssertTrue([json rangeOfString:@"nullProperty"].length > 0, @"nullProperty missing");}
 
 - (void)testParseAndGenerateJSON
 {

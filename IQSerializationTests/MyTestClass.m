@@ -25,14 +25,3 @@
 @implementation MyInnerClass
 @synthesize innerBool, innerInt, innerString;
 @end
-
-#if !defined(__MAC_10_10) && !defined(__IPHONE_8_0)
-@implementation NSString (Contains)
-
-- (BOOL)containsString:(NSString*)other {
-    NSRange range = [self rangeOfString:other];
-    return range.length != 0;
-}
-
-@end
-#endif
