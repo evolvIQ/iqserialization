@@ -797,7 +797,7 @@
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Tests_OSX;
-				SDKROOT = "";
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -809,7 +809,7 @@
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Tests_OSX;
-				SDKROOT = "";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -827,7 +827,7 @@
 				INFOPLIST_FILE = "IQSerialization/IQSerialization-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = IQSerialization;
-				SDKROOT = "";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -846,7 +846,7 @@
 				INFOPLIST_FILE = "IQSerialization/IQSerialization-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = IQSerialization;
-				SDKROOT = "";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -957,6 +957,7 @@
 				FF466DC61B2D74FA00B5740E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FF9D9E511639D803002A9272 /* Build configuration list for PBXProject "IQSerialization" */ = {
 			isa = XCConfigurationList;

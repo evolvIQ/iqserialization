@@ -30,3 +30,9 @@
 @property (nonatomic, retain) MyInnerClass* innerObject;
 @property (nonatomic) int intProperty;
 @end
+
+#if !defined(__MAC_10_10) && !defined(__IPHONE_8_0)
+@interface NSString (Contains)
+- (BOOL)containsString:(NSString*)other;
+@end
+#endif
