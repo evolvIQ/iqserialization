@@ -1,3 +1,5 @@
+![Travis CI status](https://travis-ci.org/evolvIQ/iqserialization.svg?branch=master)
+
 IQSerialization - Data serialization as it should be
 ====================================================
 
