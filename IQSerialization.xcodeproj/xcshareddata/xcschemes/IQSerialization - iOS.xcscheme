@@ -28,7 +28,26 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FFB188B31B28380F00A63B60"
+               BuildableName = "Tests - iOS.xctest"
+               BlueprintName = "Tests - iOS"
+               ReferencedContainer = "container:IQSerialization.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "FF466DB11B2D74FA00B5740E"
+            BuildableName = "IQSerialization.framework"
+            BlueprintName = "IQSerialization - iOS"
+            ReferencedContainer = "container:IQSerialization.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
