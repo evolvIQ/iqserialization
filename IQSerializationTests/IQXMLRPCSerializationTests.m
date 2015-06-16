@@ -184,7 +184,18 @@
     XCTAssertEqualObjects(dict, expected);
 }
 
-#ifndef TARGET_OS_IPHONE
+- (void)testXMLRPCGenerateAndParse
+{
+    id params = @[ @42, @"Hello", @{ @"Key" : @1 }];
+    IQSerialization* ser = [IQSerialization new];
+    NSString* string = [ser stringFromObject:params format:IQSerializationFormatXMLRPC];
+    XCTAssertNotNil(string, @"Failed to generate: %@", ser.error);
+
+    id parsed = [ser arrayFromString:string format:IQSerializationFormatXMLRPC];
+    XCTAssertEqualObjects(parsed, params, @"Object changed during write/parse cycle");
+}
+
+#if !TARGET_OS_IPHONE
 
 - (void)testXMLRPCGenerateParams
 {
@@ -196,8 +207,6 @@
     XCTAssertNotNil(doc, @"Resulting XML was not wellformed");
     id root = [[[doc children] firstObject] name];
     XCTAssertEqualObjects(root, @"params");
-    id parsed = [ser arrayFromString:string format:IQSerializationFormatXMLRPC];
-    XCTAssertEqualObjects(parsed, params, @"Object changed during write/parse cycle");
 }
 
 - (void)testXMLRPCGenerateStandardDateTime
@@ -262,7 +271,7 @@
     NSString* xmlrpc = [ser stringFromObject:object format:IQSerializationFormatXMLRPC];
     XCTAssertNotNil(object, @"Failed to generate: %@", ser.error);
     id doc = [[NSXMLDocument alloc] initWithXMLString:xmlrpc options:0 error:nil];
-    NSXMLElement* root = [[doc children] firstObject];
+    NSXMLElement* root = (NSXMLElement*)[[doc children] firstObject];
     XCTAssertEqual(root.childCount, 1);
 }
 
@@ -273,7 +282,7 @@
     NSString* xmlrpc = [ser stringFromObject:object format:IQSerializationFormatXMLRPC];
     XCTAssertNotNil(object, @"Failed to generate: %@", ser.error);
     id doc = [[NSXMLDocument alloc] initWithXMLString:xmlrpc options:0 error:nil];
-    NSXMLElement* root = [[doc children] firstObject];
+    NSXMLElement* root = (NSXMLElement*)[[doc children] firstObject];
     XCTAssertEqual(root.childCount, 2);
 }
 
