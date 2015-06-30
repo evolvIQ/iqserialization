@@ -58,6 +58,8 @@
 		FF466DEA1B2D75FA00B5740E /* yajl_tree.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9ED91639DC4B002A9272 /* yajl_tree.c */; };
 		FF466DEB1B2D75FD00B5740E /* yajl.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9EDB1639DC4B002A9272 /* yajl.c */; };
 		FF466DEC1B2D78D400B5740E /* IQSerialization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF466DB21B2D74FA00B5740E /* IQSerialization.framework */; };
+		FF7B7B2D1B434D62002B49E8 /* mempool.c in Sources */ = {isa = PBXBuildFile; fileRef = FF7B7B2C1B434D56002B49E8 /* mempool.c */; };
+		FF7B7B2E1B434D65002B49E8 /* mempool.c in Sources */ = {isa = PBXBuildFile; fileRef = FF7B7B2C1B434D56002B49E8 /* mempool.c */; };
 		FF9D9F28163F1A3D002A9272 /* IQJSONSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9E781639D803002A9272 /* IQJSONSerializationTests.m */; };
 		FF9D9F29163F1A3D002A9272 /* IQXMLRPCSerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9D9F01163A1349002A9272 /* IQXMLRPCSerializationTests.m */; };
 		FF9D9F2D163F1A3D002A9272 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9D9E5A1639D803002A9272 /* Foundation.framework */; };
@@ -120,6 +122,7 @@
 		FF0284621B1B29F800297499 /* splitstream_xml.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = splitstream_xml.c; sourceTree = "<group>"; };
 		FF0284631B1B29F800297499 /* splitstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = splitstream.c; sourceTree = "<group>"; };
 		FF466DB21B2D74FA00B5740E /* IQSerialization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IQSerialization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF7B7B2C1B434D56002B49E8 /* mempool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mempool.c; sourceTree = "<group>"; };
 		FF9D9E5A1639D803002A9272 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FF9D9E5F1639D803002A9272 /* IQSerialization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQSerialization.h; sourceTree = "<group>"; };
 		FF9D9E611639D803002A9272 /* IQSerialization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQSerialization.m; sourceTree = "<group>"; };
@@ -220,6 +223,7 @@
 		FF02845E1B1B29E100297499 /* splitstream */ = {
 			isa = PBXGroup;
 			children = (
+				FF7B7B2C1B434D56002B49E8 /* mempool.c */,
 				FF02845F1B1B29F800297499 /* splitstream_private.h */,
 				FF0284601B1B29F800297499 /* splitstream.h */,
 				FF0284611B1B29F800297499 /* splitstream_json.c */,
@@ -594,6 +598,7 @@
 				FF466DE11B2D75D200B5740E /* splitstream_json.c in Sources */,
 				FF466DDA1B2D759900B5740E /* IQSerialization+UBJSON.m in Sources */,
 				FF466DD81B2D759900B5740E /* IQSerialization+XMLRPC.m in Sources */,
+				FF7B7B2D1B434D62002B49E8 /* mempool.c in Sources */,
 				FF466DEB1B2D75FD00B5740E /* yajl.c in Sources */,
 				FF466DE21B2D75D200B5740E /* splitstream_xml.c in Sources */,
 				FF466DD01B2D759900B5740E /* IQSerialization+Tokenization.m in Sources */,
@@ -635,6 +640,7 @@
 				FFB028AF1666DCB000CED715 /* yajl_encode.c in Sources */,
 				FFB028B01666DCB000CED715 /* yajl_gen.c in Sources */,
 				FFB028B11666DCB000CED715 /* yajl_lex.c in Sources */,
+				FF7B7B2E1B434D65002B49E8 /* mempool.c in Sources */,
 				FFFCFAAB1B19E37400418EC9 /* IQStreamObjectTokenizer.m in Sources */,
 				FFB028B21666DCB000CED715 /* yajl_parser.c in Sources */,
 				FFB028B31666DCB000CED715 /* yajl_tree.c in Sources */,
@@ -748,6 +754,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					DISABLE_MEMPOOL,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -774,6 +781,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = DISABLE_MEMPOOL;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
