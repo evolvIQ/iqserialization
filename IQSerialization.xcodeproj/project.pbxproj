@@ -485,7 +485,7 @@
 		FF9D9E4E1639D803002A9272 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = EvolvIQ;
 				TargetAttributes = {
 					FF466DB11B2D74FA00B5740E = {
@@ -699,6 +699,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.evolvIQ.IQSerialization;
 				PRODUCT_NAME = IQSerialization;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -730,6 +731,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = org.evolvIQ.IQSerialization;
 				PRODUCT_NAME = IQSerialization;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -748,6 +750,7 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -802,6 +805,7 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.evolvIQ.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Tests_OSX;
 				SDKROOT = macosx;
 			};
@@ -814,6 +818,7 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = "IQSerializationTests/IQSerializationTests-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.evolvIQ.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Tests_OSX;
 				SDKROOT = macosx;
 			};
@@ -832,6 +837,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				INFOPLIST_FILE = "IQSerialization/IQSerialization-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = org.evolvIQ.IQSerialization;
 				PRODUCT_NAME = IQSerialization;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = framework;
@@ -851,6 +857,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				INFOPLIST_FILE = "IQSerialization/IQSerialization-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = org.evolvIQ.IQSerialization;
 				PRODUCT_NAME = IQSerialization;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = framework;
@@ -909,6 +916,7 @@
 					XCTest,
 					"-ObjC",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.evolvIQ.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -949,6 +957,7 @@
 					XCTest,
 					"-ObjC",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.evolvIQ.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
